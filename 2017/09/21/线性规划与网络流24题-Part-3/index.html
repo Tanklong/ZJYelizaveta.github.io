@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-3/index.html">
 <meta property="og:site_name" content="ZJYelizaveta&#39;s Blog">
 <meta property="og:description" content="最后一部分！">
-<meta property="og:updated_time" content="2017-09-21T06:42:21.803Z">
+<meta property="og:updated_time" content="2017-10-22T03:17:31.588Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性规划与网络流24题 Part 3">
 <meta name="twitter:description" content="最后一部分！">
@@ -266,8 +266,8 @@
 <li>把网格中每个位置抽象成网络中一个结点</li>
 <li>建立超级源点$s$，从点$s$到每个出发点$i$连接一条容量为该点出发的机器人数量，费用为$0$的边</li>
 <li>建立超级源点$t$，从每个目标点$i$到$t$连一条容量为可以到达该点的机器人数量，费用为$0$的边</li>
-<li>对于每个顶点$i$，若$j$为$i$东边或南边相邻的一个结点，从结点$i$向结点$j$连一条容量为1，费用为该边价值的边</li>
-<li>对于每个顶点i，若$j$为$i$东边或南边相邻的一个结点，从结点$i$向结点$j$一条容量为$\infty$，费用为$0$的边</li>
+<li>对于每个顶点$i$，若$j$为$i$东边或南边相邻的一个结点，从结点$i$向结点$j$连一条容量为 $1$，费用为该边价值的边</li>
+<li>对于每个顶点 $i$，若 $j$ 为 $i$ 东边或南边相邻的一个结点，从结点$i$向结点$j$一条容量为$\infty$，费用为$0$的边</li>
 <li>最大费用最大流，答案为采集到的生物标本的最高总价值</li>
 </ul>
 <h2 id="「网络流-24-题」最长-k-可重区间集问题-21"><a href="#「网络流-24-题」最长-k-可重区间集问题-21" class="headerlink" title="「网络流 24 题」最长 k 可重区间集问题 - 21"></a>「网络流 24 题」最长 k 可重区间集问题 - 21</h2><p>这个问题可以看做是求$k$条权之和最大的不相交路径，每条路径为一些不相交的区间序列。由于是最大费用流，两条路径之间一定有一些区间相交，可以看做是相交部分重复了$2$次，而$k$条路经就是最多重复了$k$次。最简单的想法就是把区间排序后，不相交的区间之间连接一条边，由于每个区间只能用一次，所以要拆点，点内限制流量。如果我们改变一下思路，把端点作为网络中的顶点，区间恰恰是特定一些端点之间的边，这样建模的复杂度更小。<a href="http://hzwer.com/5842.html" target="_blank" rel="external">转自 hzwer</a></p>
@@ -297,7 +297,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-3/" data-id="cj926bs03003lh4uj5u8qtpzu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-3/" data-id="cj926nm6t003o44ujgwpjsrr1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
