@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>[模板]最短路问题 | ZJYelizaveta&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="$Dijkstra$$Dijkstra$算法适用于边权为正的情况，可以解决正权图上单源最短路问题，即从单个原点出发，到所有结点的最短路，算法适用于有向图与无向图。这里我就不花费篇幅证明算法的正确性了，直接上代码吧(✿◡‿◡)。">
+<meta name="keywords" content="模板,Dijkstra,最短路,Bellman-Ford,Floyd">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[模板]最短路问题">
+<meta property="og:url" content="http://yoursite.com/2017/05/24/模板-最短路问题/index.html">
+<meta property="og:site_name" content="ZJYelizaveta&#39;s Blog">
+<meta property="og:description" content="$Dijkstra$$Dijkstra$算法适用于边权为正的情况，可以解决正权图上单源最短路问题，即从单个原点出发，到所有结点的最短路，算法适用于有向图与无向图。这里我就不花费篇幅证明算法的正确性了，直接上代码吧(✿◡‿◡)。">
+<meta property="og:updated_time" content="2017-05-23T16:33:29.800Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[模板]最短路问题">
+<meta name="twitter:description" content="$Dijkstra$$Dijkstra$算法适用于边权为正的情况，可以解决正权图上单源最短路问题，即从单个原点出发，到所有结点的最短路，算法适用于有向图与无向图。这里我就不花费篇幅证明算法的正确性了，直接上代码吧(✿◡‿◡)。">
+    
+
+    
+        <link rel="alternate" href="/" title="ZJYelizaveta&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">ZJYelizaveta&#39;s Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/Links">Links</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/Links">Links</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">ZJYelizaveta</h2>
+            <h3 id="title">有幸在那一天，遇到你，最了不起的你。</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Wuhan, China</span>
+            <a id="follow" target="_blank" href="">SEGUIR</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                71
+                <span>Entradas</span>
+            </div>
+            <div class="article-info-block">
+                85
+                <span>Etiquetas</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/ZJYelizaveta" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-模板-最短路问题" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            [模板]最短路问题
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/24/模板-最短路问题/">
+            <time datetime="2017-05-23T16:16:52.000Z" itemprop="datePublished">2017-05-24</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Bellman-Ford/">Bellman-Ford</a>, <a class="tag-link" href="/tags/Dijkstra/">Dijkstra</a>, <a class="tag-link" href="/tags/Floyd/">Floyd</a>, <a class="tag-link" href="/tags/最短路/">最短路</a>, <a class="tag-link" href="/tags/模板/">模板</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="Dijkstra"><a href="#Dijkstra" class="headerlink" title="$Dijkstra$"></a>$Dijkstra$</h2><p>$Dijkstra$算法适用于边权为正的情况，可以解决正权图上单源最短路问题，即从单个原点出发，到所有结点的最短路，算法适用于有向图与无向图。<br>这里我就不花费篇幅证明算法的正确性了，直接上代码吧(✿◡‿◡)。<br><a id="more"></a></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><h4 id="模板1：如果你只需要输入顶点数。"><a href="#模板1：如果你只需要输入顶点数。" class="headerlink" title="模板1：如果你只需要输入顶点数。"></a>模板1：如果你只需要输入顶点数。</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; P;<span class="comment">//first is shortest distance , second is point</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">1000</span> + <span class="number">7</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">int</span> n, m; </div><div class="line"><span class="keyword">int</span> d[MAX];<span class="comment">//the shortest path</span></div><div class="line"><span class="keyword">int</span> pre[MAX];<span class="comment">//最短路上前趋结点</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></div><div class="line">	<span class="keyword">int</span> to, cost;</div><div class="line">	Edge(<span class="keyword">int</span> to = <span class="number">0</span>, <span class="keyword">int</span> cost = <span class="number">0</span>) : to(to), cost(cost)&#123;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="built_in">vector</span>&lt;Edge&gt; G[MAX];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dijkstra</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</div><div class="line">	priority_queue&lt;P, <span class="built_in">vector</span>&lt;P&gt;, greater&lt;P&gt; &gt; q;</div><div class="line">	fill(pre, pre + n, <span class="number">-1</span>);</div><div class="line">	fill(d, d + n, INF);</div><div class="line">	d[s] = <span class="number">0</span>;</div><div class="line">	q.push(P(<span class="number">0</span>, s));</div><div class="line">	</div><div class="line">	<span class="keyword">while</span>(!q.empty())&#123;</div><div class="line">		P p = q.top();</div><div class="line">		q.pop();</div><div class="line">		<span class="keyword">int</span> v = p.second;</div><div class="line">		<span class="keyword">if</span>(d[v] &lt; p.first)</div><div class="line">			<span class="keyword">continue</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">unsigned</span> i = <span class="number">0</span>; i &lt; G[v].size(); i++)&#123;</div><div class="line">			Edge e = G[v][i];</div><div class="line">			<span class="keyword">if</span>(d[e.to] &gt; d[v] + e.cost)&#123;</div><div class="line">				d[e.to] = d[v] + e.cost;</div><div class="line">				pre[e.to] = v;</div><div class="line">				q.push(P(d[e.to], e.to));</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; getpath(<span class="keyword">int</span> t)&#123;</div><div class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; path;<span class="comment">//路径还原</span></div><div class="line">	<span class="keyword">for</span>(; t != - <span class="number">1</span>; t = pre[t])<span class="comment">//不断沿着prev[t]走直到t = s</span></div><div class="line">		path.push_back(t);</div><div class="line">	reverse(path.begin(), path.end());</div><div class="line">	<span class="keyword">return</span> path;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> DEBUG</span></div><div class="line">	<span class="comment">//freopen("test.in","r",stdin);</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</div><div class="line">	<span class="keyword">int</span> x, y, z;</div><div class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;x, &amp;y, &amp;z) == <span class="number">3</span>)&#123;</div><div class="line">		<span class="keyword">if</span>(x == <span class="number">0</span> &amp;&amp; y == <span class="number">0</span> &amp;&amp;  z == <span class="number">0</span>) <span class="keyword">break</span>;</div><div class="line">		G[x].push_back(Edge(y, z));</div><div class="line">		<span class="comment">//G[y].push_back(Edge(x, z));//无向图</span></div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	dijkstra(<span class="number">0</span>);</div><div class="line">	</div><div class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; path;  </div><div class="line">	path = getpath(n - <span class="number">1</span>);  </div><div class="line">	<span class="keyword">for</span>(<span class="keyword">unsigned</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; path.size(); i++)</div><div class="line">		<span class="built_in">cout</span>&lt;&lt;path[i]&lt;&lt;<span class="string">" "</span>;<span class="comment">//顶点0 ~ n - 1的最短路径</span></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, d[n - <span class="number">1</span>]);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>, d[i]);<span class="comment">//顶点0到(0 ~ n)中每一个顶点的最短路</span></div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="模板2：如果你既要输入顶点数又要输入边数"><a href="#模板2：如果你既要输入顶点数又要输入边数" class="headerlink" title="模板2：如果你既要输入顶点数又要输入边数"></a>模板2：如果你既要输入顶点数又要输入边数</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; P;<span class="comment">//first is shortest distance , second is point</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">1000</span> + <span class="number">7</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">int</span> n, m; </div><div class="line"><span class="keyword">int</span> d[MAX];<span class="comment">//the shortest path</span></div><div class="line"><span class="keyword">int</span> pre[MAX];<span class="comment">//最短路上前趋结点</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></div><div class="line">	<span class="keyword">int</span> to, cost;</div><div class="line">	Edge(<span class="keyword">int</span> to = <span class="number">0</span>, <span class="keyword">int</span> cost = <span class="number">0</span>) : to(to), cost(cost)&#123;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="built_in">vector</span>&lt;Edge&gt; G[MAX];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dijkstra</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</div><div class="line">	priority_queue&lt;P, <span class="built_in">vector</span>&lt;P&gt;, greater&lt;P&gt; &gt; q;</div><div class="line">	fill(pre, pre + n, <span class="number">-1</span>);</div><div class="line">	fill(d, d + n, INF);</div><div class="line">	d[s] = <span class="number">0</span>;</div><div class="line">	q.push(P(<span class="number">0</span>, s));</div><div class="line">	<span class="keyword">while</span>(!q.empty())&#123;</div><div class="line">		P p = q.top();</div><div class="line">		q.pop();</div><div class="line">		<span class="keyword">int</span> v = p.second;</div><div class="line">		<span class="keyword">if</span>(d[v] &lt; p.first)</div><div class="line">			<span class="keyword">continue</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">unsigned</span> i = <span class="number">0</span>; i &lt; G[v].size(); i++)&#123;</div><div class="line">			Edge e = G[v][i];</div><div class="line">			<span class="keyword">if</span>(d[e.to] &gt; d[v] + e.cost)&#123;</div><div class="line">				d[e.to] = d[v] + e.cost;</div><div class="line">				pre[e.to] = v;</div><div class="line">				q.push(P(d[e.to], e.to));</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; getpath(<span class="keyword">int</span> t)&#123;</div><div class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; path;<span class="comment">//路径还原</span></div><div class="line">	<span class="keyword">for</span>(; t != - <span class="number">1</span>; t = pre[t])</div><div class="line">		path.push_back(t);</div><div class="line">	reverse(path.begin(), path.end());</div><div class="line">	<span class="keyword">return</span> path;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> DEBUG</span></div><div class="line">	<span class="comment">//freopen("test1.in","r",stdin);</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</div><div class="line">		<span class="keyword">int</span> x, y, z;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;x, &amp;y, &amp;z);</div><div class="line">		G[x].push_back(Edge(y, z));</div><div class="line">		G[y].push_back(Edge(x, z));<span class="comment">//无向图</span></div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	dijkstra(<span class="number">0</span>);</div><div class="line">	</div><div class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; path;  </div><div class="line">	path = getpath(n - <span class="number">1</span>);  </div><div class="line">	<span class="keyword">for</span>(<span class="keyword">unsigned</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; path.size(); i++)</div><div class="line">		<span class="built_in">cout</span>&lt;&lt;path[i]&lt;&lt;<span class="string">" "</span>;<span class="comment">//顶点0 ~ n - 1的最短路径</span></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, d[n - <span class="number">1</span>]);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>, d[i]);<span class="comment">//顶点0到(0 ~ n)中每一个顶点的最短路</span></div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">模板<span class="number">1</span>：</div><div class="line">		输入：</div><div class="line">			  <span class="number">5</span></div><div class="line">              <span class="number">0</span> <span class="number">1</span> <span class="number">10</span></div><div class="line">              <span class="number">0</span> <span class="number">4</span> <span class="number">100</span></div><div class="line">              <span class="number">0</span> <span class="number">3</span> <span class="number">30</span></div><div class="line">              <span class="number">3</span> <span class="number">4</span> <span class="number">60</span></div><div class="line">			  <span class="number">2</span> <span class="number">4</span> <span class="number">10</span></div><div class="line">              <span class="number">3</span> <span class="number">2</span> <span class="number">20</span></div><div class="line">              <span class="number">1</span> <span class="number">2</span> <span class="number">50</span></div><div class="line">              <span class="number">0</span> <span class="number">0</span> <span class="number">0</span></div><div class="line">        输出：</div><div class="line">              <span class="number">0</span> <span class="number">3</span> <span class="number">2</span> <span class="number">4</span> </div><div class="line">              <span class="number">60</span></div><div class="line">              <span class="number">0</span> <span class="number">10</span> <span class="number">50</span> <span class="number">30</span> <span class="number">60</span></div><div class="line">模板<span class="number">2</span>：</div><div class="line">		输入：</div><div class="line">			  <span class="number">7</span> <span class="number">10</span></div><div class="line">              <span class="number">0</span> <span class="number">1</span> <span class="number">5</span></div><div class="line">              <span class="number">0</span> <span class="number">2</span> <span class="number">2</span></div><div class="line">              <span class="number">1</span> <span class="number">2</span> <span class="number">4</span></div><div class="line">              <span class="number">1</span> <span class="number">3</span> <span class="number">2</span></div><div class="line">			  <span class="number">2</span> <span class="number">3</span> <span class="number">6</span></div><div class="line">              <span class="number">2</span> <span class="number">4</span> <span class="number">10</span></div><div class="line">			  <span class="number">3</span> <span class="number">5</span> <span class="number">1</span></div><div class="line">			  <span class="number">4</span> <span class="number">5</span> <span class="number">3</span></div><div class="line">			  <span class="number">4</span> <span class="number">6</span> <span class="number">5</span></div><div class="line">              <span class="number">5</span> <span class="number">6</span> <span class="number">9</span></div><div class="line">        输出：</div><div class="line">              <span class="number">0</span> <span class="number">1</span> <span class="number">3</span> <span class="number">5</span> <span class="number">4</span> <span class="number">6</span> </div><div class="line">              <span class="number">16</span></div><div class="line">              <span class="number">0</span> <span class="number">5</span> <span class="number">2</span> <span class="number">7</span> <span class="number">11</span> <span class="number">8</span> <span class="number">16</span></div></pre></td></tr></table></figure>
+<p>一道关于$Dijkstra$以及路径输出的题：<a href="https://vijos.org/p/1635" target="_blank" rel="external">题目地址</a></p>
+<h2 id="Bellman-Ford"><a href="#Bellman-Ford" class="headerlink" title="$Bellman-Ford$"></a>$Bellman-Ford$</h2><p><strong>如果最短路存在，一定存在一个不含环的最短路</strong>。为什么呢(⊙ˍ⊙)？<br>在边权可正可负的图中，有三种环：零环，正环和负环。如果包含正环或者零环，去掉以后路径不会变长；如果包含负环，则意味着不存在最短路。而$Bellman-Ford$算法是可以在松弛的过程中判断是否存在负环的算法，在用队列优化后就是$SPFA$算法。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">1000</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">int</span> n, m;</div><div class="line"><span class="keyword">int</span> d[MAX];</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></div><div class="line">	<span class="keyword">int</span> from, to, dist;</div><div class="line">&#125;es[MAX];<span class="comment">//边</span></div><div class="line"><span class="comment">//求解顶点s出发到所有顶点的最短距离</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">bellman_ford</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) </div><div class="line">		d[i] = INF;</div><div class="line">	d[s] = <span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span>(<span class="literal">true</span>)&#123;</div><div class="line">		<span class="keyword">bool</span> update = <span class="literal">false</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</div><div class="line">			Edge e = es[i];<span class="comment">//</span></div><div class="line">			<span class="keyword">if</span>(d[e.from] != INF &amp;&amp; d[e.to] &gt; d[e.from] + e.dist)&#123;</div><div class="line">				d[e.to] = d[e.from] + e.dist;</div><div class="line">				update = <span class="literal">true</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(!update) <span class="keyword">break</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>, d[i]);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">//如果返回true则存在负圈</span></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">find_negative_loop</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">memset</span>(d, <span class="number">0</span>, <span class="keyword">sizeof</span>(d));</div><div class="line"></div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++)&#123;</div><div class="line">			Edge e = es[j];<span class="comment">//</span></div><div class="line">			<span class="keyword">if</span>(d[e.to] &gt; d[e.from] + e.dist)&#123;</div><div class="line">				d[e.to] = d[e.from] + e.dist;</div><div class="line">				<span class="keyword">if</span>(i == n - <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">true</span>;<span class="comment">//第n次更新仍存在负圈</span></div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> DEBUG</span></div><div class="line">	<span class="comment">//freopen("test.in","r",stdin);</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;es[i].from, &amp;es[i].to, &amp;es[i].dist);</div><div class="line">	&#125;</div><div class="line">	bellman_ford(<span class="number">0</span>);</div><div class="line">	<span class="keyword">if</span>(find_negative_loop()) <span class="built_in">printf</span>(<span class="string">"Exist\n"</span>);</div><div class="line">	<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"Do not Exsit\n"</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Floyd"><a href="#Floyd" class="headerlink" title="$Floyd$"></a>$Floyd$</h2><p>如果需要求出每两点之间的最短距离，不必调用$n$次$Dijkstra$(边权均为正)或者$Bellman-Ford$(有负权)。用$Floyd-Warahall$算法就好了(<em>/ω＼</em>)。<strong>注意初始化，以及根据题目中的边的长度上限来设定$INF$不要太小也不要太大。</strong></p>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">100</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">int</span> d[MAX][MAX];<span class="comment">//d[u][v]表示e = (u, v)的权值</span></div><div class="line"><span class="keyword">int</span> n;<span class="comment">//顶点数</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> DEBUG</span></div><div class="line">	<span class="comment">//freopen("test.in","r",stdin);</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)&#123;</div><div class="line">			<span class="keyword">if</span>(i == j) d[i][j] = <span class="number">0</span>;</div><div class="line">			<span class="keyword">else</span> d[i][j] = INF;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> u, v, w;</div><div class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;u, &amp;v, &amp;w) == <span class="number">3</span>)&#123;</div><div class="line">		<span class="keyword">if</span>(u == <span class="number">0</span> &amp;&amp; v == <span class="number">0</span> &amp;&amp; w == <span class="number">0</span>) <span class="keyword">break</span>;</div><div class="line">		d[u][v] = w;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; n; k++)&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)&#123;</div><div class="line">				d[i][j] = min(d[i][j], d[i][k] + d[k][j]);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>, d[<span class="number">0</span>][i]);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/05/24/模板-最短路问题/" data-id="cj9265798003b84uj8e5po3xy" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/05/24/模板-最短路问题/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/05/24/模板-最短路问题/">Comentarios</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/05/24/UVa-1639-Candy/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más nuevo</strong>
+            <div class="article-nav-title">
+                
+                    UVa 1639 - Candy
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/05/23/同余与模运算/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">同余与模运算</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 ZJYelizaveta<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://yoursite.com/2017/05/24/模板-最短路问题/';
+        
+        this.page.identifier = '模板-最短路问题';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

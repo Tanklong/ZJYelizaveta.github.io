@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>关于图的连通性的三个Tarjan算法 | ZJYelizaveta&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="无向图的割点和桥定义对于无向图$G$，如果删除某点$u$之后，连通分量数目增加，称$u$为图的割点。对于无向图$G$， 如果删除某一条边$e = (u, v)$，连通分量数目增加，称$e$为图的桥。">
+<meta name="keywords" content="模板,图论,割点,桥,边-双连通分量,点-双连通分量,强联通分量,Tarjan">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于图的连通性的三个Tarjan算法">
+<meta property="og:url" content="http://yoursite.com/2017/05/28/关于图的连通性的三个Tarjan算法/index.html">
+<meta property="og:site_name" content="ZJYelizaveta&#39;s Blog">
+<meta property="og:description" content="无向图的割点和桥定义对于无向图$G$，如果删除某点$u$之后，连通分量数目增加，称$u$为图的割点。对于无向图$G$， 如果删除某一条边$e = (u, v)$，连通分量数目增加，称$e$为图的桥。">
+<meta property="og:image" content="http://oqeu5dc5m.bkt.clouddn.com/%E5%89%B2%E7%82%B9.png">
+<meta property="og:image" content="http://oqeu5dc5m.bkt.clouddn.com/%E5%8F%8C%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F%20%281%29.png">
+<meta property="og:image" content="http://oqeu5dc5m.bkt.clouddn.com/%E5%BC%BA%E8%81%94%E9%80%9A%E5%88%86%E9%87%8F.png">
+<meta property="og:image" content="http://oqeu5dc5m.bkt.clouddn.com/Tarjan.png">
+<meta property="og:updated_time" content="2017-05-29T14:51:43.885Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于图的连通性的三个Tarjan算法">
+<meta name="twitter:description" content="无向图的割点和桥定义对于无向图$G$，如果删除某点$u$之后，连通分量数目增加，称$u$为图的割点。对于无向图$G$， 如果删除某一条边$e = (u, v)$，连通分量数目增加，称$e$为图的桥。">
+<meta name="twitter:image" content="http://oqeu5dc5m.bkt.clouddn.com/%E5%89%B2%E7%82%B9.png">
+    
+
+    
+        <link rel="alternate" href="/" title="ZJYelizaveta&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">ZJYelizaveta&#39;s Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/Links">Links</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/Links">Links</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">ZJYelizaveta</h2>
+            <h3 id="title">有幸在那一天，遇到你，最了不起的你。</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Wuhan, China</span>
+            <a id="follow" target="_blank" href="">SEGUIR</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                71
+                <span>Entradas</span>
+            </div>
+            <div class="article-info-block">
+                85
+                <span>Etiquetas</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/ZJYelizaveta" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-关于图的连通性的三个Tarjan算法" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            关于图的连通性的三个Tarjan算法
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/28/关于图的连通性的三个Tarjan算法/">
+            <time datetime="2017-05-28T04:35:54.000Z" itemprop="datePublished">2017-05-28</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Tarjan/">Tarjan</a>, <a class="tag-link" href="/tags/割点/">割点</a>, <a class="tag-link" href="/tags/图论/">图论</a>, <a class="tag-link" href="/tags/强联通分量/">强联通分量</a>, <a class="tag-link" href="/tags/桥/">桥</a>, <a class="tag-link" href="/tags/模板/">模板</a>, <a class="tag-link" href="/tags/点-双连通分量/">点-双连通分量</a>, <a class="tag-link" href="/tags/边-双连通分量/">边-双连通分量</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="无向图的割点和桥"><a href="#无向图的割点和桥" class="headerlink" title="无向图的割点和桥"></a>无向图的割点和桥</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>对于无向图$G$，如果删除某点$u$之后，连通分量数目增加，称$u$为图的割点。<br>对于无向图$G$， 如果删除某一条边$e = (u, v)$，连通分量数目增加，称$e$为图的桥。</p>
+<a id="more"></a>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><h4 id="求割点"><a href="#求割点" class="headerlink" title="求割点"></a>求割点</h4><p>方法1： 尝试删除每一个结点，然后DFS一遍判断连通分量是否增加。$\Theta (n)$删点，$\Theta (n + m)$来DFS，时间复杂度为$\Theta (n(n + m))$。</p>
+<p>方法2： 尝试在线性时间内求出所有的割点，即DFS一遍，时间复杂度$\Theta (n + m)$。<br>那么首先我们我们将无向连通图DFS一遍之后会得到一个DFS森林，对于每一结点都有进入DFS森林的时间和出去的时间，那么我们记录每一条边进入的时间和出去的时间，也就是先后顺序（DFS序），就可以处理出每一个点与点之间、边与边之间的关系。<br>通过每一个点的时间戳，我们可以知道DFS森林中有四种边。</p>
+<ul>
+<li>树边：无向图的边$e = (u, v)$，会被访问两次，访问$u$的时候一次，访问$v$的时候一次。换句话就是，顶点v是在访问边$e = (u, v)$的时候才首次被访问的。</li>
+<li>反向边：第一次处理的时候，对于边$e = (u, v)$，从$u$的后代$v$指向u的祖先的边，意味着存在自环。</li>
+<li>前向边：连接顶点$u$到它的某一个后裔$v$的非树边</li>
+<li>交叉边：在于同一棵深度优先树中的两个顶点$u, v$之间，条件是顶点$u$不是顶点$v$的祖先。交叉边也可以在不同的深度优先树的顶点之间。</li>
+</ul>
+<p><strong>无向图之后反向边和树边，而有向图除了树边和反向边之外还有前向边和交叉边</strong>。</p>
+<p>假设当前的DFS森林中只有一棵树，那么根据定义树根肯定不是割点，<strong>当且仅当树根有两个及以上子树的时候，他才会是割点</strong>。</p>
+<p>那么对于非根结点一般的情况如何判断其实不是割点就要依靠定理：<br><strong>在无向连通图$G$的DFS树中，非根结点$u$是$G$割点当且仅当$u$存在一个子结点$v$，使得$v$及其所有后代都没有反向边连回$u$的祖先，连回$u$的不算，即不存在反向边</strong>。<br>证明：看一下图就可以明白了，如图所示：<br><img src="http://oqeu5dc5m.bkt.clouddn.com/%E5%89%B2%E7%82%B9.png" alt="此处输入图片的描述"></p>
+<ul>
+<li>考虑$u$的任意子结点$v$，如果$v$及其后代不能连回$f$，那么删除$u$之后$f$和$v$不再连通，此时$u$为割点。</li>
+<li>反之，如果$v$或它的任意一个后代存在一条反向边连向$f$，那么，删除结点$u$以后$v$及$v$的子树中的结点仍能够通过这条反向边连回$f$，那么此时因为图仍是连通的，所以$u$不一定是割点。<br>以上，得证。</li>
+</ul>
+<p>那么我们的线性算法也就出来了，流程是这样的：</p>
+<ol>
+<li>记$pre(u)$为结点$u$进入DFS森林中的时间戳，$low(u)$为$u$及其后代所能连回的最早的祖先的$pre$值。</li>
+<li>依次访问结点$u$的每一个子结点。</li>
+<li>对于没有访问过的子结点，DFS并用后代的$low$值来更新结点$u$的$low$函数，如果后代的$low$值均小于等于$pre[u]$，那么$u$结点为割点。</li>
+<li>如果存在反向边，用反向边来更新$u$的$low$函数。</li>
+<li>最后处理树根的情况。</li>
+</ol>
+<h4 id="求桥"><a href="#求桥" class="headerlink" title="求桥"></a>求桥</h4><p>理解求割点，那么求桥就简单了。<br>如果$v$的后代只能连回$v$自己，那么只需删除$(u, v)$一条边就能够使图非连通了，此时边$e = (u, v)$为桥。<br>那么只需要把求割点的第三步改一下就可以了。</p>
+<ol>
+<li>记$pre(u)$为结点$u$进入DFS森林中的时间戳，$low(u)$为$u$及其后代所能连回的最早的祖先的$pre$值。</li>
+<li>依次访问结点$u$的每一个子结点。</li>
+<li>对于没有访问过的子结点，DFS并用后代的$low$值来更新结点$u$的$low$函数，如果后代的$low$值均小于等于$pre[u]$，那么$e = (u, v)$为桥。</li>
+<li>如果存在反向边，用反向边来更新$u$的$low$函数。</li>
+<li>最后处理树根的情况。</li>
+</ol>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> lowu = pre[u] = ++timeStamp;</div><div class="line">    <span class="keyword">int</span> child = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G[u].size(); ++i)&#123;</div><div class="line">        <span class="keyword">int</span> v = G[u][i];</div><div class="line">        <span class="keyword">if</span>(!pre[v])&#123;<span class="comment">//u的子结点v没有访问过</span></div><div class="line">            child++;</div><div class="line">            <span class="keyword">int</span> lowv = dfs(v, u);</div><div class="line">            lowu = min(lowu, lowv);<span class="comment">//用子树中结点的low值来更新u结点的low函数</span></div><div class="line">            <span class="keyword">if</span>(lowv &gt;= pre[u]) isCut[u] = <span class="literal">true</span>;<span class="comment">//割边:lowv &gt; pre[u]</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(pre[v] &lt; pre[u] &amp;&amp; v != fa) lowu = min(lowu, pre[v]);<span class="comment">//存在反向边，用反向边更新u的low函数</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(fa &lt; <span class="number">0</span> &amp;&amp; child == <span class="number">1</span>) isCut[u] = <span class="literal">false</span>;<span class="comment">//树根</span></div><div class="line">    low[u] = lowu;</div><div class="line">    <span class="keyword">return</span> lowu;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="无向图的双连通分量"><a href="#无向图的双连通分量" class="headerlink" title="无向图的双连通分量"></a>无向图的双连通分量</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>对于一个连通图，如果任意两点至少存在两条“点不重复”的路径，则这个图是点-双连通的；<strong>即任意两条边都在同一个简单换中，连通图中不存在割点</strong>。<br>对于一个连通图，如果人意两点之间至少存在两条“边不重复”的路径，则这个图是边-双连通的；<strong>即内一条边都至少在一个简单环中，连通图中不存在桥</strong>。</p>
+<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p>如图所示，这是一个无向图双连通分量例子：<br><img src="http://oqeu5dc5m.bkt.clouddn.com/%E5%8F%8C%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F%20%281%29.png" alt="此处输入图片的描述"></p>
+<h4 id="点-双连通分量"><a href="#点-双连通分量" class="headerlink" title="点-双连通分量"></a>点-双连通分量</h4><p>对于一张无向图，点-双连通的极大子图称为双连通分量。<br>我们可以发现，每一条边有且仅属于一个点-双连通分量，但是不同的点-双连通分量可能会有公共点。<br><strong>可以证明不同的点-双连通分量最多只有一个公共点，且它一定是割点</strong>。<br>这一个很好证明，我们假设两个点-双连通分量有两个及以上的公共点，那么无论删除其中哪一个点图的连通性也不会改变，根据割点的定义，这些公共点没有哪一个会是割点。<br><strong>任意割点也都至少会是两个不同点-双连通分量的公共点</strong>。</p>
+<p>回顾求个点的过程，当我们找到割顶的时候，就已经完成了一次对某个极大点双连通子图的访问，那么我们如果在进行DFS的过程中将遍历过的点保存起来，那么就可以得到点双连通分量了。</p>
+<p>为了实现算法，我们可以在求解割顶的过程中用一个栈保存遍历过的边（注意不是点！因为不同的双连通分量存在公共点即割顶），之后每当找到一个点双连通分量，即子结点$v$与父节点$u$满足关系$low[v]&gt;=pre[u]$，我们就将栈里的东西拿出来直到栈中没有与$u$相关联的点为止且现在取出的是当前边。</p>
+<p><strong>这里注意放入栈中的不是点，而是边，这是因为点双连通分量是存在重复点的，如果我们放入栈中的是点，那么对于某些点双连通分量，就会少掉一些点（这些点都是割顶）</strong>。<br><strong>栈S保存当前双连通分量中的边，注意这里是边不是点</strong></p>
+<h4 id="边-双连通分量"><a href="#边-双连通分量" class="headerlink" title="边-双连通分量"></a>边-双连通分量</h4><p>同理，边-双连通的极大子图称之为边-双连通分量。除了桥不属于任何边-双连通分量之外，其他每一条边恰好属于一个边-双连通分量。所以我们只要把图中的桥边都删除之后，那么此时每一个连通分量就是此无向图中的边-双连通分量。<br>那么求边-双连通分量的方法也就很清晰了。</p>
+<p><em>边双连通分量例题，将稍后填坑</em>。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></div><div class="line">    <span class="keyword">int</span> from, to;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">int</span> pre[MAX_N], bccno[MAX_N], bcc_cnt, timeStamp;<span class="comment">//结点进入DFS森林的值，编号为i的点所属的双连通分量，双连通分量个数，时间戳</span></div><div class="line"><span class="keyword">bool</span> isCut[MAX_N];</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[MAX_N], bcc[MAX_N];<span class="comment">//保存图和双连通分量</span></div><div class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; S;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,  <span class="keyword">int</span> fa)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> lowu = pre[u] = ++timeStamp;</div><div class="line">    <span class="keyword">int</span> child = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G[u].size(); ++i)&#123;</div><div class="line">        <span class="keyword">int</span> v = G[u][i];</div><div class="line">        Edge e = edge&#123;u, v&#125;;</div><div class="line">        <span class="keyword">if</span>(!pre[v])&#123;<span class="comment">//没有访问过的u的子结点v</span></div><div class="line">            S.push(e);</div><div class="line">            child++;</div><div class="line">            <span class="keyword">int</span> lowv = dfs(v, u);</div><div class="line">            lowu = min(lowu, lowv);<span class="comment">//有u的后代来更新u的low函数</span></div><div class="line">            <span class="keyword">if</span>(lowv &gt;= pre[u])&#123;<span class="comment">//边-双连通分量：lowv &gt; pre[u]</span></div><div class="line">                isCut[u] = <span class="literal">true</span>;</div><div class="line">                bcc_cnt++;</div><div class="line">                bcc[bcc_cnt].clear();<span class="comment">//BCC编号从1开始</span></div><div class="line">                <span class="keyword">while</span>(<span class="number">1</span>)&#123;</div><div class="line">                    Edge x = S.top(); S.pop();<span class="comment">//逐一将边取出</span></div><div class="line">                    <span class="keyword">if</span>(bccno[x.u] != bcc_cnt) &#123;<span class="comment">//这个点还没有统计到这个连通分量。 bcc[bcc_cnt].push_back(x.u);  bccno[x.u] = bcc_cnt;&#125;</span></div><div class="line">                    <span class="keyword">if</span>(bccno[x.v] != bcc_cnt) &#123; bcc[bcc_cnt].push_back(x.v); bccno[x.v] = bcc_cnt;&#125;</div><div class="line">                    <span class="keyword">if</span>(x.u == u &amp;&amp; x.v == v) <span class="keyword">break</span>;<span class="comment">//扫到u-v，栈中又没有与u相连的边了。继续试试其他孩子</span></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(pre[v] &lt; pre[u] &amp;&amp; v! = fa)&#123;<span class="comment">//对于反向边</span></div><div class="line">            S.push(e);</div><div class="line">            lowu = min(lowu, pre[v]);<span class="comment">//用反向边更新u的low函数</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(fa &lt; <span class="number">0</span> &amp;&amp; child == <span class="number">1</span>) isCut[u] = <span class="literal">false</span>;<span class="comment">//树根</span></div><div class="line">    <span class="keyword">return</span> lowu;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">find_scc</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="built_in">memset</span>(pre, <span class="number">0</span>, <span class="keyword">sizeof</span> pre);<span class="comment">//初始化</span></div><div class="line">    <span class="built_in">memset</span>(bccno, <span class="number">0</span>, <span class="keyword">sizeof</span> bccno);</div><div class="line">    <span class="built_in">memset</span>(isCut, <span class="number">0</span>, <span class="keyword">sizeof</span> isCut);</div><div class="line">    bcc_cnt = timeStamp = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) id(!pre[i]) dfs(i, <span class="number">-1</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="有向图的强连通分量"><a href="#有向图的强连通分量" class="headerlink" title="有向图的强连通分量"></a>有向图的强连通分量</h2><h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><p>如无向图一样，有向图也有相互到达这概念，对于可相互到的点我们把这些点看做一个集合，每一个集合称为有向图的一个强连通分量，简称为SCC。如果把一个集合看做一个点，那么所有的SCC构成了一个SCC图，而这个SCC图根据定义肯定是一个有向无环图，也就是一个DAG，因为一单还存环肯定会缩成一个新的SCC。</p>
+<p>如图所示，从$G$开始DFS，最后原图会变成如下所示：<br><img src="http://oqeu5dc5m.bkt.clouddn.com/%E5%BC%BA%E8%81%94%E9%80%9A%E5%88%86%E9%87%8F.png" alt="此处输入图片的描述"></p>
+<h3 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h3><p>如果我们从$A$开始DFS，那么最终算法会得出整个有向图都是连通的，也就是这颗DSF树会包含整个图。<br>所以有时候从不同的点出发得出的SCC图和我们定义上所期望的会相差甚远，那么如何来解决这个问题呢？<br>我们要将多哥SCC从一颗DFS树中分离出来。<br>考虑一个强连通分量$C$，设其中第一个被发现的点为$x$，则$C$中其他的点我们认为是$x$的后代。我们希望在$x$的子节点访问完回到$x$之后就输强联通分量$C$，这样我们就可以把一棵树中的SCC都分离开。</p>
+<p>如图所示：<br><img src="http://oqeu5dc5m.bkt.clouddn.com/Tarjan.png" alt="此处输入图片的描述"><br>然后我们需要判断结点$u$是否为此SCC第一个被访问到的结点。</p>
+<ul>
+<li>如果我们发现$u$的子结点出发可以到达$u$的祖先$w$，显然$u, v,<br>w$在同一个SCC中但是此时$u$并不会是此SCC中第一个被访问到的结点而至少会是$w$。</li>
+<li>如果$u$的所有子结点最多只能到达$u$，那么，$u$就是该SCC中第一个被发现的点。</li>
+</ul>
+<p>问题被转化成为了求每一个点岁远能到达的祖先的low函数的值，这里的到达指的是通过当前SCC中的点到达，而不是通过已经确定SCC编号的其他点。</p>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[MAX_N];</div><div class="line"><span class="keyword">int</span> pre[MAX_N], lowlink[MAX_N], sccno[MAX_N], scc_cnt, timeStamp;</div><div class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; S;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</div><div class="line">    pre[u] = lowlink[u] = ++timeStamp;<span class="comment">//进入DFS树的时间</span></div><div class="line">    S.push(u);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G[u].size(); ++i)&#123;</div><div class="line">        <span class="keyword">int</span> v = G[u][i];</div><div class="line">        <span class="keyword">if</span>(!pre[v])&#123;<span class="comment">//没有遍历过</span></div><div class="line">            dfs(v);<span class="comment">//递归处理</span></div><div class="line">            lowlink[u] = min(lowlink[u], lowlink[v]);<span class="comment">//回溯时发现v可以到达更小（DFS上更远）的时间戳</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(!sccno[v]) lowlink[u] = min(lowlink[u], pre[v]);<span class="comment">//访问过，且不在其他连通分量中的栈内的结点，反向边</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(lowlink[u] == pre[u])&#123;<span class="comment">//u为当前强连通分量第一个访问到的结点</span></div><div class="line">        scc_cnt++;</div><div class="line">        <span class="keyword">while</span>(<span class="number">1</span>)&#123;</div><div class="line">            <span class="keyword">int</span> x = S.top(); S.pop();</div><div class="line">            sccno[x] = scc_cnt;</div><div class="line">            size[scc_cnt]++;</div><div class="line">            <span class="keyword">if</span>(x == u) <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//printf("%d\n", scc_cnt);</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Tarjan</span><span class="params">()</span></span>&#123;</div><div class="line">    timeStamp = <span class="number">0</span>, scc_cnt =<span class="number">0</span>;<span class="comment">//初始化</span></div><div class="line">    <span class="built_in">memset</span>(sccno, <span class="number">0</span>, <span class="keyword">sizeof</span> sccno);</div><div class="line">    <span class="built_in">memset</span>(pre, <span class="number">0</span>, <span class="keyword">sizeof</span> pre);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="keyword">if</span>(!pre[i]) dfs(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/05/28/关于图的连通性的三个Tarjan算法/" data-id="cj926578h002x84ujh04hvq8l" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/05/28/关于图的连通性的三个Tarjan算法/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/05/28/关于图的连通性的三个Tarjan算法/">Comentarios</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/05/31/BZOJ-1008-HNOI2008-越狱/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más nuevo</strong>
+            <div class="article-nav-title">
+                
+                    BZOJ 1008: [HNOI2008]越狱
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/05/28/UVa-12167-Proving-Equivalences/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">UVa 12167 - Proving Equivalences</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 ZJYelizaveta<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://yoursite.com/2017/05/28/关于图的连通性的三个Tarjan算法/';
+        
+        this.page.identifier = '关于图的连通性的三个Tarjan算法';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

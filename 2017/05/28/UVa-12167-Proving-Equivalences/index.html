@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>UVa 12167 - Proving Equivalences | ZJYelizaveta&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="题目地址 描述在数学中，我们常常需要完成若干个命题的等价性证明。比如，有4个命题$a, b, c, d$，我们证明$a \leftrightarrow b$，然后$b\leftrightarrow c$，最后$c\leftrightarrow d$。注意每次证明都是双向的，一次一共完成了6次推导。另一种方法是证明$a\rightarrow b$，然后$b\rightarrow c$，接着$c\ri">
+<meta name="keywords" content="图论,UVa,强连通分量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UVa 12167 - Proving Equivalences">
+<meta property="og:url" content="http://yoursite.com/2017/05/28/UVa-12167-Proving-Equivalences/index.html">
+<meta property="og:site_name" content="ZJYelizaveta&#39;s Blog">
+<meta property="og:description" content="题目地址 描述在数学中，我们常常需要完成若干个命题的等价性证明。比如，有4个命题$a, b, c, d$，我们证明$a \leftrightarrow b$，然后$b\leftrightarrow c$，最后$c\leftrightarrow d$。注意每次证明都是双向的，一次一共完成了6次推导。另一种方法是证明$a\rightarrow b$，然后$b\rightarrow c$，接着$c\ri">
+<meta property="og:image" content="http://oqeu5dc5m.bkt.clouddn.com/1.png">
+<meta property="og:image" content="http://oqeu5dc5m.bkt.clouddn.com/LA%204287.png">
+<meta property="og:image" content="http://oqeu5dc5m.bkt.clouddn.com/2.png">
+<meta property="og:image" content="http://oqeu5dc5m.bkt.clouddn.com/3.png">
+<meta property="og:image" content="http://oqeu5dc5m.bkt.clouddn.com/4.png">
+<meta property="og:updated_time" content="2017-05-30T15:44:49.733Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UVa 12167 - Proving Equivalences">
+<meta name="twitter:description" content="题目地址 描述在数学中，我们常常需要完成若干个命题的等价性证明。比如，有4个命题$a, b, c, d$，我们证明$a \leftrightarrow b$，然后$b\leftrightarrow c$，最后$c\leftrightarrow d$。注意每次证明都是双向的，一次一共完成了6次推导。另一种方法是证明$a\rightarrow b$，然后$b\rightarrow c$，接着$c\ri">
+<meta name="twitter:image" content="http://oqeu5dc5m.bkt.clouddn.com/1.png">
+    
+
+    
+        <link rel="alternate" href="/" title="ZJYelizaveta&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">ZJYelizaveta&#39;s Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/Links">Links</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/Links">Links</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">ZJYelizaveta</h2>
+            <h3 id="title">有幸在那一天，遇到你，最了不起的你。</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Wuhan, China</span>
+            <a id="follow" target="_blank" href="">SEGUIR</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                71
+                <span>Entradas</span>
+            </div>
+            <div class="article-info-block">
+                85
+                <span>Etiquetas</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/ZJYelizaveta" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-UVa-12167-Proving-Equivalences" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            UVa 12167 - Proving Equivalences
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/28/UVa-12167-Proving-Equivalences/">
+            <time datetime="2017-05-28T03:02:19.000Z" itemprop="datePublished">2017-05-28</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/UVa/">UVa</a>, <a class="tag-link" href="/tags/图论/">图论</a>, <a class="tag-link" href="/tags/强连通分量/">强连通分量</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=545&amp;page=show_problem&amp;problem=3319" target="_blank" rel="external">题目地址</a></p>
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>在数学中，我们常常需要完成若干个命题的等价性证明。比如，有4个命题$a, b, c, d$，我们证明$a \leftrightarrow b$，然后$b\leftrightarrow c$，最后$c\leftrightarrow d$。注意每次证明都是双向的，一次一共完成了6次推导。另一种方法是证明$a\rightarrow b$，然后$b\rightarrow c$，接着$c\rightarrow d$，最后$d\rightarrow a$，只需4次。现在你的任务是证明$n(1 \leq n  \leq 20000)$个命题是全部等价的，且你的朋友已经帮你做出了$m(0 \leq m \leq 50000)$次推导（已知每次推导的内容），你至少还需要做几次推导才能完成整个证明，输出最少的推导次数。</p>
+<a id="more"></a>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>刘汝佳先生说的解释，其实有一些绕还有一些定理没有证明，这里我简要的理了一下逻辑，然后把证明做了。</p>
+<p>我们其实可以把每一个命题看成一个结点，把推到看成一条有向边，如由$a$推导出$b$，那么连边$a\rightarrow b$。那么我们一开始得到的其实是有$n$个结点$m$条有向边的有向图，而最终的等价性证明相当于添加最少的边，使当前的有向图形成一个环。也就是所有的点最终都会包含在同一个强连通分量中。<br>那么，我们首先在原图上找出所有的强连通分量，然后把每一个强连通分量缩成一个点，得到一个DAG。</p>
+<p>定理：设原图有$a$个入度为$0$的结点，$b$个出度为$0$的结点，则$max \{a, b\}$就是答案（这里的每一个结点对应原图的一个SCC）。</p>
+<p>证明：既然要证明，那么我们就要构造出在任何情况下都能使结论成立的方案，那么进行如下的分类讨论。<br>当入度为0的点多于出度为0的点的时候很好构造，如图：<br><img src="http://oqeu5dc5m.bkt.clouddn.com/1.png" alt="此处输入图片的描述"><br>我们要分成两种情况来讨论：</p>
+<ol>
+<li>我们把DAG看成一棵有向的树，有一种可能就是转化成树后是多个互不相干的树，我们进行如图的转换：<img src="http://oqeu5dc5m.bkt.clouddn.com/LA%204287.png" alt="此处输入图片的描述"><br>若这多棵树中有树存在公共的叶结点，那么只需要在进行第一步的时候选择不与之相连的点连接，如图：<img src="http://oqeu5dc5m.bkt.clouddn.com/2.png" alt="此处输入图片的描述"></li>
+<li>我们将DAG看成一棵有向树之后发现，最终只会形成一棵有向树，那么按照如图的方式处理：<img src="http://oqeu5dc5m.bkt.clouddn.com/3.png" alt="此处输入图片的描述"></li>
+</ol>
+<p>综上所述，我们已经处理了所有的情况下构造方式，证毕。<br>Orz Skipher学长，Sengxian学长 ヾ(o°ω°O)ノ゙</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//UVa 12167 - Proving Equivalences</span></div><div class="line"><span class="comment">//2017/5/22 14:48</span></div><div class="line"><span class="comment">//SCC</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc+.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">readIn</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> x = <span class="number">0</span>, f = <span class="number">1</span>;</div><div class="line">    <span class="keyword">char</span> ch = getchar();</div><div class="line">    <span class="keyword">while</span>(ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch == <span class="string">'-'</span>) f = <span class="number">-1</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">while</span>(ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>) &#123;x = x * <span class="number">10</span> + ch - <span class="string">'0'</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">return</span> x * f;</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">20000</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_M = <span class="number">50000</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">int</span> testCase;</div><div class="line"><span class="keyword">int</span> n, m;</div><div class="line"><span class="keyword">int</span> pre[MAX_N], lowlink[MAX_N], sccno[MAX_N], scc_cnt, timeStamp;</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[MAX_M];</div><div class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; S;</div><div class="line"><span class="keyword">int</span> in[MAX_N], out[MAX_N];</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> SCC&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</div><div class="line">        pre[u] = lowlink[u] = ++timeStamp;</div><div class="line">        S.push(u);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G[u].size(); ++i)&#123;</div><div class="line">            <span class="keyword">int</span> v = G[u][i];</div><div class="line">            <span class="keyword">if</span>(!pre[v])&#123;</div><div class="line">                dfs(v);</div><div class="line">                lowlink[u] = min(lowlink[u], lowlink[v]);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(!sccno[v]) lowlink[u] = min(lowlink[u], pre[v]);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(lowlink[u] == pre[u])&#123;</div><div class="line">            scc_cnt++;</div><div class="line">            <span class="keyword">while</span>(<span class="number">1</span>)&#123;</div><div class="line">                <span class="keyword">int</span> x = S.top(); S.pop();</div><div class="line">                sccno[x] = scc_cnt;</div><div class="line">                <span class="keyword">if</span>(x == u) <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">findSCC</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">        <span class="built_in">memset</span>(pre, <span class="number">0</span>, <span class="keyword">sizeof</span> pre);</div><div class="line">        <span class="built_in">memset</span>(lowlink, <span class="number">0</span>, <span class="keyword">sizeof</span> lowlink);</div><div class="line">        <span class="built_in">memset</span>(sccno, <span class="number">0</span>, <span class="keyword">sizeof</span> sccno);</div><div class="line">        timeStamp = scc_cnt = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) <span class="keyword">if</span>(!pre[i]) dfs(i);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> SCC;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> DEBUG</span></div><div class="line">    freopen(<span class="string">"test.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">    testCase = readIn();</div><div class="line">    <span class="keyword">while</span>(testCase--)&#123;</div><div class="line">        n = readIn(), m = readIn();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) G[i].clear();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i)&#123;</div><div class="line">            <span class="keyword">int</span> u = readIn(), v = readIn();</div><div class="line">            u--; v--;</div><div class="line">            G[u].push_back(v);</div><div class="line">        &#125;</div><div class="line">        findSCC(n);</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= scc_cnt; ++i) in[i] = out[i] = <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> u = <span class="number">0</span>; u &lt; n; ++u)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G[u].size(); ++i)&#123;</div><div class="line">                <span class="keyword">int</span> v = G[u][i];</div><div class="line">                <span class="keyword">if</span>(sccno[u] != sccno[v]) out[sccno[u]] = in[sccno[v]] = <span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> cnt1 = <span class="number">0</span>, cnt2 = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= scc_cnt; ++i)&#123;</div><div class="line">            <span class="keyword">if</span>(in[i]) cnt1++;</div><div class="line">            <span class="keyword">if</span>(out[i]) cnt2++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> ans = max(cnt1, cnt2);</div><div class="line">        <span class="keyword">if</span>(scc_cnt == <span class="number">1</span>) ans = <span class="number">0</span>;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="另一种思路"><a href="#另一种思路" class="headerlink" title="另一种思路"></a>另一种思路</h2><p>首先对于如下的图我们我们肯定可以在$max \{a, b \}$a条边内构造出一个SCC，那么我们用递归的思想将其转化为这样的形式即可。<br><img src="http://oqeu5dc5m.bkt.clouddn.com/4.png" alt="此处输入图片的描述"><br>其实这种思路我并没有完全理解，我再想一下，还是太蒻（；´д｀）ゞ</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/05/28/UVa-12167-Proving-Equivalences/" data-id="cj9265778002184ujdzxd918b" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/05/28/UVa-12167-Proving-Equivalences/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/05/28/UVa-12167-Proving-Equivalences/">Comentarios</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/05/28/关于图的连通性的三个Tarjan算法/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más nuevo</strong>
+            <div class="article-nav-title">
+                
+                    关于图的连通性的三个Tarjan算法
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/05/28/UVa-1391-Astronauts/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">UVa 1391 - Astronauts</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 ZJYelizaveta<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://yoursite.com/2017/05/28/UVa-12167-Proving-Equivalences/';
+        
+        this.page.identifier = 'UVa-12167-Proving-Equivalences';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

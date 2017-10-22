@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>UVa 1401 - Remember the Word &amp; UVa 11732 - strcmp Anyone? | ZJYelizaveta&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="$UVa 1401 - Remember \ the \ Word$UVa 1401题目地址 描述给出一个由$S$个不同单词组成的字典一个长字符串。把这个字符串分解成若干的单词的连接（单词可以重复使用），有多少种方法？输入包含多组数据。每组数据为小写字母组成的待分解的字符串，长度$L$不超过$300000$。第二行单词个数为$S(1 \leq S \leq 4000)$。以下$S$行为一个长度不超">
+<meta name="keywords" content="数据结构,UVa,Trie,树形DP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UVa 1401 - Remember the Word &amp; UVa 11732 - strcmp Anyone?">
+<meta property="og:url" content="http://yoursite.com/2017/05/24/UVa-1401-Remember-the-Word-UVa-11732-strcmp-Anyone/index.html">
+<meta property="og:site_name" content="ZJYelizaveta&#39;s Blog">
+<meta property="og:description" content="$UVa 1401 - Remember \ the \ Word$UVa 1401题目地址 描述给出一个由$S$个不同单词组成的字典一个长字符串。把这个字符串分解成若干的单词的连接（单词可以重复使用），有多少种方法？输入包含多组数据。每组数据为小写字母组成的待分解的字符串，长度$L$不超过$300000$。第二行单词个数为$S(1 \leq S \leq 4000)$。以下$S$行为一个长度不超">
+<meta property="og:image" content="https://www.processon.com/chart_image/58d9ba35e4b03eea783c944e.png">
+<meta property="og:updated_time" content="2017-05-28T04:31:14.001Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UVa 1401 - Remember the Word &amp; UVa 11732 - strcmp Anyone?">
+<meta name="twitter:description" content="$UVa 1401 - Remember \ the \ Word$UVa 1401题目地址 描述给出一个由$S$个不同单词组成的字典一个长字符串。把这个字符串分解成若干的单词的连接（单词可以重复使用），有多少种方法？输入包含多组数据。每组数据为小写字母组成的待分解的字符串，长度$L$不超过$300000$。第二行单词个数为$S(1 \leq S \leq 4000)$。以下$S$行为一个长度不超">
+<meta name="twitter:image" content="https://www.processon.com/chart_image/58d9ba35e4b03eea783c944e.png">
+    
+
+    
+        <link rel="alternate" href="/" title="ZJYelizaveta&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">ZJYelizaveta&#39;s Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/Links">Links</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/Links">Links</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">ZJYelizaveta</h2>
+            <h3 id="title">有幸在那一天，遇到你，最了不起的你。</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Wuhan, China</span>
+            <a id="follow" target="_blank" href="">SEGUIR</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                71
+                <span>Entradas</span>
+            </div>
+            <div class="article-info-block">
+                85
+                <span>Etiquetas</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/ZJYelizaveta" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-UVa-1401-Remember-the-Word-UVa-11732-strcmp-Anyone" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            UVa 1401 - Remember the Word &amp; UVa 11732 - strcmp Anyone?
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/24/UVa-1401-Remember-the-Word-UVa-11732-strcmp-Anyone/">
+            <time datetime="2017-05-23T16:51:38.000Z" itemprop="datePublished">2017-05-24</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Trie/">Trie</a>, <a class="tag-link" href="/tags/UVa/">UVa</a>, <a class="tag-link" href="/tags/数据结构/">数据结构</a>, <a class="tag-link" href="/tags/树形DP/">树形DP</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="UVa-1401-Remember-the-Word"><a href="#UVa-1401-Remember-the-Word" class="headerlink" title="$UVa 1401 - Remember \ the \ Word$"></a>$UVa 1401 - Remember \ the \ Word$</h3><p><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=505&amp;page=show_problem&amp;problem=4147" target="_blank" rel="external">UVa 1401题目地址</a></p>
+<h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><p>给出一个由$S$个不同单词组成的字典一个长字符串。把这个字符串分解成若干的单词的连接（单词可以重复使用），有多少种方法？<br>输入包含多组数据。每组数据为小写字母组成的待分解的字符串，长度$L$不超过$300000$。第二行单词个数为$S(1 \leq S \leq 4000)$。以下$S$行为一个长度不超过$100$由小写字母组成的单词。<br><a id="more"></a></p>
+<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>用指针实现的比数组稍微快一点儿吧。。。<br>很容易想到一道关于字符串的动态规划。我们令$d(i)$表示从字符$i$开始的字符串的分解方案数（即后缀$S[i…L]$）。我们通过递推式定义可以推导出递推方程$d(i) = sum(d(i + len(x)) \mid x为S[i…L]的前缀 )$，递推时一定要注意递推的边界。<br>在推导递推式的时候我们要判断$x$是否为$S[i…L]$的前缀，如果我们要来枚举的话在最坏的情况下我们要依次判断$4000$个单词，每一个单词长度最坏的情况下将长达$100$，我们<del>显然</del>无法在一定的时间范围中的出结果。这时候我们想到把所有的单词先组织成一颗$Trie$，然后试着在$Trie$中来判断$x$是否为$S[i…L]$的前缀。<strong>查找过程中我们每经过一个单词结点，就找到上述状态转移方程中的$x$，最多只需要比较$100$次就能找到所有的$x$</strong>。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXNODE = <span class="number">4000</span> * <span class="number">100</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> SIGMA_SIZE = <span class="number">26</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxl = <span class="number">300000</span> + <span class="number">3</span>;<span class="comment">// 文本串最大长度</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxw = <span class="number">4000</span> + <span class="number">3</span>;<span class="comment">// 文本串最大长度</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxwl = <span class="number">100</span> + <span class="number">3</span>;<span class="comment">// 文本串最大长度</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">20071027</span>;</div><div class="line"><span class="keyword">int</span> d[maxl], len[maxw], S;</div><div class="line"><span class="keyword">char</span> text[maxl], word[maxwl];</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Trie</span>&#123;</span></div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></div><div class="line">        Node *ch[SIGMA_SIZE];</div><div class="line">        <span class="keyword">int</span> val;</div><div class="line">    &#125;pool[MAXNODE], *pit, *root;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</div><div class="line">        pit = pool, root = pit++;</div><div class="line">        root-&gt;val = <span class="number">0</span>;</div><div class="line">        <span class="built_in">memset</span>(root-&gt;ch, <span class="number">0</span>, <span class="keyword">sizeof</span> root-&gt;ch);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">char</span>* s, <span class="keyword">int</span> id)</span></span>&#123;</div><div class="line">        Node *cur = root;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; s[i]; ++i)&#123;</div><div class="line">            <span class="keyword">int</span> c = s[i] - <span class="string">'a'</span>;</div><div class="line">            <span class="keyword">if</span>(!cur-&gt;ch[c])&#123;</div><div class="line">                <span class="built_in">memset</span>(pit-&gt;ch, <span class="number">0</span>, <span class="keyword">sizeof</span> pit-&gt;ch);</div><div class="line">                pit-&gt;val = <span class="number">-1</span>;</div><div class="line">                cur-&gt;ch[c] = pit++;</div><div class="line">            &#125;</div><div class="line">            cur = cur-&gt;ch[c];</div><div class="line">        &#125;</div><div class="line">        cur-&gt;val = id;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">find_prefixes</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *s, <span class="keyword">int</span> len, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; ans)</span></span>&#123;</div><div class="line">        Node *cur = root;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; s[i]; i++)&#123;</div><div class="line">            <span class="keyword">if</span>(s[i] == <span class="string">'\0'</span>) <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">int</span> c = s[i] - <span class="string">'a'</span>;</div><div class="line">            <span class="keyword">if</span>(!cur-&gt;ch[c]) <span class="keyword">break</span>;</div><div class="line">            cur = cur-&gt;ch[c];</div><div class="line">            <span class="keyword">if</span>(cur-&gt;val &gt;= <span class="number">0</span>) ans.push_back(cur-&gt;val); <span class="comment">// 找到一个前缀</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;trie;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> DBEUG</span></div><div class="line">    <span class="comment">//freopen("test.in","r",stdin);</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">    <span class="keyword">int</span> kase = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%s%d"</span>, text, &amp;S) == <span class="number">2</span>)&#123;</div><div class="line">        trie.init();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= S; i++)&#123;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%s"</span>, word);</div><div class="line">            len[i] = <span class="built_in">strlen</span>(word);</div><div class="line">            trie.insert(word, i);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">memset</span>(d, <span class="number">0</span>, <span class="keyword">sizeof</span>(d));</div><div class="line">        <span class="keyword">int</span> L = <span class="built_in">strlen</span>(text);</div><div class="line">        d[L] = <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = L - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</div><div class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; p;</div><div class="line">            trie.find_prefixes(text + i, L - i, p);</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">unsigned</span> <span class="keyword">int</span> j = <span class="number">0</span>; j &lt; p.size(); j++)</div><div class="line">                d[i] = (d[i] + d[i + len[p[j]]]) % MOD;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"Case %d: %d\n"</span>, ++kase, d[<span class="number">0</span>]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="UVa-11732-“strcmp-”-Anyone"><a href="#UVa-11732-“strcmp-”-Anyone" class="headerlink" title="$UVa 11732 - “strcmp()” \ Anyone?$"></a>$UVa 11732 - “strcmp()” \ Anyone?$</h3><p><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=505&amp;page=show_problem&amp;problem=283" target="_blank" rel="external">UVa 11732题目地址</a></p>
+<h4 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h4><p>输入$n$个字符串，两两调用一次$strcmp()$（即一共调用$\frac{n(n - 1)}{2}$次），问字符比较的总次数是？</p>
+<h4 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h4><p>我觉得这道题目很巧妙呀，虽然它是在$Trie$部分后面的习题，但是整道题目正解的思想很巧妙呀。只要想到用$Trie$最后一般都是可以把比较次数的式子推出来的。<br>从这道题目的数据范围可以知道，一般的朴素暴力算法（两两比较）是效率很低的，在最坏的情况下用朴素的思想显然是不行的。<br>那么我们把所有的字符串插入到一颗$Trie$树中呢？<br><img src="https://www.processon.com/chart_image/58d9ba35e4b03eea783c944e.png" alt=""><br>因为题目中字符集较大，所以我们这里用左儿子右兄弟的方式建图， 就是<strong>将多叉树转为二叉树</strong>。如图所示，这里就不解释了。<br>这里我们还要计算一个$tot[i]$即为第$i$个结点为根的子树包含的叶结点总数，也就是有多少字符串经过这个结点。比较分为两种情况：</p>
+<ol>
+<li>$n$字符串两两比较一共要比较$\frac{n(n-1)}{2}$组字符串，因为是两两比较所以比较$n(n-1)$次，若字符串两两相等（此处为完全相等，即长度与字符均相等）模拟运用$strcmp$则需要比较$n(n-1) \cdot length$次（题目中的$length$为字符串相等长度$+1$）。</li>
+<li>若字符串中结点$u$之前的字符串完全相等，而结点$v$之后的字符串开始不相等，因为我们前面用左儿子右兄弟的方式来存数，所以我们比较$\frac{tot[v] \cdot (tot[u] - tot[v])}{2}$对字符串，比较次数为$tot[v] \cdot (tot[u] - tot[v])$，比较完最左边的儿子以后，我们找与最左边的儿子属于同一层的相邻的右兄弟，计算右兄弟与除右兄弟以外属于结点$u$的其他字符串所需要的比较次数；我们举例之后发现，这样子计算比较次数会因为重复计算而变为正常所需比较次数的两倍。最终的比较次数为$\frac{tot[v] \cdot (tot[u] - tot[v])}{2} \mid v\in u$。</li>
+</ol>
+<p>这样预处理完每个结点的$tot$之后，$DFS$一次就可以了。</p>
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxnode = <span class="number">4000</span> * <span class="number">1000</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> sigma_size = <span class="number">26</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxl = <span class="number">1000</span> + <span class="number">10</span>;</div><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="keyword">char</span> word[maxl];</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Trie</span>&#123;</span></div><div class="line">    <span class="keyword">int</span> head[maxnode];<span class="comment">// head[i]为第i个结点的左儿子编号</span></div><div class="line">    <span class="keyword">int</span> next[maxnode];<span class="comment">//next[i]为第i各节点的右兄弟编号</span></div><div class="line">    <span class="keyword">int</span> tot[maxnode];<span class="comment">// tot[i]为第i个结点为根的子树包含的叶结点总数</span></div><div class="line">    <span class="keyword">int</span> ch[maxnode];</div><div class="line">    <span class="keyword">int</span> sz;</div><div class="line">    LL ans;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span>&#123; sz = <span class="number">1</span>; head[<span class="number">0</span>] = next[<span class="number">0</span>] = tot[<span class="number">0</span>] = <span class="number">0</span>;&#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">char</span> *s)</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> u = <span class="number">0</span>, v, n = <span class="built_in">strlen</span>(s);</div><div class="line">        tot[<span class="number">0</span>]++;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++)&#123;<span class="comment">//included '\0'</span></div><div class="line">            <span class="keyword">bool</span> equal = <span class="literal">false</span>;</div><div class="line">            <span class="keyword">for</span>(v = head[u]; v != <span class="number">0</span>; v = next[v])&#123;</div><div class="line">                <span class="keyword">if</span>(ch[v] == s[i])&#123;</div><div class="line">                    equal = <span class="literal">true</span>;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(!equal)&#123;</div><div class="line">                v = sz++;</div><div class="line">                tot[v] = <span class="number">0</span>;</div><div class="line">                ch[v] = s[i];</div><div class="line">                next[v] = head[u];</div><div class="line">                head[u] = v;<span class="comment">// 插入到链表的首部</span></div><div class="line">                head[v] = <span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">            u = v;</div><div class="line">            tot[u]++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> depth, <span class="keyword">int</span> u)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(head[u] == <span class="number">0</span>)</div><div class="line">            ans += tot[u] * (tot[u] - <span class="number">1</span>) * depth;</div><div class="line">        <span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> v = head[u]; v != <span class="number">0</span>; v = next[v])</div><div class="line">                sum += tot[v] * (tot[u] - tot[v]);</div><div class="line">            ans += sum / <span class="number">2</span> * (<span class="number">2</span> * depth + <span class="number">1</span>);</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> v = head[u]; v != <span class="number">0</span>; v = next[v])</div><div class="line">                dfs(depth + <span class="number">1</span>, v);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function">LL <span class="title">count</span><span class="params">()</span></span>&#123;</div><div class="line">        ans = <span class="number">0</span>;</div><div class="line">        dfs(<span class="number">0</span>, <span class="number">0</span>);</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;trie;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> DEBUG</span></div><div class="line">    <span class="comment">//freopen("test.in","r",stdin);</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">    <span class="keyword">int</span> kase = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n) == <span class="number">1</span> &amp;&amp; n)&#123;</div><div class="line">        trie.clear();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%s"</span>, word);</div><div class="line">            trie.insert(word);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"Case %d: %lld\n"</span>, ++kase, trie.count());</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/05/24/UVa-1401-Remember-the-Word-UVa-11732-strcmp-Anyone/" data-id="cj926577e002484ujesw46ooo" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/05/24/UVa-1401-Remember-the-Word-UVa-11732-strcmp-Anyone/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/05/24/UVa-1401-Remember-the-Word-UVa-11732-strcmp-Anyone/">Comentarios</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/05/24/UVa-11997-K-Small-Sums/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más nuevo</strong>
+            <div class="article-nav-title">
+                
+                    UVa 11997 - K Small Sums
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/05/24/模板-树状数组/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">[模板]树状数组</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 ZJYelizaveta<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://yoursite.com/2017/05/24/UVa-1401-Remember-the-Word-UVa-11732-strcmp-Anyone/';
+        
+        this.page.identifier = 'UVa-1401-Remember-the-Word-UVa-11732-strcmp-Anyone';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

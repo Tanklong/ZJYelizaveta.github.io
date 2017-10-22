@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>BZOJ 1230: [Usaco2008 Nov]lites 开关灯 | ZJYelizaveta&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="题目地址 描述Farmer John尝试通过和奶牛们玩益智玩具来保持他的奶牛们思维敏捷， 其中一个大型玩具是牛栏中的灯。 $N (2 \leq N \leq 100,000)$ 头奶牛中的每一头被连续的编号为$1 \cdots N$， 站在一个彩色的灯下面。刚到傍晚的时候, 所有的灯都是关闭的。 奶牛们通过N个按钮来控制灯的开关，按第$i$个按钮可以改变第$i$个灯的状态。奶牛们执行$M (1 \">
+<meta name="keywords" content="BZOJ,数据结构,线段树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BZOJ 1230: [Usaco2008 Nov]lites 开关灯">
+<meta property="og:url" content="http://yoursite.com/2017/06/08/BZOJ-1230-Usaco2008-Nov-lites-开关灯/index.html">
+<meta property="og:site_name" content="ZJYelizaveta&#39;s Blog">
+<meta property="og:description" content="题目地址 描述Farmer John尝试通过和奶牛们玩益智玩具来保持他的奶牛们思维敏捷， 其中一个大型玩具是牛栏中的灯。 $N (2 \leq N \leq 100,000)$ 头奶牛中的每一头被连续的编号为$1 \cdots N$， 站在一个彩色的灯下面。刚到傍晚的时候, 所有的灯都是关闭的。 奶牛们通过N个按钮来控制灯的开关，按第$i$个按钮可以改变第$i$个灯的状态。奶牛们执行$M (1 \">
+<meta property="og:updated_time" content="2017-06-08T10:06:43.284Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BZOJ 1230: [Usaco2008 Nov]lites 开关灯">
+<meta name="twitter:description" content="题目地址 描述Farmer John尝试通过和奶牛们玩益智玩具来保持他的奶牛们思维敏捷， 其中一个大型玩具是牛栏中的灯。 $N (2 \leq N \leq 100,000)$ 头奶牛中的每一头被连续的编号为$1 \cdots N$， 站在一个彩色的灯下面。刚到傍晚的时候, 所有的灯都是关闭的。 奶牛们通过N个按钮来控制灯的开关，按第$i$个按钮可以改变第$i$个灯的状态。奶牛们执行$M (1 \">
+    
+
+    
+        <link rel="alternate" href="/" title="ZJYelizaveta&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">ZJYelizaveta&#39;s Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/Links">Links</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/Links">Links</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">ZJYelizaveta</h2>
+            <h3 id="title">有幸在那一天，遇到你，最了不起的你。</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Wuhan, China</span>
+            <a id="follow" target="_blank" href="">SEGUIR</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                71
+                <span>Entradas</span>
+            </div>
+            <div class="article-info-block">
+                85
+                <span>Etiquetas</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/ZJYelizaveta" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-BZOJ-1230-Usaco2008-Nov-lites-开关灯" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            BZOJ 1230: [Usaco2008 Nov]lites 开关灯
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/06/08/BZOJ-1230-Usaco2008-Nov-lites-开关灯/">
+            <time datetime="2017-06-08T09:07:39.000Z" itemprop="datePublished">2017-06-08</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/BZOJ/">BZOJ</a>, <a class="tag-link" href="/tags/数据结构/">数据结构</a>, <a class="tag-link" href="/tags/线段树/">线段树</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1230" target="_blank" rel="external">题目地址</a></p>
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>Farmer John尝试通过和奶牛们玩益智玩具来保持他的奶牛们思维敏捷， 其中一个大型玩具是牛栏中的灯。 $N (2 \leq N \leq 100,000)$ 头奶牛中的每一头被连续的编号为$1 \cdots N$， 站在一个彩色的灯下面。刚到傍晚的时候, 所有的灯都是关闭的。 奶牛们通过N个按钮来控制灯的开关，按第$i$个按钮可以改变第$i$个灯的状态。<br>奶牛们执行$M (1 \leq M \leq 100,000)$条指令，每个指令都是两个整数中的一个$(0 \leq 指令号 \leq 1)$。<br>第$1$种指令(用$0$表示)包含两个数字$S_{i}$和$E_{i}$ $(1 \leq S_{i} \leq E_{i} &lt;= N)$，它们表示起始开关和终止开关，奶牛们只需要把从$S_{i}$到$E_{i}$之间的按钮都按一次，就可以完成这个指令。 第$2$种指令(用$1$表示)同样包含两个数字$S_{i}$和$E_{i}$ $(1 \leq S_{i} \leq E_{i} &lt;= N)$，不过这种指令是询问从$S_{i}$到$E_{i}$之间的灯有多少是亮着的。 帮助FJ确保他的奶牛们可以得到正确的答案.</p>
+<a id="more"></a>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>线段树区间异或。<br>水题一枚，好高兴1A。<br>我们令关灯为0，开灯为1。用线段树维护一段区间内1的个数，相当于区间求和。每次更新的时候用<strong>nodes[o].addV ^= 1</strong>就可以更新灯的当前状态了。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//2017/6/8 12:25</span></div><div class="line"><span class="comment">//Copyright (c) 2017年 ZJYelizaveta. All rights reserved.</span></div><div class="line"><span class="comment">//BZOJ 1230 [Usaco2008 Nov]lites 开关灯 线段树区间异或</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">readIn</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> x = <span class="number">0</span>, f = <span class="number">1</span>;</div><div class="line">    <span class="keyword">char</span> ch = getchar();</div><div class="line">    <span class="keyword">while</span>(ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch == <span class="string">'-'</span>) f = <span class="number">-1</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">while</span>(ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>) &#123;x = x * <span class="number">10</span> + ch - <span class="string">'0'</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">return</span> x * f;</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">100000</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">int</span> n, m;</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> Segment_Tree&#123;</div><div class="line">    <span class="keyword">const</span> <span class="keyword">int</span> MAXNODE = (<span class="number">1</span> &lt;&lt; <span class="number">17</span>) * <span class="number">4</span>;</div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> ls (((o) &lt;&lt; 1) + 1)</span></div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> rs (((o) &lt;&lt; 1) + 2)</span></div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> mid (((l) + (r)) &gt;&gt; 1)</span></div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></div><div class="line">        <span class="keyword">int</span> addV, sum;</div><div class="line">    &#125;nodes[MAXNODE];</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushUp</span><span class="params">(<span class="keyword">int</span> o)</span></span>&#123;</div><div class="line">        nodes[o].sum = nodes[ls].sum + nodes[rs].sum;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> o, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</div><div class="line">        nodes[o].addV = <span class="number">0</span>;</div><div class="line">        <span class="keyword">if</span>(r - l == <span class="number">1</span>) nodes[o].sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">else</span>&#123;</div><div class="line">            build(ls, l, mid), build(rs, mid, r);</div><div class="line">            pushUp(o);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">giveTagAdd</span><span class="params">(<span class="keyword">int</span> o, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> v)</span> </span>&#123;</div><div class="line">        nodes[o].sum = (r - l) - nodes[o].sum;</div><div class="line">        nodes[o].addV ^= <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushDown</span><span class="params">(<span class="keyword">int</span> o, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(nodes[o].addV != <span class="number">0</span>)&#123;</div><div class="line">            giveTagAdd(ls, l, mid, nodes[o].addV), giveTagAdd(rs, mid, r, nodes[o].addV);</div><div class="line">            nodes[o].addV = <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> o, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> v)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(r &lt;= a || l &gt;= b) <span class="keyword">return</span>;</div><div class="line">        <span class="keyword">if</span>(l &gt;= a &amp;&amp; r &lt;= b) &#123; nodes[o].addV ^= <span class="number">1</span>; nodes[o].sum = (r - l) - nodes[o].sum; <span class="keyword">return</span>;&#125;<span class="comment">//</span></div><div class="line">        <span class="keyword">else</span>&#123;</div><div class="line">            pushDown(o, l, r);</div><div class="line">            modify(ls, l, mid, a, b, v);</div><div class="line">            modify(rs, mid, r, a, b, v);</div><div class="line">            pushUp(o);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> o, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(b &lt;= l || a &gt;= r) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">if</span>(a &lt;= l &amp;&amp; r &lt;= b) <span class="keyword">return</span> nodes[o].sum;</div><div class="line">        <span class="keyword">else</span>&#123;</div><div class="line">            pushDown(o, l, r);</div><div class="line">            <span class="keyword">return</span> query(ls, l, mid, a, b) + query(rs, mid, r, a, b);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Segment_Tree;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> DBEUG</span></div><div class="line">    freopen(<span class="string">"test.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">    n = readIn(), m = readIn();</div><div class="line">    build(<span class="number">0</span>, <span class="number">0</span>, n);</div><div class="line">    <span class="keyword">while</span>(m--)&#123;</div><div class="line">        <span class="keyword">int</span> opt = readIn(), l = readIn() - <span class="number">1</span>, r = readIn();</div><div class="line">        <span class="keyword">if</span>(opt == <span class="number">0</span>)&#123;</div><div class="line">            modify(<span class="number">0</span>, <span class="number">0</span>, n, l, r, <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(opt == <span class="number">1</span>)&#123;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, query(<span class="number">0</span>, <span class="number">0</span>, n, l, r));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/06/08/BZOJ-1230-Usaco2008-Nov-lites-开关灯/" data-id="cj926574r000884ujhw3qqkpy" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/06/08/BZOJ-1230-Usaco2008-Nov-lites-开关灯/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/06/08/BZOJ-1230-Usaco2008-Nov-lites-开关灯/">Comentarios</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/06/09/BZOJ-1231-Usaco2008-Nov-mixup2-混乱的奶牛/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más nuevo</strong>
+            <div class="article-nav-title">
+                
+                    BZOJ 1231: [Usaco2008 Nov]mixup2 混乱的奶牛
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/06/05/BZOJ-2480-Spoj-3105-Mod/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">BZOJ 2480: [Spoj 3105] Mod</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 ZJYelizaveta<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://yoursite.com/2017/06/08/BZOJ-1230-Usaco2008-Nov-lites-开关灯/';
+        
+        this.page.identifier = 'BZOJ-1230-Usaco2008-Nov-lites-开关灯';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

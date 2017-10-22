@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>BZOJ 1571: [Usaco2009 Open]滑雪课Ski | ZJYelizaveta&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="题目地址 描述Farmer John 想要带着Bessie一起在科罗拉多州一起滑雪。很不幸，Bessie滑雪技术并不精湛。Bessie了解到，在滑雪场里，每天会提供$S(0 \leq S \leq 100)$门滑雪课。第$i$节课始于$M_{i}(1 \leq M_{i}  \leq 10000)$，上的时间为$L_{i}(1 \leq L_{i} \leq 10000)$。上完第$i$节课后，B">
+<meta name="keywords" content="BZOJ,动态规划,贪心">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BZOJ 1571: [Usaco2009 Open]滑雪课Ski">
+<meta property="og:url" content="http://yoursite.com/2017/06/11/BZOJ-1571-Usaco2009-Open-滑雪课Ski/index.html">
+<meta property="og:site_name" content="ZJYelizaveta&#39;s Blog">
+<meta property="og:description" content="题目地址 描述Farmer John 想要带着Bessie一起在科罗拉多州一起滑雪。很不幸，Bessie滑雪技术并不精湛。Bessie了解到，在滑雪场里，每天会提供$S(0 \leq S \leq 100)$门滑雪课。第$i$节课始于$M_{i}(1 \leq M_{i}  \leq 10000)$，上的时间为$L_{i}(1 \leq L_{i} \leq 10000)$。上完第$i$节课后，B">
+<meta property="og:updated_time" content="2017-06-11T16:13:12.978Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BZOJ 1571: [Usaco2009 Open]滑雪课Ski">
+<meta name="twitter:description" content="题目地址 描述Farmer John 想要带着Bessie一起在科罗拉多州一起滑雪。很不幸，Bessie滑雪技术并不精湛。Bessie了解到，在滑雪场里，每天会提供$S(0 \leq S \leq 100)$门滑雪课。第$i$节课始于$M_{i}(1 \leq M_{i}  \leq 10000)$，上的时间为$L_{i}(1 \leq L_{i} \leq 10000)$。上完第$i$节课后，B">
+    
+
+    
+        <link rel="alternate" href="/" title="ZJYelizaveta&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">ZJYelizaveta&#39;s Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/Links">Links</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/Links">Links</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">ZJYelizaveta</h2>
+            <h3 id="title">有幸在那一天，遇到你，最了不起的你。</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Wuhan, China</span>
+            <a id="follow" target="_blank" href="">SEGUIR</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                71
+                <span>Entradas</span>
+            </div>
+            <div class="article-info-block">
+                85
+                <span>Etiquetas</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/ZJYelizaveta" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-BZOJ-1571-Usaco2009-Open-滑雪课Ski" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            BZOJ 1571: [Usaco2009 Open]滑雪课Ski
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/06/11/BZOJ-1571-Usaco2009-Open-滑雪课Ski/">
+            <time datetime="2017-06-11T12:57:17.000Z" itemprop="datePublished">2017-06-11</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/BZOJ/">BZOJ</a>, <a class="tag-link" href="/tags/动态规划/">动态规划</a>, <a class="tag-link" href="/tags/贪心/">贪心</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1571" target="_blank" rel="external">题目地址</a></p>
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>Farmer John 想要带着Bessie一起在科罗拉多州一起滑雪。很不幸，Bessie滑雪技术并不精湛。<br>Bessie了解到，在滑雪场里，每天会提供$S(0 \leq S \leq 100)$门滑雪课。第$i$节课始于$M_{i}(1 \leq M_{i}  \leq 10000)$，上的时间为$L_{i}(1 \leq L_{i} \leq 10000)$。上完第$i$节课后，Bessie的滑雪能力会变成$A_{i}(1 \leq A_{i} \leq 100)$。 注意：这个能力是绝对的，不是能力的增长值。<br>Bessie买了一张地图，地图上显示了$N(1 \leq N \leq 10,000)$个可供滑雪的斜坡，从第$i$个斜坡的顶端滑至底部所需的时长$D_{i}(1 \leq D_{i} \leq 10000)$，以及每个斜坡所需要的滑雪能力$C_{i}(1\leq C_{i} \leq 100)$，以保证滑雪的安全性。Bessie的能力必须大于等于这个等级，以使得她能够安全滑下。<br>Bessie可以用她的时间来滑雪，上课，或者美美地喝上一杯可可汁，但是她必须在$T(1 \leq T \leq 10000)$时刻离开滑雪场。这意味着她必须在$T$时刻之前完成最后一次滑雪。 求Bessie在实现内最多可以完成多少次滑雪。这一天开始的时候，她的滑雪能力为$1$。</p>
+<a id="more"></a>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>动态规划水题，看到的第一眼感觉和[Hnoi2017]大佬有一点像，不过相比简单多了。</p>
+<p>定义状态：$dp[i][j]$为在$i$时刻，上第$j$堂课能够滑雪的最多次数。（也可以定义为在时刻$i$能力为$j$，能够滑雪最多的次数）<br>一共有$3$种转移的状态：</p>
+<ol>
+<li>美美地喝上一杯可可汁，$dp[i][j] = max(dp[i][j, dp[i - 1][j]) \cdots (i \neq 0)$</li>
+<li>上课，$dp[i + lst[j]][j] = max(dp[i + lst[j]][j], dp[i][k]) \cdots (st[j] = i, k为满足st[j] = i的可供选择的课程编号)$</li>
+<li>滑雪，$dp[i + a[j]][j] = max(dp[i + a[j]][j], dp[i][j] + 1) \cdots (i + a[j] \leq T)$</li>
+</ol>
+<p>数组$a[]$中储存的是预处理出的在同一能力下能够在最短时间完成一次滑雪的时间，这是我们贪心的出来的<del>显而易见</del>的结论。</p>
+<p>然后就是各种需要注意的小细节，然后，没有了。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//2017/6/11 20:47</span></div><div class="line"><span class="comment">//Copyright (c) 2017年 ZJYelizaveta. All rights reserved.</span></div><div class="line"><span class="comment">//BZOJ 1571 [Usaco2009 Open]滑雪课Ski</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">readIn</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> x = <span class="number">0</span>, f = <span class="number">1</span>;</div><div class="line">    <span class="keyword">char</span> ch = getchar();</div><div class="line">    <span class="keyword">while</span>(ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch == <span class="string">'-'</span>) f = <span class="number">-1</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">while</span>(ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>) &#123;x = x * <span class="number">10</span> + ch - <span class="string">'0'</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">return</span> x * f;</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_S = <span class="number">100</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">10000</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">int</span> T, S, N;</div><div class="line"><span class="keyword">int</span> st[MAX_S], lst[MAX_S], abt[MAX_S];<span class="comment">//start, last, ability</span></div><div class="line"><span class="keyword">int</span> cap[MAX_N], t[MAX_N];<span class="comment">//capacity, time</span></div><div class="line"><span class="keyword">int</span> dp[MAX_N][MAX_S], minTime[MAX_S];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> DEBUG</span></div><div class="line">    freopen(<span class="string">"test.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">    T = readIn(), S = readIn(), N = readIn();</div><div class="line">    <span class="comment">//printf("%d %d %d\n", T, S, N);</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= S; ++i) st[i] = readIn(), lst[i] = readIn(), abt[i] = readIn();</div><div class="line">    <span class="comment">//sort(abt, abt + S)</span></div><div class="line">    abt[<span class="number">0</span>] = <span class="number">1</span>;<span class="comment">//</span></div><div class="line">    <span class="built_in">memset</span>(minTime, INF, <span class="keyword">sizeof</span> minTime);<span class="comment">//</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; ++i)&#123;</div><div class="line">        cap[i] = readIn(), t[i] = readIn();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= S; ++j)&#123;</div><div class="line">            <span class="keyword">if</span>(cap[i] &lt;= abt[j]) minTime[j] = min(minTime[j], t[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">memset</span>(dp, -INF, <span class="keyword">sizeof</span> dp);</div><div class="line">    dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>, st[<span class="number">0</span>] = <span class="number">-1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= T; ++i)&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= S; ++j)&#123;</div><div class="line">            <span class="keyword">if</span>(i != <span class="number">0</span>) dp[i][j] = max(dp[i][j], dp[i - <span class="number">1</span>][j]);</div><div class="line">            <span class="keyword">if</span>(i == st[j])&#123;</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt;= S; ++k) dp[i + lst[j]][j] = max(dp[i + lst[j]][j], dp[i][k]);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(i + minTime[j] &lt;= T) dp[i + minTime[j]][j] = max(dp[i][j] + <span class="number">1</span>, dp[i + minTime[j]][j]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= S; ++i) ans = max(ans, dp[T][i]);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/06/11/BZOJ-1571-Usaco2009-Open-滑雪课Ski/" data-id="cj9265751000e84uj79t70qbo" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/06/11/BZOJ-1571-Usaco2009-Open-滑雪课Ski/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/06/11/BZOJ-1571-Usaco2009-Open-滑雪课Ski/">Comentarios</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/06/12/BZOJ-1572-Usaco2009-Open-工作安排Job/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más nuevo</strong>
+            <div class="article-nav-title">
+                
+                    BZOJ 1572: [Usaco2009 Open]工作安排Job
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/06/10/UVa-10883-Supermean/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">UVa 10883 - Supermean</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 ZJYelizaveta<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://yoursite.com/2017/06/11/BZOJ-1571-Usaco2009-Open-滑雪课Ski/';
+        
+        this.page.identifier = 'BZOJ-1571-Usaco2009-Open-滑雪课Ski';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

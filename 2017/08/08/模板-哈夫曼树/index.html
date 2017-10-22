@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>[模板]哈夫曼树 | ZJYelizaveta&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="定义哈夫曼树（Huffman Tree）是一种带权路径长度最短的二叉树，也称为最优二叉树。">
+<meta name="keywords" content="模板,数据结构,哈夫曼树,哈夫曼编码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[模板]哈夫曼树">
+<meta property="og:url" content="http://yoursite.com/2017/08/08/模板-哈夫曼树/index.html">
+<meta property="og:site_name" content="ZJYelizaveta&#39;s Blog">
+<meta property="og:description" content="定义哈夫曼树（Huffman Tree）是一种带权路径长度最短的二叉树，也称为最优二叉树。">
+<meta property="og:image" content="http://oqeu5dc5m.bkt.clouddn.com/%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6.png">
+<meta property="og:image" content="http://oqeu5dc5m.bkt.clouddn.com/huffman.png">
+<meta property="og:updated_time" content="2017-08-08T05:25:00.140Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[模板]哈夫曼树">
+<meta name="twitter:description" content="定义哈夫曼树（Huffman Tree）是一种带权路径长度最短的二叉树，也称为最优二叉树。">
+<meta name="twitter:image" content="http://oqeu5dc5m.bkt.clouddn.com/%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6.png">
+    
+
+    
+        <link rel="alternate" href="/" title="ZJYelizaveta&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">ZJYelizaveta&#39;s Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/Links">Links</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/Links">Links</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">ZJYelizaveta</h2>
+            <h3 id="title">有幸在那一天，遇到你，最了不起的你。</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Wuhan, China</span>
+            <a id="follow" target="_blank" href="">SEGUIR</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                71
+                <span>Entradas</span>
+            </div>
+            <div class="article-info-block">
+                85
+                <span>Etiquetas</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/ZJYelizaveta" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-模板-哈夫曼树" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            [模板]哈夫曼树
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/08/模板-哈夫曼树/">
+            <time datetime="2017-08-08T05:24:12.000Z" itemprop="datePublished">2017-08-08</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/哈夫曼树/">哈夫曼树</a>, <a class="tag-link" href="/tags/哈夫曼编码/">哈夫曼编码</a>, <a class="tag-link" href="/tags/数据结构/">数据结构</a>, <a class="tag-link" href="/tags/模板/">模板</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>哈夫曼树（Huffman Tree）是一种带权路径长度最短的二叉树，也称为最优二叉树。</p>
+<a id="more"></a>
+<ul>
+<li>树的带权路径长度：如果树中每个叶子上都带有一个权值，则把树中所有叶子的带权路径长度之和称为树的带权路径长度。</li>
+<li>结点的带权路径长度：在一棵树中，如果其结点上附带有一个权值，通常把该结点到根结点的路径长度与该结点上的权值之积称为该结点的带权路径长度。</li>
+</ul>
+<p>对一棵有$n$个叶子结点的二叉树，这棵树的带权路径长度<script type="math/tex">len = \sum_{i = 1}^{n}w_{i}l_{i}</script><br>其中$w_{i}$为第$i$个叶子结点的权值，$l_{i}$为第$i$个叶子结点的路径长度。</p>
+<p>而哈夫曼树可以最小化$\sum_{i = 1}^{n}w_{i}l_{i}$这个式子，举一个栗子吧，如图所示<br><img src="http://oqeu5dc5m.bkt.clouddn.com/%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6.png" alt="此处输入图片的描述"></p>
+<h2 id="构造"><a href="#构造" class="headerlink" title="构造"></a>构造</h2><p>如果我们要构造一棵哈夫曼树，那么我们怎样来构造呢QAQ<br>根据哈弗曼树的定义，一棵二叉树要使其带权路径长度最小，必须使权值越大的叶子结点越靠近根结点，而权值越小的叶子结点越远离根结点。</p>
+<p>如果只要求求出最小化这个式子$\sum_{i = 1}^{n}w_{i}l_{i}$的值：</p>
+<ul>
+<li>我们可以用优先队列维护一个小根堆，先将所有的叶子结点放入小根堆。</li>
+<li>当堆中元素个数大于$1$时，每次取出堆中两个最小元素，它们同为一个结点的左右儿子，且它们的父亲结点（非叶结点）的权值为两个元素之和</li>
+<li>将两个叶子结点的父亲结点（非叶结点）的权值放回堆中</li>
+<li>循环往复，直至堆中元素个数小于等于$1$</li>
+</ul>
+<p>实际上构建一棵哈夫曼树的思想和上述的差不多，具体如下：</p>
+<ul>
+<li>将所有左，右子树都为空的点作为根结点。</li>
+<li>在森林中选出两棵根结点的权值最小的树作为一棵新树的左、右子树，且令新树的新增加的根结点的权值为其左、右子树上根结点的权值之和。<strong>注意，左子树的权值应小于右子树的权值。</strong></li>
+<li>从森林中删除这两棵树，同时把新树加入到森林中。</li>
+<li>重复2，3步骤，直到森林中只有一棵树为止，此树便是哈夫曼树。</li>
+</ul>
+<h2 id="哈夫曼编码"><a href="#哈夫曼编码" class="headerlink" title="哈夫曼编码"></a>哈夫曼编码</h2><p>哈夫曼编码（Huffman Coding）是可变字长编码(VLC)的一种，该方法完全依据字符出现概率来构造异字头的平均长度最短的码字，有时称之为最佳编码。<br>我们把哈夫曼编码放在哈夫曼树上来理解，其实就是将每个二叉树的左边指定为$0$，右边指定为$1$。如图所示：<br><img src="http://oqeu5dc5m.bkt.clouddn.com/huffman.png" alt="enter image description here"><br>一般我们所说的哈夫曼编码一般都是最有效的二进制编码，当然那么也会有最优的$k$进制编码QAQ</p>
+<blockquote>
+<p>哈夫曼编码还有一个神奇的性质： Huffman编码使得每一个字符的编码都与另一个字符编码的前一部分不同，也就是说现在有字符$Str_{i},Str{j}$且$i &lt; j$，那么一定不存在$Str_{i}$为$Str_{j}$的前缀。</p>
+</blockquote>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="「NOIP-2004」-合并果子"><a href="#「NOIP-2004」-合并果子" class="headerlink" title="「NOIP 2004」 合并果子"></a>「NOIP 2004」 合并果子</h3><p><del>相信阅读以上</del>之后，这道题目对你而言是一道很水的题目，相信你不看题解也能做出来哟QAQ，当然还是放上解题报告来骗流量=w=<br><a href="http://zjyelizaveta.com/2017/08/08/%E3%80%8CNOIP-2004%E3%80%8D-%E5%90%88%E5%B9%B6%E6%9E%9C%E5%AD%90/" target="_blank" rel="external">解题报告QAQ</a></p>
+<h3 id="「NOI-2015」-荷马史诗"><a href="#「NOI-2015」-荷马史诗" class="headerlink" title="「NOI 2015」 荷马史诗"></a>「NOI 2015」 荷马史诗</h3><p>这其实维护的是一棵$k$叉的哈夫曼树<br>具体的还是看解题报告里面吧，我觉得我写的挺清楚了QAQ<br><a href="http://zjyelizaveta.com/2017/08/08/%E3%80%8CNOI-2015%E3%80%8D-%E8%8D%B7%E9%A9%AC%E5%8F%B2%E8%AF%97/" target="_blank" rel="external">解题报告QAQ</a></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/08/08/模板-哈夫曼树/" data-id="cj9265796003984ujvxt1lxaw" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/08/08/模板-哈夫曼树/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/08/08/模板-哈夫曼树/">Comentarios</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/08/08/BZOJ-2763-JLOI2011-飞行路线/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más nuevo</strong>
+            <div class="article-nav-title">
+                
+                    BZOJ 2763: [JLOI2011]飞行路线
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/08/08/「NOI-2015」-荷马史诗/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">「NOI 2015」 荷马史诗</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 ZJYelizaveta<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://yoursite.com/2017/08/08/模板-哈夫曼树/';
+        
+        this.page.identifier = '模板-哈夫曼树';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

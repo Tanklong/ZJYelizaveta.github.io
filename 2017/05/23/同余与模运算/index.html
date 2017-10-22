@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>同余与模运算 | ZJYelizaveta&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="好啦，要开始学习模运算啦，只是紫书上一点微小的部分，还是先膜一下为敬0w0。。。无关紧要的话：我觉得作为一个合格的Oler应该对于每一个基础的知识点都有一个符合自己代码风格和习惯的模板，最好是能深刻理解这个算法之后写的模板，这样我们才不会在考场上出现低级的错误哒！比如有的人取区间喜欢左闭右开，有人喜欢让左右都是闭区间；有的人循环喜欢从1开始，有人喜欢从0开始；当然，各有各的好处，只是要做到在考场上">
+<meta name="keywords" content="快速幂&amp;快速幂取模,欧拉函数,逆元,模运算,费马小定理,中国剩余定理,模线性方程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="同余与模运算">
+<meta property="og:url" content="http://yoursite.com/2017/05/23/同余与模运算/index.html">
+<meta property="og:site_name" content="ZJYelizaveta&#39;s Blog">
+<meta property="og:description" content="好啦，要开始学习模运算啦，只是紫书上一点微小的部分，还是先膜一下为敬0w0。。。无关紧要的话：我觉得作为一个合格的Oler应该对于每一个基础的知识点都有一个符合自己代码风格和习惯的模板，最好是能深刻理解这个算法之后写的模板，这样我们才不会在考场上出现低级的错误哒！比如有的人取区间喜欢左闭右开，有人喜欢让左右都是闭区间；有的人循环喜欢从1开始，有人喜欢从0开始；当然，各有各的好处，只是要做到在考场上">
+<meta property="og:image" content="http://p1.bqimg.com/4851/3fc4bee3c1d359a0.gif">
+<meta property="og:image" content="https://wikimedia.org/api/rest_v1/media/math/render/svg/35f593c39f6fc97ccbdcd2e717aa8557c5547997">
+<meta property="og:image" content="https://wikimedia.org/api/rest_v1/media/math/render/svg/a765622d8ec3444ee1014402b3631fc138fe0c71">
+<meta property="og:image" content="https://wikimedia.org/api/rest_v1/media/math/render/svg/4c50ee73c8cd36fea779b37a6e890d4174edbd72">
+<meta property="og:updated_time" content="2017-08-08T07:46:47.209Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="同余与模运算">
+<meta name="twitter:description" content="好啦，要开始学习模运算啦，只是紫书上一点微小的部分，还是先膜一下为敬0w0。。。无关紧要的话：我觉得作为一个合格的Oler应该对于每一个基础的知识点都有一个符合自己代码风格和习惯的模板，最好是能深刻理解这个算法之后写的模板，这样我们才不会在考场上出现低级的错误哒！比如有的人取区间喜欢左闭右开，有人喜欢让左右都是闭区间；有的人循环喜欢从1开始，有人喜欢从0开始；当然，各有各的好处，只是要做到在考场上">
+<meta name="twitter:image" content="http://p1.bqimg.com/4851/3fc4bee3c1d359a0.gif">
+    
+
+    
+        <link rel="alternate" href="/" title="ZJYelizaveta&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">ZJYelizaveta&#39;s Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/Links">Links</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/Links">Links</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">ZJYelizaveta</h2>
+            <h3 id="title">有幸在那一天，遇到你，最了不起的你。</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Wuhan, China</span>
+            <a id="follow" target="_blank" href="">SEGUIR</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                71
+                <span>Entradas</span>
+            </div>
+            <div class="article-info-block">
+                85
+                <span>Etiquetas</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/ZJYelizaveta" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-同余与模运算" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            同余与模运算
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/23/同余与模运算/">
+            <time datetime="2017-05-23T15:22:58.000Z" itemprop="datePublished">2017-05-23</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/中国剩余定理/">中国剩余定理</a>, <a class="tag-link" href="/tags/快速幂-快速幂取模/">快速幂&快速幂取模</a>, <a class="tag-link" href="/tags/模线性方程/">模线性方程</a>, <a class="tag-link" href="/tags/模运算/">模运算</a>, <a class="tag-link" href="/tags/欧拉函数/">欧拉函数</a>, <a class="tag-link" href="/tags/费马小定理/">费马小定理</a>, <a class="tag-link" href="/tags/逆元/">逆元</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>好啦，要开始学习模运算啦，只是紫书上一点微小的部分，还是先膜一下为敬0w0。。。<br>无关紧要的话：我觉得作为一个合格的Oler应该对于每一个基础的知识点都有一个符合自己代码风格和习惯的模板，最好是能深刻理解这个算法之后写的模板，这样我们才不会在考场上出现低级的错误哒！比如有的人取区间喜欢左闭右开，有人喜欢让左右都是闭区间；有的人循环喜欢从1开始，有人喜欢从0开始；当然，各有各的好处，只是要做到在考场上部分因为低级错误而丢分甚至于调试很长的时间就可以啦。</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>如果存在 $a\pmod n\equiv b\pmod n$，即a,b除以m所得的余数相等,那么我们记作$a\equiv \ b \pmod  n$。</p>
+<h2 id="基本性质"><a href="#基本性质" class="headerlink" title="基本性质"></a>基本性质</h2><p>和其他的运算一样，模运算也有自己的运算法则。<br>如果存在$a\equiv \ b\pmod n$，且有$c\equiv \ d pmod n$，那么下面的运算率成立。<br>                                        $a + c\equiv \ b + d \pmod n$<br>                                        $a - c\equiv \ b - d \pmod n$<br>                                        $a \times c\equiv \ b \times d \pmod n$<br>我们经常利用这三个性质对输出答案较大的程序取模，一般是模完再加，加减乘均满足的这个性质，不过除法是不满足的。<br><a id="more"></a></p>
+<h3 id="大整数取模"><a href="#大整数取模" class="headerlink" title="大整数取模"></a>大整数取模</h3><p>输入正整数$n$和$m$，输出$n \pmod m$的值。$n \leqslant 10^{100}$，$m \leqslant 10^{9}$。<br>这里我们需要把大整数写成自左向右的形式，那么什么叫自左向右的形式呢？<br>这里我们举一个栗子(～￣▽￣)～，如$1234 = ((1 \times 10 + 2) \times 10 + 3) \times 10 + 4$。然后应用前面的运算法则<strong>每一步取模</strong>。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">100</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">char</span> n[MAX];</div><div class="line"><span class="keyword">int</span> m;</div><div class="line">LL ans;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%s%d"</span>, n, &amp;m);</div><div class="line">    <span class="keyword">int</span> len = <span class="built_in">strlen</span>(n);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</div><div class="line">        ans = (<span class="keyword">int</span>)(((LL)ans * <span class="number">10</span> + n[i] - <span class="string">'0'</span>) % m);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, (<span class="keyword">int</span>)ans);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="幂取模"><a href="#幂取模" class="headerlink" title="幂取模"></a>幂取模</h3><p>输入正整数$a$，$n$，$m$，输出$a^{n} \pmod m$的。$a, n, m \leq 10^{9}$。<br>实际上就是快速幂啦，这里我们用分治法高效地实现。</p>
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line">ll a, n, m;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">pow_mod</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> n, <span class="keyword">int</span> m)</span></span>&#123;</div><div class="line">    ll res = <span class="number">1l</span>l;</div><div class="line">    <span class="keyword">while</span> (n) &#123;</div><div class="line">        <span class="keyword">if</span> (n &amp; <span class="number">1</span>) (res *= a) %= m;</div><div class="line">        (a *= a) %= m;</div><div class="line">        n &gt;&gt;= <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> a;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;a, &amp;n, &amp;m);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, pow_mod(a, n, m));</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="逆元"><a href="#逆元" class="headerlink" title="逆元"></a>逆元</h2><p>在$mod \ n$的意义下存在$a \times b = 1$，我们就说$a, b$互为乘法下的逆，记作$a = b^{-1}, b = a^{-1}$。我们还可以用逆元的定义来实现模意义下的除法。如，我们可以利用$a \times b = 1$，令$a \div b = a \times b^{-1} \pmod n)$。<br>我们现在有$ax \equiv b \pmod  n$，我们又知道模方程存在一个特殊的情况，$b = 1$时，$ax \equiv 1 \pmod n$的解称为$a$关于模$n$的逆。<br>扩展欧几里德（EXGCD）算法可以在 $O(\log \max(a, b))$的时间内求出关于$x, y$的方程$ax + by = gcd(a, b)$的一组整数解。</p>
+<h2 id="模线性方程组（线性同余方程组）"><a href="#模线性方程组（线性同余方程组）" class="headerlink" title="模线性方程组（线性同余方程组）"></a>模线性方程组（线性同余方程组）</h2><p>好吧，我现在只会求模线性方程，暂且还不会求方程组（；´д｀）ゞ。<br>对于$ax \equiv b \pmod n$。<br>因为同余，所以$ax - b = yn$，即$ax - ny = b$，当且仅当$gcd(a, n) \mid b$时，方程有解。<br>我们令$g = gcd(a,n)$，形如$ax - ny$的每一个数时$g$的倍数；因此如果$g$不整除$b$，则$ax - ny = b$没有解，从而$ax \equiv b \pmod n$没有解。<br>假设$g$确实整除$b$，我们可推知：<br>$ax+ny = g$总有解，通过扩展欧几里得算法求得$x = x’, y = y’$。<br>由于假设$g$整除$b$，所以$a\frac{bx’}{g} + n\frac{by’}{g} = b$。<br>这说明，$x\equiv \frac{bx’}{g} \pmod n$是同余式$ax \equiv b \pmod  n$的解。<br>既然不定方程有多组解，难道这个方程只有以一组解吗，模方程还有其他解吗？<br>假设$x_{1}$是同余式$ax \equiv b \pmod n$的其他解，则$ax_{1} \equiv ax_{0} \pmod n$。所以$m$整除$ax_{1} - ax_{0}$，$\frac{n}{g}$整除$\frac{a(x_{1} - x{0})}{g}$。<br>我们已知$\frac{n}{g}$与$\frac{a}{g}$没有公因数，从而$\frac{n}{g}$必整除$x_{1} - x_{0}$。所以存在整数$k$使得 $x_{1} = x_{0}+k\cdot \frac{n}{g} \pmod n$,$k = 0, 1, 2, \cdots , g-1$。<br><strong>线性同余定理</strong></p>
+<ol>
+<li>如果$g \nmid b$，则同余式$ax \equiv b \pmod n$无解。</li>
+<li>如果$g \mid b$，则同余式$ax \equiv b \pmod n$恰好有$g$个不同解。</li>
+</ol>
+<p><strong>代码</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> a, b, n;</div><div class="line"><span class="keyword">int</span> d, x, y;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">exgcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span>&amp; x, <span class="keyword">int</span>&amp; y)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> d = a;</div><div class="line">    <span class="keyword">if</span>(!b)&#123; x = <span class="number">1</span>; y = <span class="number">0</span>;&#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">        d = exgcd(b, a % b, y, x);</div><div class="line">        y -= (a / b) * x;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> d;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">modular_linear_equation_solver</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> d = exgcd(a, n, x, y);</div><div class="line">    <span class="keyword">if</span>(b % d == <span class="number">0</span>)&#123;</div><div class="line">        <span class="keyword">int</span> x0 = x * (b / d) % n;<span class="comment">//special answer</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; d; i++)</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, (x0 + i * (n / d)) % n);<span class="comment">//all the possible answers</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"No solutions\n"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;a, &amp;b, &amp;n);</div><div class="line">    modular_linear_equation_solver(a, b, n);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="中国剩余定理"><a href="#中国剩余定理" class="headerlink" title="中国剩余定理"></a>中国剩余定理</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>中国剩余定理是数论中的一个关于一元线性同余方程组的定理，说明了一元线性同余方程组有解的准则以及求解方法，<strong>其实是一种构造解的思想</strong>。<br>形如同余方程组<br><img src="http://p1.bqimg.com/4851/3fc4bee3c1d359a0.gif" alt=""><br>中国剩余定理说明：<br>假设任意$n$互素，对于任意整数$a$，恰有一解$0\leq x\leq n_{1}n_{2}\cdots n_{k}$<br>1.令$N = \prod_{i=1}^{k}n_{i}$， $N_{i} = \frac{N}{n_{i}}$， $(i \in (1, 2, 3, \cdots , k))$。<br>2.令$t_{i} = N_{i}^{-1}$，则$t_{i}N_{i} \equiv 1 \pmod n_{i}$，$(i \in (1, 2, 3, \cdots , k))$。<br>3.方程组的通解形式为$S = a_{1}t_{1}N_{1}+a_{2}t_{2}N_{2}+\cdots +a_{k}t_{k}N_{k} + pN = pN + \sum_{i=1}^{k}a_{i}t_{i}N_{i}$，$(p\in \mathbb{Z})$。在$\pmod n$的的意义下方程有且仅有一解$x = \sum_{i=1}^{k}a_{i}t_{i}N_{i}$ 。</p>
+<h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p>有我们假设的知道$gcd(n_{i},N_{i}) = 1$，所以说明存在整数$t$使得$t_{i}N_{i} \equiv 1\pmod n_{i}$成立。<br>$\because a_{i}t_{i}N_{i} \equiv a_{i}\cdot 1\equiv a_{i}\ (mod \ n_{i})$<br>又$\because j \in  (1,2,\cdots, n), \ j\neq i, \ a_{i}t_{i}N_{i}\equiv 0 \ (mod \ n_{j})$<br>$\therefore x = a_{1}t_{1}N_{1}+a_{2}t_{2}N_{2}+\cdots +a_{k}t_{k}N_{k}$满足：<br>$i\in (1, 2, \cdots , k), \ x = a_{i}t_{i}N_{i}+ \sum_{j\neq i} a_{j}t_{j}N_{j}\equiv a_{i}+\sum_{j\neq i}0\equiv a_{i}\ (mod \ n_{i})$。<br>若$x_{1},x_{2}$均为模方程组的解，同理可证。<br>综上所述，模方程的解集为$(pN + \sum_{i=1}^{k}a_{i}t_{i}N_{i},p \in \mathbb{Z})$。</p>
+<p>上面比较抽象，现在我们举一个实际一点的栗子=￣ω￣=。<br><strong>今有物，不知其数，三三数之剩二，五五数之剩三，七七数之剩二。问物几何？</strong><br><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/35f593c39f6fc97ccbdcd2e717aa8557c5547997" alt=""><br>根据上面的证明可知，$n_{1} = 3, n_{2} = 5,n_{3} = 7$，$N_{1} = 35,N_{2} = 21,N_{3} = 15$，$t_{1} = 2, t_{2} = 1,t_{3} = 1$。<br>带入可得：<br><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a765622d8ec3444ee1014402b3631fc138fe0c71" alt=""><br><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4c50ee73c8cd36fea779b37a6e890d4174edbd72" alt=""><br>$\therefore x = 233 + p \times 105(p\in \mathbb{Z})$，当$p = -2$时，$x$有最小正正解$23$。</p>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">1000</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">int</span> a[MAX], m[MAX];</div><div class="line"><span class="keyword">int</span> n;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">exgcd</span><span class="params">(LL a, LL b, LL&amp; x, LL&amp; y)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(!b)&#123; x = <span class="number">1</span>; y = <span class="number">0</span>;&#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">        exgcd(b, a % b, y, x);</div><div class="line">        y -= (a / b) * x;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">LL <span class="title">china</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>* a, <span class="keyword">int</span> *m)</span></span>&#123;</div><div class="line">    LL M = <span class="number">1</span>, d, y, x = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) M *= m[i];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</div><div class="line">        LL w = M / m[i];</div><div class="line">        exgcd(m[i], w, d, y);</div><div class="line">        x = (x + y * w * a[i]) % M;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> (x + M) % M;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;a[i], &amp;m[i]);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, china(n, a, m));</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h2><p>在$n$是素数的情况下，对任意整数$x$都有$x^{n}\equiv x\pmod n$这个定理被称作费马小定理。其中如果$x$无法被$n$整除，那么$x^{n - 1}\equiv 1\pmod n$。我们可以用费马小定理求$a$得逆元，求素数。上面式子变形之后得到$a^{-1}\equiv a^{n-2}\pmod n$，因此我们可以用快速幂求得$a$的逆元。<br>费马小定理可由欧拉公式证得，这里我就不多赘述啦╮(╯▽╰)╭。</p>
+<h2 id="欧拉公式与欧拉函数"><a href="#欧拉公式与欧拉函数" class="headerlink" title="欧拉公式与欧拉函数"></a>欧拉公式与欧拉函数</h2><h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><p>费马小定理在一定程度上与欧拉公式$a^{\phi (n)}\equiv 1\pmod n$具有相似性。<br>欧拉函数可用于求<strong>小于$n$且与$n$互素的整数个数</strong>。给出正整数$n$的唯一分解式$n = p_{1}^{a^{1}}p_{2}^{a_{2}}p_{3}^{a_{3}}\cdots p_{k}^{a_{k}}$，求$1, 2, 3,\cdots ,n$中与$n$互素的数的个数。</p>
+<h3 id="证明-1"><a href="#证明-1" class="headerlink" title="证明"></a>证明</h3><p>我们通过正整数$n$的唯一分解因式可以得到$n$的正因数的个数$\prod_{i=1}^{k}(a_{i}+1)=(a_{1}+1)(a_{2}+1)\cdots (a_{k}+1)$，而这里并不是这么简单。</p>
+<p>我们现在已经证得了欧拉公式，但是因为其中含有$\phi (n)$所以我们必须找到计算$\phi (n)$的有效方法，让我们可以完整的应用这个公式。显然可以看出，当$n = p$是素数的时候容易计算$\phi (n)$，应为每一个整数$1\leq a\leq p-1$与$n$互素。因此$\phi (p) = p-1$。<br>当$n = p^{k}$是素数次幂的时候，我们可以推出$\phi (p^{k})$的公式。</p>
+<p>我们有满足$1 \leq a\leq p^{k}$开始没然后丢弃与$p^{k}$不互素的整数，用公式表示是$\phi (p^{k}) = p^{k} - (a:1\leq a\leq p^{k},p\mid a)$。</p>
+<p>数$a$什么时候和$p^{k}$不互素呢=￣ω￣=？因为$p^{k}$仅有的因数是$p$的幂次，所以当$a$被$p$的整除的时候$a$与$p^{k}$不互素。那么有哪些$p$的倍数呢？<br>$p, 2p, 3p, 4p, \cdots , (p^{k-1} -2)p, (p^{k-1} -1)p,p^{k}$一共有$p^{k-1}$个。<br>所以$\phi (n) = p^{k}-p^{k-1}$。</p>
+<p>更详细的证明可以看这里<a href="http://zjyelizaveta.com/2017/05/31/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0/" target="_blank" rel="external">欧拉函数</a></p>
+<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">10000</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="keyword">int</span> phi[MAX];</div><div class="line"></div><div class="line"><span class="comment">//求与第n个数互素的数的个数</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">euler_phi</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> m = (<span class="keyword">int</span>)<span class="built_in">sqrt</span>(n + <span class="number">0.5</span>);</div><div class="line">    LL ans = n;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= m; i++) &#123;</div><div class="line">        <span class="keyword">if</span> (n % i == <span class="number">0</span>)&#123;</div><div class="line">            ans = ans / i * (i - <span class="number">1</span>);</div><div class="line">            <span class="keyword">while</span> (n % i == <span class="number">0</span>) n /= i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (n &gt; <span class="number">1</span>) ans = ans / n * (n - <span class="number">1</span>);</div><div class="line">    <span class="keyword">return</span> ans;</div><div class="line">&#125;</div><div class="line"><span class="comment">//1~n中所有数的欧拉phi函数值 O(nloglogn)</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">phi_table</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</div><div class="line">        phi[i] = <span class="number">0</span>;</div><div class="line">    phi[<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)&#123;</div><div class="line">        <span class="keyword">if</span>(!phi[i])&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt;= n; j += i)&#123;</div><div class="line">                <span class="keyword">if</span>(!phi[j]) phi[j] = j;</div><div class="line">                phi[j] = phi[j] / i * (i - <span class="number">1</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"phi(%d) = %d\n"</span>, n, euler_phi(n));</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</div><div class="line">        phi_table(i);</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"phi[%d] = %d\n"</span>, i, phi[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">phi(n) 表示的含义是,不超过x且和x互素的整数个数.</span></div><div class="line"><span class="comment">*/</span></div></pre></td></tr></table></figure>
+<p>好啦，到此为止紫书上所有关于同余与模运算的东西都写完了，终于把坑填好啦&lt;(￣ˇ￣)/。上面大部分重要的内容我都写了详细的证明，也给出了解题的模板。那就这样啦，马上就要学蓝书啦，蓝书上面也只有一个离散对数和指数循环节啦，等我把这两节学完之后再把这个部分完结吧(～o￣3￣)～！</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/05/23/同余与模运算/" data-id="cj926578j003084ujophlflj5" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/05/23/同余与模运算/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/05/23/同余与模运算/">Comentarios</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/05/24/模板-最短路问题/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más nuevo</strong>
+            <div class="article-nav-title">
+                
+                    [模板]最短路问题
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/05/23/埃及分数问题/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">埃及分数问题</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 ZJYelizaveta<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://yoursite.com/2017/05/23/同余与模运算/';
+        
+        this.page.identifier = '同余与模运算';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

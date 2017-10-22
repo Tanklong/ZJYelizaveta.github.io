@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>线性规划与网络流24题 Part 3 | ZJYelizaveta&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="最后一部分！">
+<meta name="keywords" content="网络流,费用流,最大权闭合图,最小割,最大独立集,分层图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性规划与网络流24题 Part 3">
+<meta property="og:url" content="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-3/index.html">
+<meta property="og:site_name" content="ZJYelizaveta&#39;s Blog">
+<meta property="og:description" content="最后一部分！">
+<meta property="og:updated_time" content="2017-09-21T06:42:21.803Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="线性规划与网络流24题 Part 3">
+<meta name="twitter:description" content="最后一部分！">
+    
+
+    
+        <link rel="alternate" href="/" title="ZJYelizaveta&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">ZJYelizaveta&#39;s Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/Links">Links</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/Links">Links</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">ZJYelizaveta</h2>
+            <h3 id="title">有幸在那一天，遇到你，最了不起的你。</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Wuhan, China</span>
+            <a id="follow" target="_blank" href="">SEGUIR</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                71
+                <span>Entradas</span>
+            </div>
+            <div class="article-info-block">
+                85
+                <span>Etiquetas</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/ZJYelizaveta" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-线性规划与网络流24题-Part-3" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            线性规划与网络流24题 Part 3
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/09/21/线性规划与网络流24题-Part-3/">
+            <time datetime="2017-09-21T05:31:51.000Z" itemprop="datePublished">2017-09-21</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/分层图/">分层图</a>, <a class="tag-link" href="/tags/最大权闭合图/">最大权闭合图</a>, <a class="tag-link" href="/tags/最大独立集/">最大独立集</a>, <a class="tag-link" href="/tags/最小割/">最小割</a>, <a class="tag-link" href="/tags/网络流/">网络流</a>, <a class="tag-link" href="/tags/费用流/">费用流</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>最后一部分！<br><a id="more"></a></p>
+<h2 id="「网络流-24-题」负载平衡-19"><a href="#「网络流-24-题」负载平衡-19" class="headerlink" title="「网络流 24 题」负载平衡 - 19"></a>「网络流 24 题」负载平衡 - 19</h2><p>转化为最小代价供求问题，用最小费用最大流解决。</p>
+<p>计算出每个仓库的盈余后，可以把问题转化为供求问题。建立供求网络，把$A$集合中所有结点看做供应节点，$B$集合所有节点看做需求结点，在能一次搬运满足供需的$A_{i}$和$B_{j}$之间连接一条费用为$1$的有向边，表示搬运一个单位货物费用为$1$。另外还要在$A_{i}$与相邻的$A_{j}$之间连接边，表示货物可以暂时搬运过去，不立即满足需求，费用也为$1$。（<a href="http://hzwer.com/1955.html" target="_blank" rel="external">转自 hzwer</a>）</p>
+<p>因此可以建出如下的图：</p>
+<ul>
+<li>首先求出$equal = \frac{\sum_{i = 1}^{n}w[i]}{n}$的值，每一个仓库有一个$a[i]$，令$a[i] = w[i] - equal$</li>
+<li>将一个仓库拆分为两个点，分别代表这个仓库可以输出的货流量$A$集合，仓库需要的货流量$B$集合</li>
+<li>建立超级源点$s$，若$a[i] &gt; 0$，从$s$向$A_{i}$连一条容量为$a[i]$，费用为$0$的边</li>
+<li>建立超级源点$t$，若$a[i] &lt; 0$，从$A_{i}$向$t$连一条容量为$-a[i]$，费用为$0$的边</li>
+<li>$A$集合中的点$A_{i}$向其相邻的点$B_{i + 1},B_{i - 1},A_{i - 1}, A_{i + 1}$（$0 \leq i &lt; n$）连一条容量为$\infty$，费用为$1$的边</li>
+<li>最小费用最大流，最小费用流值就是最少搬运量</li>
+</ul>
+<h2 id="「网络流-24-题」深海机器人问题-20"><a href="#「网络流-24-题」深海机器人问题-20" class="headerlink" title="「网络流 24 题」深海机器人问题 - 20"></a>「网络流 24 题」深海机器人问题 - 20</h2><p>多出发点和目的地的网络运输问题</p>
+<p>由于“多个深海机器人可以在同一时间占据同一位置”，所以不需限制点的流量，不用拆点。而且，每条边的价值只能计算一次，容量限制要设为$1，$同时还将要连接上容量不限，费用为0的重边。</p>
+<ul>
+<li>把网格中每个位置抽象成网络中一个结点</li>
+<li>建立超级源点$s$，从点$s$到每个出发点$i$连接一条容量为该点出发的机器人数量，费用为$0$的边</li>
+<li>建立超级源点$t$，从每个目标点$i$到$t$连一条容量为可以到达该点的机器人数量，费用为$0$的边</li>
+<li>对于每个顶点$i$，若$j$为$i$东边或南边相邻的一个结点，从结点$i$向结点$j$连一条容量为1，费用为该边价值的边</li>
+<li>对于每个顶点i，若$j$为$i$东边或南边相邻的一个结点，从结点$i$向结点$j$一条容量为$\infty$，费用为$0$的边</li>
+<li>最大费用最大流，答案为采集到的生物标本的最高总价值</li>
+</ul>
+<h2 id="「网络流-24-题」最长-k-可重区间集问题-21"><a href="#「网络流-24-题」最长-k-可重区间集问题-21" class="headerlink" title="「网络流 24 题」最长 k 可重区间集问题 - 21"></a>「网络流 24 题」最长 k 可重区间集问题 - 21</h2><p>这个问题可以看做是求$k$条权之和最大的不相交路径，每条路径为一些不相交的区间序列。由于是最大费用流，两条路径之间一定有一些区间相交，可以看做是相交部分重复了$2$次，而$k$条路经就是最多重复了$k$次。最简单的想法就是把区间排序后，不相交的区间之间连接一条边，由于每个区间只能用一次，所以要拆点，点内限制流量。如果我们改变一下思路，把端点作为网络中的顶点，区间恰恰是特定一些端点之间的边，这样建模的复杂度更小。<a href="http://hzwer.com/5842.html" target="_blank" rel="external">转自 hzwer</a></p>
+<p>建模方法如下：</p>
+<ul>
+<li>离散化所有区间的端点，把每个端点看做一个顶点，建立超级源点$s$和超级汇点$t$</li>
+<li>从$s$到顶点$1$（最左边顶点）连接一条容量为$k$，费用为$0$的边</li>
+<li>从顶点$2n$（最右边顶点）到$t$连接一条容量为$k$，费用为$0$的边</li>
+<li>从顶点$i$到顶点$i+1(i+1 \leq 2n)$，连接一条容量为$\infty$，费用为$0$的边</li>
+<li>对于每个区间$[a,b]$，从$a$对应的顶点$i$到$b$对应的顶点$j$连接一条容量为$1$，费用为区间长度的有向边。</li>
+<li>求最大费用最大流，最大费用流值就是最长k可重区间集的长度。</li>
+</ul>
+<h2 id="「网络流-24-题」最长-k-可重线段集问题-22"><a href="#「网络流-24-题」最长-k-可重线段集问题-22" class="headerlink" title="「网络流 24 题」最长 k 可重线段集问题 - 22"></a>「网络流 24 题」最长 k 可重线段集问题 - 22</h2><p>依然是最大权不相交路径转化成为最小费用最大流问题。<br>建图方法同 “ 最长 k 可重区间集问题 - 21 “，这里不再赘述了<br>由于$COGS$上的数据有问题，所以这道题目无法评测QAQ</p>
+<h2 id="「网络流-24-题」火星探险问题-23"><a href="#「网络流-24-题」火星探险问题-23" class="headerlink" title="「网络流 24 题」火星探险问题 - 23"></a>「网络流 24 题」火星探险问题 - 23</h2><p>在$\text{COGS}$好像没有找到，有哪位大佬可以告诉我在哪里可以交这道题目吗QAQ</p>
+<h2 id="「网络流-24-题」骑士共存问题-24"><a href="#「网络流-24-题」骑士共存问题-24" class="headerlink" title="「网络流 24 题」骑士共存问题 - 24"></a>「网络流 24 题」骑士共存问题 - 24</h2><p>最大独立集问题<br>同 “ 「网络流 24 题」方格取数 - 9  “ ，首先进行黑白交替染色，显然棋盘变成了一个二分图。然后对于没有障碍物的地方向骑士可以到达的地方连边(连双向边)，然后跑一遍网络流，最后答案等于点数减去最大匹配数。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="「网络流-24-题」负载平衡-19-1"><a href="#「网络流-24-题」负载平衡-19-1" class="headerlink" title="「网络流 24 题」负载平衡 - 19"></a>「网络流 24 题」负载平衡 - 19</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//  Created by ZJYelizaveta on Monday, August 21, 2017 AM10:41:54 CST</span></div><div class="line"><span class="comment">//  Copyright (c) 2017年 ZJYelizaveta. All rights reserved.</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">readIn</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> x = <span class="number">0</span>, f = <span class="number">1</span>;</div><div class="line">    <span class="keyword">char</span> ch = getchar();</div><div class="line">    <span class="keyword">while</span> (ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>) &#123;<span class="keyword">if</span> (ch == <span class="string">'-'</span>) f = <span class="number">-1</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">while</span> (ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>) &#123;x = x * <span class="number">10</span> + ch - <span class="string">'0'</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">return</span> x * f;</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">100</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXNODE = <span class="number">200</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="keyword">int</span> a[MAX_N], b[MAX_N];</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> MCMF &#123;</div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></div><div class="line">        <span class="keyword">int</span> to, cap, cost, rev;</div><div class="line">        Edge(<span class="keyword">int</span> to, <span class="keyword">int</span> cap, <span class="keyword">int</span> cost, <span class="keyword">int</span> rev) : to(to), cap(cap), cost(cost), rev(rev)&#123;&#125;</div><div class="line">    &#125;;</div><div class="line">    <span class="built_in">vector</span>&lt;Edge&gt; G[MAXNODE];</div><div class="line">    <span class="keyword">int</span> dist[MAXNODE];</div><div class="line">    <span class="keyword">int</span> prevV[MAXNODE], prevE[MAXNODE];</div><div class="line">    <span class="keyword">bool</span> inq[MAXNODE];</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= MAXNODE; ++i) G[i].clear();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> from, <span class="keyword">int</span> to, <span class="keyword">int</span> cap, <span class="keyword">int</span> cost)</span> </span>&#123;</div><div class="line">        G[from].push_back(Edge(to, cap, cost, G[to].size()));</div><div class="line">        G[to].push_back(Edge(from, <span class="number">0</span>, -cost, G[from].size() - <span class="number">1</span>));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; minCostMaxFlow(<span class="keyword">int</span> s, <span class="keyword">int</span> t) &#123;</div><div class="line">        pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; ans(<span class="number">0</span>, <span class="number">0</span>);</div><div class="line">        <span class="keyword">while</span> (<span class="number">1</span>) &#123;</div><div class="line">            <span class="built_in">memset</span>(inq, <span class="literal">false</span>, <span class="keyword">sizeof</span> inq);</div><div class="line">            <span class="built_in">memset</span>(dist, INF, <span class="keyword">sizeof</span> dist);</div><div class="line">            <span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt; q;</div><div class="line">            q.push_front(s); inq[s] = <span class="literal">true</span>, dist[s] = <span class="number">0</span>;</div><div class="line"></div><div class="line">            <span class="keyword">while</span> (!q.empty()) &#123;</div><div class="line">                <span class="keyword">int</span> u = q.front(); q.pop_front();</div><div class="line">                inq[u] = <span class="literal">false</span>;</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (<span class="keyword">int</span>)G[u].size(); ++i) &#123;</div><div class="line">                    Edge &amp;e = G[u][i];</div><div class="line">                    <span class="keyword">if</span> (e.cap &gt; <span class="number">0</span> &amp;&amp; dist[e.to] &gt; dist[u] + e.cost) &#123;<span class="comment">//</span></div><div class="line">                        dist[e.to] = dist[u] + e.cost;</div><div class="line">                        prevE[e.to] = i; prevV[e.to] = u;</div><div class="line">                        <span class="keyword">if</span> (!inq[e.to]) &#123;</div><div class="line">                            inq[e.to] = <span class="literal">true</span>;<span class="comment">//</span></div><div class="line">                            <span class="keyword">if</span> (q.empty() || dist[e.to] &gt; dist[q.front()]) q.push_back(e.to);</div><div class="line">                            <span class="keyword">else</span> q.push_front(e.to);</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (dist[t] == INF) <span class="keyword">break</span>;</div><div class="line"></div><div class="line">            <span class="keyword">int</span> flow = INF;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = t; i != s; i = prevV[i]) flow = min(flow, G[prevV[i]][prevE[i]].cap);</div><div class="line">            ans.first += flow, ans.second += flow * dist[t];</div><div class="line"></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = t; i != s; i = prevV[i]) &#123;</div><div class="line">                Edge &amp;e = G[prevV[i]][prevE[i]];</div><div class="line">                e.cap -= flow;</div><div class="line">                G[e.to][e.rev].cap += flow;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> MCMF;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    n = readIn();</div><div class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>, equal = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) a[i] = readIn(), sum += a[i];</div><div class="line">    equal = sum / n;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) b[i] = a[i] - equal;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> s = <span class="number">0</span>, t = <span class="number">2</span> * n + <span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="keyword">if</span> (b[i] &gt; <span class="number">0</span>) addEdge(s, i, b[i], <span class="number">0</span>);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="keyword">if</span> (b[i] &lt; <span class="number">0</span>) addEdge(i + n, t, -b[i], <span class="number">0</span>);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</div><div class="line">        <span class="keyword">if</span> (i != <span class="number">1</span>) &#123;</div><div class="line">            addEdge(i, i - <span class="number">1</span>, INF, <span class="number">1</span>), addEdge(i, i - <span class="number">1</span> + n, INF, <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (i != n) &#123;</div><div class="line">            addEdge(i, i + <span class="number">1</span>, INF, <span class="number">1</span>), addEdge(i, i + <span class="number">1</span> + n, INF, <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    addEdge(n, <span class="number">1</span>, INF, <span class="number">1</span>), addEdge(n, n + <span class="number">1</span>, INF, <span class="number">1</span>);</div><div class="line">    addEdge(<span class="number">1</span>, n, INF, <span class="number">1</span>), addEdge(<span class="number">1</span>, n + n, INF, <span class="number">1</span>);</div><div class="line">    pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; ans = minCostMaxFlow(s, t);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans.second);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="「网络流-24-题」深海机器人问题-20-1"><a href="#「网络流-24-题」深海机器人问题-20-1" class="headerlink" title="「网络流 24 题」深海机器人问题 - 20"></a>「网络流 24 题」深海机器人问题 - 20</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//  Created by ZJYelizaveta on 2017年08月24日 星期四 22时35分18秒</span></div><div class="line"><span class="comment">//  Copyright (c) 2017年 ZJYelizaveta. All rights reserved.</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">readIn</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> x = <span class="number">0</span>, f = <span class="number">1</span>;</div><div class="line">    <span class="keyword">char</span> ch = getchar();</div><div class="line">    <span class="keyword">while</span> (ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>) &#123;<span class="keyword">if</span> (ch == <span class="string">'-'</span>) f = <span class="number">-1</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">while</span> (ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>) &#123;x = x * <span class="number">10</span> + ch - <span class="string">'0'</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">return</span> x * f;</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXNODE = <span class="number">1000</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">int</span> a, b;</div><div class="line"><span class="keyword">int</span> p, q;</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> MCMF &#123;</div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></div><div class="line">        <span class="keyword">int</span> to, cap, cost, rev;</div><div class="line">        Edge(<span class="keyword">int</span> to, <span class="keyword">int</span> cap, <span class="keyword">int</span> cost, <span class="keyword">int</span> rev) : to(to), cap(cap), cost(cost), rev(rev)&#123;&#125;</div><div class="line">    &#125;;</div><div class="line">    <span class="built_in">vector</span>&lt;Edge&gt; G[MAXNODE];</div><div class="line">    <span class="keyword">int</span> dist[MAXNODE];</div><div class="line">    <span class="keyword">int</span> prevV[MAXNODE], prevE[MAXNODE];</div><div class="line">    <span class="keyword">bool</span> inq[MAXNODE];</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= MAXNODE; ++i) G[i].clear();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> from, <span class="keyword">int</span> to, <span class="keyword">int</span> cap, <span class="keyword">int</span> cost)</span> </span>&#123;</div><div class="line">        G[from].push_back(Edge(to, cap, cost, G[to].size()));</div><div class="line">        G[to].push_back(Edge(from, <span class="number">0</span>, -cost, G[from].size() - <span class="number">1</span>));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; minCostMaxFlow(<span class="keyword">int</span> s, <span class="keyword">int</span> t) &#123;</div><div class="line">        pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; ans(<span class="number">0</span>, <span class="number">0</span>);</div><div class="line">        <span class="keyword">while</span> (<span class="number">1</span>) &#123;</div><div class="line">            <span class="built_in">memset</span>(inq, <span class="literal">false</span>, <span class="keyword">sizeof</span> inq);</div><div class="line">            <span class="built_in">memset</span>(dist, INF, <span class="keyword">sizeof</span> dist);</div><div class="line">            <span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt; q;</div><div class="line">            q.push_front(s); inq[s] = <span class="literal">true</span>, dist[s] = <span class="number">0</span>;</div><div class="line"></div><div class="line">            <span class="keyword">while</span> (!q.empty()) &#123;</div><div class="line">                <span class="keyword">int</span> u = q.front(); q.pop_front();</div><div class="line">                inq[u] = <span class="literal">false</span>;</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (<span class="keyword">int</span>)G[u].size(); ++i) &#123;</div><div class="line">                    Edge &amp;e = G[u][i];</div><div class="line">                    <span class="keyword">if</span> (e.cap &gt; <span class="number">0</span> &amp;&amp; dist[e.to] &gt; dist[u] + e.cost) &#123;<span class="comment">//</span></div><div class="line">                        dist[e.to] = dist[u] + e.cost;</div><div class="line">                        prevE[e.to] = i; prevV[e.to] = u;</div><div class="line">                        <span class="keyword">if</span> (!inq[e.to]) &#123;</div><div class="line">                            inq[e.to] = <span class="literal">true</span>;<span class="comment">//</span></div><div class="line">                            <span class="keyword">if</span> (q.empty() || dist[e.to] &gt; dist[q.front()]) q.push_back(e.to);</div><div class="line">                            <span class="keyword">else</span> q.push_front(e.to);</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (dist[t] == INF) <span class="keyword">break</span>;</div><div class="line"></div><div class="line">            <span class="keyword">int</span> flow = INF;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = t; i != s; i = prevV[i]) flow = min(flow, G[prevV[i]][prevE[i]].cap);</div><div class="line">            ans.first += flow, ans.second += flow * dist[t];</div><div class="line"></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = t; i != s; i = prevV[i]) &#123;</div><div class="line">                Edge &amp;e = G[prevV[i]][prevE[i]];</div><div class="line">                e.cap -= flow;</div><div class="line">                G[e.to][e.rev].cap += flow;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> MCMF;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    freopen(<span class="string">"shinkai.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line">    freopen(<span class="string">"shinkai.out"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</div><div class="line">    a = readIn(), b = readIn();</div><div class="line">    p = readIn() + <span class="number">1</span>, q = readIn() + <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> s = <span class="number">0</span>, t = p * q + <span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; p; ++i) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; q; ++j) &#123;</div><div class="line">            <span class="keyword">int</span> c = readIn();</div><div class="line">            <span class="keyword">int</span> u = i * q + j, v = u + <span class="number">1</span>;</div><div class="line">            addEdge(u, v, <span class="number">1</span>, -c); addEdge(u, v, INF, <span class="number">0</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= q; ++j) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= p - <span class="number">2</span>; ++i) &#123;</div><div class="line">            <span class="keyword">int</span> c = readIn();</div><div class="line">            <span class="keyword">int</span> u = i * q + j, v = u + q;</div><div class="line">            addEdge(u, v, <span class="number">1</span>, -c); addEdge(u, v, INF, <span class="number">0</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= a; ++i) &#123;</div><div class="line">        <span class="keyword">int</span> c = readIn(), x = readIn(), y = readIn();</div><div class="line">        addEdge(s, x * q + y + <span class="number">1</span>, c, <span class="number">0</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= b; ++i) &#123;</div><div class="line">        <span class="keyword">int</span> c = readIn(), x = readIn(), y = readIn();</div><div class="line">        addEdge(x * q + y + <span class="number">1</span>, t, c, <span class="number">0</span>);</div><div class="line">    &#125;</div><div class="line">    pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; ans = minCostMaxFlow(s, t);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, -ans.second);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="「网络流-24-题」最长-k-可重区间集问题-21-1"><a href="#「网络流-24-题」最长-k-可重区间集问题-21-1" class="headerlink" title="「网络流 24 题」最长 k 可重区间集问题 - 21"></a>「网络流 24 题」最长 k 可重区间集问题 - 21</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//  Created by ZJYelizaveta on Monday, August 21, 2017 PM01:53:40 CST</span></div><div class="line"><span class="comment">//  Copyright (c) 2017年 ZJYelizaveta. All rights reserved.</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">readIn</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> x = <span class="number">0</span>, f = <span class="number">1</span>;</div><div class="line">    <span class="keyword">char</span> ch = getchar();</div><div class="line">    <span class="keyword">while</span> (ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>) &#123;<span class="keyword">if</span> (ch == <span class="string">'-'</span>) f = <span class="number">-1</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">while</span> (ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>) &#123;x = x * <span class="number">10</span> + ch - <span class="string">'0'</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">return</span> x * f;</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">500</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXNODE = <span class="number">1000</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">int</span> n, k;</div><div class="line"><span class="keyword">int</span> l[MAX_N], r[MAX_N];</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> MCMF &#123;</div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></div><div class="line">        <span class="keyword">int</span> to, cap, cost, rev;</div><div class="line">        Edge(<span class="keyword">int</span> to, <span class="keyword">int</span> cap, <span class="keyword">int</span> cost, <span class="keyword">int</span> rev) : to(to), cap(cap), cost(cost), rev(rev)&#123;&#125;</div><div class="line">    &#125;;</div><div class="line">    <span class="built_in">vector</span>&lt;Edge&gt; G[MAXNODE];</div><div class="line">    <span class="keyword">int</span> dist[MAXNODE];</div><div class="line">    <span class="keyword">int</span> prevE[MAXNODE], prevV[MAXNODE];</div><div class="line">    <span class="keyword">bool</span> inq[MAXNODE];</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> from, <span class="keyword">int</span> to, <span class="keyword">int</span> cap, <span class="keyword">int</span> cost)</span> </span>&#123;</div><div class="line">        G[from].push_back(Edge(to, cap, cost, G[to].size()));</div><div class="line">        G[to].push_back(Edge(from, <span class="number">0</span>, -cost, G[from].size() - <span class="number">1</span>));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; minCostMaxFlow(<span class="keyword">int</span> s, <span class="keyword">int</span> t) &#123;</div><div class="line">        pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; ans(<span class="number">0</span>, <span class="number">0</span>);</div><div class="line">        <span class="keyword">while</span> (<span class="number">1</span>) &#123;</div><div class="line">            <span class="built_in">memset</span>(inq, <span class="literal">false</span>, <span class="keyword">sizeof</span> inq);</div><div class="line">            <span class="built_in">memset</span>(dist, INF, <span class="keyword">sizeof</span> dist);</div><div class="line">            <span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt; q;</div><div class="line">            q.push_front(s); inq[s] = <span class="literal">true</span>, dist[s] = <span class="number">0</span>;</div><div class="line"></div><div class="line">            <span class="keyword">while</span> (!q.empty()) &#123;</div><div class="line">                <span class="keyword">int</span> u = q.front(); q.pop_front();</div><div class="line">                inq[u] = <span class="literal">false</span>;</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (<span class="keyword">int</span>)G[u].size(); ++i) &#123;</div><div class="line">                    Edge &amp;e = G[u][i];</div><div class="line">                    <span class="keyword">if</span> (e.cap &gt; <span class="number">0</span> &amp;&amp; dist[e.to] &gt; dist[u] + e.cost) &#123;</div><div class="line">                        dist[e.to] = dist[u] + e.cost;</div><div class="line">                        prevV[e.to] = u; prevE[e.to] = i;</div><div class="line">                        <span class="keyword">if</span> (!inq[e.to]) &#123;</div><div class="line">                            inq[e.to] = <span class="literal">true</span>;</div><div class="line">                            <span class="keyword">if</span> (q.empty() || dist[e.to] &gt; dist[q.front()]) q.push_back(e.to);</div><div class="line">                            <span class="keyword">else</span> q.push_front(e.to);</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (dist[t] == INF) <span class="keyword">break</span>;</div><div class="line"></div><div class="line">            <span class="keyword">int</span> flow = INF;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = t; i != s; i = prevV[i]) flow = min(flow, G[prevV[i]][prevE[i]].cap);</div><div class="line">            ans.first += flow, ans.second += flow * dist[t];</div><div class="line"></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = t; i != s; i = prevV[i]) &#123;</div><div class="line">                Edge &amp;e = G[prevV[i]][prevE[i]];</div><div class="line">                e.cap -= flow;</div><div class="line">                G[e.to][e.rev].cap += flow;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> MCMF;</div><div class="line"></div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;</div><div class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; mp;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    n = readIn(), k = readIn();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</div><div class="line">        l[i] = readIn(), r[i] = readIn();</div><div class="line">        <span class="keyword">if</span> (l[i] &gt; r[i]) swap(l[i], r[i]);</div><div class="line">        vec.push_back(l[i]), vec.push_back(r[i]);</div><div class="line">    &#125;</div><div class="line">    sort(vec.begin(), vec.end());</div><div class="line">    vec.erase(unique(vec.begin(), vec.end()), vec.end());<span class="comment">//</span></div><div class="line">    <span class="keyword">int</span> m = vec.size();</div><div class="line"></div><div class="line">    <span class="keyword">int</span> s = m, t = m + <span class="number">1</span>;</div><div class="line">    addEdge(s, <span class="number">0</span>, k, <span class="number">0</span>), addEdge(m - <span class="number">1</span>, t, k, <span class="number">0</span>);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i) &#123;</div><div class="line">        mp[vec[i]] = i;</div><div class="line">        <span class="keyword">if</span> (i + <span class="number">1</span> &lt; m) addEdge(i, i + <span class="number">1</span>, INF, <span class="number">0</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) addEdge(mp[l[i]], mp[r[i]], <span class="number">1</span>, l[i] - r[i]);</div><div class="line">    pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; ans = minCostMaxFlow(s, t);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, -ans.second);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="「网络流-24-题」最长-k-可重线段集问题-22-1"><a href="#「网络流-24-题」最长-k-可重线段集问题-22-1" class="headerlink" title="「网络流 24 题」最长 k 可重线段集问题 - 22"></a>「网络流 24 题」最长 k 可重线段集问题 - 22</h3><h3 id="「网络流-24-题」火星探险问题-23-1"><a href="#「网络流-24-题」火星探险问题-23-1" class="headerlink" title="「网络流 24 题」火星探险问题 - 23"></a>「网络流 24 题」火星探险问题 - 23</h3><h3 id="「网络流-24-题」骑士共存问题-24-1"><a href="#「网络流-24-题」骑士共存问题-24-1" class="headerlink" title="「网络流 24 题」骑士共存问题 - 24"></a>「网络流 24 题」骑士共存问题 - 24</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//  Created by ZJYelizaveta on 2017骞?8鏈?5鏃 鏄熸湡浜 08鏃?0鍒?8绉</span></div><div class="line"><span class="comment">//  Copyright (c) 2017骞 ZJYelizaveta. All rights reserved.</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">readIn</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> x = <span class="number">0</span>, f = <span class="number">1</span>;</div><div class="line">    <span class="keyword">char</span> ch = getchar();</div><div class="line">    <span class="keyword">while</span> (ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>) &#123;<span class="keyword">if</span> (ch == <span class="string">'-'</span>) f = <span class="number">-1</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">while</span> (ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>) &#123;x = x * <span class="number">10</span> + ch - <span class="string">'0'</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">return</span> x * f;</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">200</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXNODE = <span class="number">400000</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> dx[] = &#123;<span class="number">2</span>, <span class="number">1</span>, <span class="number">-1</span>, <span class="number">-2</span>, <span class="number">-2</span>, <span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>&#125;;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> dy[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">-1</span>, <span class="number">-2</span>, <span class="number">-2</span>, <span class="number">-1</span>&#125;;</div><div class="line"><span class="keyword">int</span> n, m;</div><div class="line"><span class="keyword">int</span> a[MAX_N][MAX_N];</div><div class="line"><span class="keyword">int</span> s, t, ans;</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> Dinic &#123;</div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></div><div class="line">        <span class="keyword">int</span> to, cap, rev;</div><div class="line">        Edge(<span class="keyword">int</span> to, <span class="keyword">int</span> cap, <span class="keyword">int</span> rev) : to(to), cap(cap), rev(rev)&#123;&#125;</div><div class="line">    &#125;;</div><div class="line">    <span class="built_in">vector</span>&lt;Edge&gt; G[MAXNODE];</div><div class="line">    <span class="keyword">int</span> iter[MAXNODE], level[MAXNODE];</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> from, <span class="keyword">int</span> to, <span class="keyword">int</span> cap)</span> </span>&#123;</div><div class="line">        G[from].push_back(Edge(to, cap, G[to].size()));</div><div class="line">        G[to].push_back(Edge(from, <span class="number">0</span>, G[from].size() - <span class="number">1</span>));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">bfs</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</div><div class="line">        <span class="built_in">memset</span>(level, <span class="number">-1</span>, <span class="keyword">sizeof</span> level);</div><div class="line">        q.push(s), level[s] = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (!q.empty()) &#123;</div><div class="line">            <span class="keyword">int</span> u = q.front(); q.pop();</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (<span class="keyword">int</span>)G[u].size(); i++) &#123;</div><div class="line">                Edge &amp;e = G[u][i];</div><div class="line">                <span class="keyword">if</span> (e.cap &gt; <span class="number">0</span> &amp;&amp; level[e.to] == <span class="number">-1</span>) &#123;</div><div class="line">                    level[e.to] = level[u] + <span class="number">1</span>;</div><div class="line">                    q.push(e.to);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ~level[t];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> flow)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(u == t) <span class="keyword">return</span> flow;<span class="comment">//</span></div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> &amp;i = iter[u]; i &lt; G[u].size(); i++) &#123;</div><div class="line">            Edge &amp;e = G[u][i];</div><div class="line">            <span class="keyword">if</span> (e.cap &amp;&amp; level[e.to] == level[u] + <span class="number">1</span>) &#123;</div><div class="line">                <span class="keyword">int</span> d = dfs(e.to, min(flow, e.cap));</div><div class="line">                <span class="keyword">if</span> (d) &#123;</div><div class="line">                    e.cap -= d;</div><div class="line">                    G[e.to][e.rev].cap += d;</div><div class="line">                    <span class="keyword">return</span> d;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxFlow</span><span class="params">(<span class="keyword">int</span> _s, <span class="keyword">int</span> <span class="keyword">_t</span>)</span> </span>&#123;</div><div class="line">        s = _s, t = <span class="keyword">_t</span>;</div><div class="line">        <span class="keyword">int</span> flow = <span class="number">0</span>, d = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (bfs()) &#123;</div><div class="line">            <span class="built_in">memset</span>(iter, <span class="number">0</span>, <span class="keyword">sizeof</span> iter);</div><div class="line">            <span class="keyword">while</span>(d = dfs(s, INF), d) flow += d;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> flow;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Dinic;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">ID</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> (y - <span class="number">1</span>) * n + x;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    freopen(<span class="string">"knight.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line">    freopen(<span class="string">"knight.out"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</div><div class="line"></div><div class="line">    n = readIn(), m = readIn();</div><div class="line">    s = <span class="number">0</span>, t = n * n + <span class="number">1</span>, ans = n * n;</div><div class="line">    <span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span> a);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</div><div class="line">        a[readIn()][readIn()] = <span class="number">1</span>;</div><div class="line">        --ans;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; ++j) <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="keyword">if</span> (!a[i][j]) &#123;</div><div class="line">        <span class="keyword">if</span> ((i + j) &amp; <span class="number">1</span>) &#123;</div><div class="line">            addEdge(s, ID(i,j), <span class="number">1</span>);</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt;= <span class="number">7</span>; ++k) &#123;</div><div class="line">                <span class="keyword">int</span> x = i + dx[k], y = j + dy[k];</div><div class="line">                <span class="keyword">if</span> (<span class="number">1</span> &lt;= x &amp;&amp; x &lt;= n &amp;&amp; <span class="number">1</span> &lt;= y &amp;&amp; y &lt;= n &amp;&amp; !a[x][y]) addEdge(ID(i, j), ID(x, y), INF);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> addEdge(ID(i,j), t, <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">    ans -= maxFlow(s, t);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-3/" data-id="cj926579q003o84ujia27ic5l" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-3/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-3/">Comentarios</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/09/28/「BZOJ-2301」「HAOI2011」Problem-b/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más nuevo</strong>
+            <div class="article-nav-title">
+                
+                    「BZOJ 2301」「HAOI2011」Problem b
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/09/21/线性规划与网络流24题-Part-2/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">线性规划与网络流24题 Part 2</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 ZJYelizaveta<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-3/';
+        
+        this.page.identifier = '线性规划与网络流24题-Part-3';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

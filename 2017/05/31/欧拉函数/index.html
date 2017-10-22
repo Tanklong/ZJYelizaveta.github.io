@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>欧拉函数 | ZJYelizaveta&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="定义对于正整数$n$，欧拉函数$\phi (n)$表示小于或等于$n$的正整数中与$n$互素的数的个数。 性质欧拉函数有一下四种性质：$\bigstar \phi(1) = 1$$\bigstar \phi (n) = n \cdot  \prod_{p\mid n}(\frac{p - 1}{p})$$\bigstar \phi (p^{k}) = p^{k} - p^{k - 1}\cdots">
+<meta name="keywords" content="数学,模板,欧拉函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="欧拉函数">
+<meta property="og:url" content="http://yoursite.com/2017/05/31/欧拉函数/index.html">
+<meta property="og:site_name" content="ZJYelizaveta&#39;s Blog">
+<meta property="og:description" content="定义对于正整数$n$，欧拉函数$\phi (n)$表示小于或等于$n$的正整数中与$n$互素的数的个数。 性质欧拉函数有一下四种性质：$\bigstar \phi(1) = 1$$\bigstar \phi (n) = n \cdot  \prod_{p\mid n}(\frac{p - 1}{p})$$\bigstar \phi (p^{k}) = p^{k} - p^{k - 1}\cdots">
+<meta property="og:image" content="http://oqeu5dc5m.bkt.clouddn.com/QAQQ.gif">
+<meta property="og:image" content="http://oqeu5dc5m.bkt.clouddn.com/99e4e4e861485067.gif">
+<meta property="og:updated_time" content="2017-08-28T02:17:10.701Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="欧拉函数">
+<meta name="twitter:description" content="定义对于正整数$n$，欧拉函数$\phi (n)$表示小于或等于$n$的正整数中与$n$互素的数的个数。 性质欧拉函数有一下四种性质：$\bigstar \phi(1) = 1$$\bigstar \phi (n) = n \cdot  \prod_{p\mid n}(\frac{p - 1}{p})$$\bigstar \phi (p^{k}) = p^{k} - p^{k - 1}\cdots">
+<meta name="twitter:image" content="http://oqeu5dc5m.bkt.clouddn.com/QAQQ.gif">
+    
+
+    
+        <link rel="alternate" href="/" title="ZJYelizaveta&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">ZJYelizaveta&#39;s Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/Links">Links</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/Links">Links</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">ZJYelizaveta</h2>
+            <h3 id="title">有幸在那一天，遇到你，最了不起的你。</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Wuhan, China</span>
+            <a id="follow" target="_blank" href="">SEGUIR</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                71
+                <span>Entradas</span>
+            </div>
+            <div class="article-info-block">
+                85
+                <span>Etiquetas</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/ZJYelizaveta" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-欧拉函数" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            欧拉函数
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/31/欧拉函数/">
+            <time datetime="2017-05-31T13:38:03.000Z" itemprop="datePublished">2017-05-31</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/数学/">数学</a>, <a class="tag-link" href="/tags/模板/">模板</a>, <a class="tag-link" href="/tags/欧拉函数/">欧拉函数</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>对于正整数$n$，欧拉函数$\phi (n)$表示小于或等于$n$的正整数中与$n$互素的数的个数。</p>
+<h2 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h2><p>欧拉函数有一下四种性质：<br>$\bigstar \phi(1) = 1$<br>$\bigstar \phi (n) = n \cdot  \prod_{p\mid n}(\frac{p - 1}{p})$<br>$\bigstar \phi (p^{k}) = p^{k} - p^{k - 1}\cdots \cdots (p\in \mathbb{P})$<br>$\bigstar \phi (mn) = \phi (m) \phi (n)\cdots \cdots gcd(m, n) = 1$</p>
+<a id="more"></a>
+<h3 id="证明1"><a href="#证明1" class="headerlink" title="证明1"></a>证明1</h3><p>$\bigstar \phi(1) = 1$</p>
+<p>根据欧拉函数$phi(i)$的定义推知，<del>这是显然的</del>。</p>
+<h3 id="证明2"><a href="#证明2" class="headerlink" title="证明2"></a>证明2</h3><p>$\bigstar \phi (p^{k}) = p^{k} - p^{k - 1}\cdots \cdots (p\in \mathbb{P})$</p>
+<p>$\because p\in \mathbb{P}$<br>$\therefore$小于或等于$p^{k}$的正整数中与$p^{k}$互素的数只有$p$的倍数。<br>$\because$小于或等于$p^{k}$的正整数中与$p^{k}$互素的数的个数为$\frac{p^{k}}{p}$，化简之后为$p^{k - 1}$<br>$\therefore \phi (p^{k}) = p^{k} - p^{k - 1}\cdots \cdots (p\in \mathbb{P})$</p>
+<h3 id="证明3"><a href="#证明3" class="headerlink" title="证明3"></a>证明3</h3><p>$\bigstar \phi (mn) = \phi (m) \phi (n)\cdots \cdots gcd(m, n) = 1$<br>很惭愧这一个我还不会证明，不过数论概论（原书第三版）$P44 \sim P45$给出了证明。</p>
+<h2 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h2><p>现在要计算$phi[i]$的值，我们有公式$phi(n) = n \cdot (1 - \frac{1}{p_{1}})(1 - \frac{1}{p_{2}})\cdots (1 - \frac{1}{p_{n}})$</p>
+<p><img src="http://oqeu5dc5m.bkt.clouddn.com/QAQQ.gif" alt="此处输入图片的描述"></p>
+<p>又$\because n = p_{1}^{k_{1}}p_{1}^{k_{2}}\cdots p_{n - 1}^{k_{n - 1}}p_{n}^{k_{n}}$</p>
+<p>$\therefore \phi (n) = \phi (p_{1}^{k_{1}})\phi (p_{2}^{k_{2}})\cdots \phi (p_{n - 1}^{k_{n - 1}})\phi (p_{n}^{k_{n}})\$</p>
+<p>$= (p_{1}^{k_{1}} - p_{1}^{k_{1} - 1})(p_{2}^{k_{2}} - p_{2}^{k_{2} - 1})\cdots (p_{n}^{k_{n}} - p_{n}^{k_{n} - 1})\$</p>
+<p>$=p_{1}^{k_{1} - 1}(p_{1} - 1)p_{2}^{k_{2} - 1}(p_{2} - 1)\cdots p_{n}^{k_{n} - 1}(p_{n} - 1)\$</p>
+<p>$= p_{1}^{k_{1}}\frac{(p_{1} - 1)}{p_{1}}p_{2}^{k_{2}}\frac{(p_{2} - 1)}{p_{2}}\cdots p_{n}^{k_{n}}\frac{(p_{n} - 1)}{p_{n}}\$</p>
+<p>$= p_{1}^{k_{1}}p_{2}^{k_{2}}\cdots p_{n}^{k_{n}}\cdot \frac{(p_{1} - 1)}{p_{1}}\frac{(p_{2} - 1)}{p_{2}}\cdots \frac{(p_{n} - 1)}{p_{n}}\$</p>
+<p>$= n \cdot (1 - \frac{1}{p_{1}})(1 - \frac{1}{p_{2}})\cdots (1 - \frac{1}{p_{n}})\$</p>
+<p>$\bigstar \phi (n) = n \cdot  \prod_{p\mid n}(\frac{p - 1}{p})$那么这个式子也得证了，这个式子只是用于计算单个$phi[i]$的值，来构造一个小于等于$n$的$phi$表。<br>计算第$n$个数的$phi$值，要用到这个式子：<img src="http://oqeu5dc5m.bkt.clouddn.com/99e4e4e861485067.gif" alt="此处输入图片的描述"></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">10000</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="keyword">int</span> phi[MAX];</div><div class="line"></div><div class="line"><span class="comment">//求与第n个数互素的数的个数</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">euler_phi</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> m = (<span class="keyword">int</span>)<span class="built_in">sqrt</span>(n + <span class="number">0.5</span>);</div><div class="line">    LL ans = n;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= m; i++) &#123;</div><div class="line">        <span class="keyword">if</span> (n % i == <span class="number">0</span>)&#123;</div><div class="line">            ans = ans / i * (i - <span class="number">1</span>);</div><div class="line">            <span class="keyword">while</span> (n % i == <span class="number">0</span>) n /= i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (n &gt; <span class="number">1</span>) ans = ans / n * (n - <span class="number">1</span>);</div><div class="line">    <span class="keyword">return</span> ans;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//1~n中所有数的欧拉phi函数值 O(nloglogn)</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">phi_table</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</div><div class="line">        phi[i] = <span class="number">0</span>;</div><div class="line">    phi[<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)&#123;</div><div class="line">        <span class="keyword">if</span>(!phi[i])&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt;= n; j += i)&#123;</div><div class="line">                <span class="keyword">if</span>(!phi[j]) phi[j] = j;</div><div class="line">                phi[j] = phi[j] / i * (i - <span class="number">1</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> DEBUG</span></div><div class="line">    freopen(<span class="string">"test.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"phi(%d) = %d\n"</span>, n, euler_phi(n));</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</div><div class="line">        phi_table(i);</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"phi[%d] = %d\n"</span>, i, phi[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">phi(n) 表示的含义是,不超过x且和x互素的整数个数.</span></div><div class="line"><span class="comment">*/</span></div></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/05/31/欧拉函数/" data-id="cj926579f003i84ujb8w565qp" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/05/31/欧拉函数/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/05/31/欧拉函数/">Comentarios</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/06/02/UVa-11609-Teams/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más nuevo</strong>
+            <div class="article-nav-title">
+                
+                    UVa 11609 - Teams
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/05/31/BZOJ-1008-HNOI2008-越狱/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">BZOJ 1008: [HNOI2008]越狱</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 ZJYelizaveta<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://yoursite.com/2017/05/31/欧拉函数/';
+        
+        this.page.identifier = '欧拉函数';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

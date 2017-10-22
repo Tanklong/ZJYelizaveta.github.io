@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>UVa 11300 - Spreading the Wealth | ZJYelizaveta&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="题目地址 描述圆桌旁坐着$n$个人，每人有一定数量的的金币，金币数总能被$n$整除。每个人可以给他左右相邻的人一些金币，最终使得每个人的金币数目相等。你的任务是求出被转手的金币数量的最小值。每组数据第一行为整数$n(n\leq 1000000)$，以下$n$行每行为一个整数，按逆时针顺序给出每个人应有的金币数。输入结束标志为$EOF$。对于每组数据输出被转手金币的数量的最小值。">
+<meta name="keywords" content="贪心,UVa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UVa 11300 - Spreading the Wealth">
+<meta property="og:url" content="http://yoursite.com/2017/05/24/UVa-11300-Spreading-the-Wealth/index.html">
+<meta property="og:site_name" content="ZJYelizaveta&#39;s Blog">
+<meta property="og:description" content="题目地址 描述圆桌旁坐着$n$个人，每人有一定数量的的金币，金币数总能被$n$整除。每个人可以给他左右相邻的人一些金币，最终使得每个人的金币数目相等。你的任务是求出被转手的金币数量的最小值。每组数据第一行为整数$n(n\leq 1000000)$，以下$n$行每行为一个整数，按逆时针顺序给出每个人应有的金币数。输入结束标志为$EOF$。对于每组数据输出被转手金币的数量的最小值。">
+<meta property="og:image" content="http://i1.piimg.com/567571/53e59ec8247bc979.gif">
+<meta property="og:image" content="http://i2.buimg.com/567571/10096625630ca0ee.gif">
+<meta property="og:image" content="http://i1.piimg.com/567571/3cfa28e2e464f98d.png">
+<meta property="og:updated_time" content="2017-05-28T04:32:18.939Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UVa 11300 - Spreading the Wealth">
+<meta name="twitter:description" content="题目地址 描述圆桌旁坐着$n$个人，每人有一定数量的的金币，金币数总能被$n$整除。每个人可以给他左右相邻的人一些金币，最终使得每个人的金币数目相等。你的任务是求出被转手的金币数量的最小值。每组数据第一行为整数$n(n\leq 1000000)$，以下$n$行每行为一个整数，按逆时针顺序给出每个人应有的金币数。输入结束标志为$EOF$。对于每组数据输出被转手金币的数量的最小值。">
+<meta name="twitter:image" content="http://i1.piimg.com/567571/53e59ec8247bc979.gif">
+    
+
+    
+        <link rel="alternate" href="/" title="ZJYelizaveta&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">ZJYelizaveta&#39;s Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/Links">Links</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/Links">Links</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">ZJYelizaveta</h2>
+            <h3 id="title">有幸在那一天，遇到你，最了不起的你。</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Wuhan, China</span>
+            <a id="follow" target="_blank" href="">SEGUIR</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                71
+                <span>Entradas</span>
+            </div>
+            <div class="article-info-block">
+                85
+                <span>Etiquetas</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/ZJYelizaveta" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-UVa-11300-Spreading-the-Wealth" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            UVa 11300 - Spreading the Wealth
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/24/UVa-11300-Spreading-the-Wealth/">
+            <time datetime="2017-05-23T16:42:17.000Z" itemprop="datePublished">2017-05-24</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/UVa/">UVa</a>, <a class="tag-link" href="/tags/贪心/">贪心</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=24&amp;page=show_problem&amp;problem=2275" target="_blank" rel="external">题目地址</a></p>
+<h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>圆桌旁坐着$n$个人，每人有一定数量的的金币，金币数总能被$n$整除。每个人可以给他左右相邻的人一些金币，最终使得每个人的金币数目相等。你的任务是求出被转手的金币数量的最小值。<br>每组数据第一行为整数$n(n\leq 1000000)$，以下$n$行每行为一个整数，按逆时针顺序给出每个人应有的金币数。输入结束标志为$EOF$。<br>对于每组数据输出被转手金币的数量的最小值。<br><a id="more"></a></p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>首先我们可以先计算出最终每个人手中持有的金币数量$M$，$M$等于总金币数量除以人数$n$。<br>假设有$4$个人，按顺序编号为$1， 2， 3， 4$。假设$1$号给$2$号$3$枚金币，然后$2$号给$1$号$5$枚金币，实际上相当于$2$号给$1$号$2$枚金币，而$1$号什么都没有给$2$号。这样，我们设$x_{2}$表示$2$号给了$1$号多少金币，如果$x_{2}$小于$0$说明$1$号给了$2$号$-x_{2}$枚金币。<br>现在假设编号为$i$的人初始有$A_{1}$枚金币。对于$1$号，他给了$4$号$x_{1}$枚金币，还剩$A_{1} - x_{1}$枚金币；又因为$2$号给了他$x_{2}$枚金币，所以最终他剩$A_{1} - x_{1} + x_{2}$枚金币。对于剩下的人也是一样的，依次我们可以得到$n$个等式：<br><img src="http://i1.piimg.com/567571/53e59ec8247bc979.gif" alt=""><br>这里我们令$C_{n} = A_{n} - M$，进行移项变为<br><img src="http://i2.buimg.com/567571/10096625630ca0ee.gif" alt=""><br>第二项是这样子变过来的$A_{2} -x_{2} +x_{3} = M\rightarrow x_{3} = M - A_{2} + x_{2} = 2M -A_{1} -A_{2}+x_{1} = x_{1} - C_{2}$<br>第三项同理$A_{3} -x_{3} +x_{4} = M\rightarrow x_{4} = M - A_{3} + x_{3} = 3M -A_{1} -A_{2} - A_{3}+x_{1} = x_{1} - C_{3}$</p>
+<p>其实在实际应用中我们并不需要第$n$个等式，因为这道题目中题到过这是一个环形。<br>我们希望所有的$x_{i}$的绝对值最小，即$|x_{1}| + |x_{1} - C_{1}| + |x_{1} - C_{2}| + \cdots + |x_{1} - C_{n - 1}|$的绝对值最小。$ |x_{1} - C_{i}|$的几何意义是数轴上点$x_{1}$到$C_{i}$的距离。至此问题就变为了<strong>给定数轴上的$n$个点，找出一个到它们距离之和尽量小的点</strong>。<br>这里我们简要的证明一下，为什么最优的的$x_{1}$是这些数的中位数。<br>如图，<img src="http://i1.piimg.com/567571/3cfa28e2e464f98d.png" alt=""><br>任意找一个点，如图中灰色的圆，它左边有$4$个输入点，右边有$2$个输入点。当灰色的圆向左平移$d$个单位，灰点左边的$4$个点到它的距离距离各减少了$d$，而灰点右边的$2$个点各增加了$d$，总共距离减少了$2d$。当灰点右边有$4$个点左边有$2$个点的时候，同理，将灰点向右平移$d$个单位长度，距离减少$2d$。<br><strong>所以如果输入点的个数有奇数个，则灰点必定会与中间的那个点重合，即为中位数；当个数为偶数，那么灰点可以位于中间的两个点之间的任意位置，仍然是中位数</strong>。<br>有许多题目中，我们转化为这个模型后，都可以用中位数进行求解。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">1000000</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">int</span> n;</div><div class="line">LL A[MAX];</div><div class="line">LL C[MAX];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> DEBUG</span></div><div class="line">    <span class="comment">//freopen("test.in","r",stdin);</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n) != EOF)&#123;</div><div class="line">        LL sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;A[i]);</div><div class="line">            sum += A[i];</div><div class="line">        &#125;</div><div class="line">        LL M = sum / n;</div><div class="line"></div><div class="line">        C[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</div><div class="line">            C[i] = C[i - <span class="number">1</span>] + A[i] - M;</div><div class="line">        sort(C, C + n);</div><div class="line"></div><div class="line">        LL x1 = C[n/<span class="number">2</span>], ans = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</div><div class="line">            ans += <span class="built_in">abs</span>(x1 - C[i]);</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其实代码还可以进一步优化，如运用<strong>快速选择</strong>，在线性时间内求出中位数。<br>（＾∀＾●）ﾉｼ</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/05/24/UVa-11300-Spreading-the-Wealth/" data-id="cj926576t001n84uj5wvbzsww" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/05/24/UVa-11300-Spreading-the-Wealth/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/05/24/UVa-11300-Spreading-the-Wealth/">Comentarios</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/05/24/超大背包问题/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más nuevo</strong>
+            <div class="article-nav-title">
+                
+                    超大背包问题
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/05/24/UVa-11729-Commando-War/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">UVa 11729 - Commando War</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 ZJYelizaveta<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://yoursite.com/2017/05/24/UVa-11300-Spreading-the-Wealth/';
+        
+        this.page.identifier = 'UVa-11300-Spreading-the-Wealth';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

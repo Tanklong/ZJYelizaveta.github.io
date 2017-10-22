@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>BSGS及EXBSGS | ZJYelizaveta&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="离散对数定义在初等代数中，如果$a^{x} = b$，就说$x = log{_{a}}^{b}$，即$x$是以$a$为底$b$的对数。在模运算中也有相似的概念，但比初等对数中的要稍微复杂一些。对于$a^{x}\equiv b(mod \ n)$，我们要分成以下几种情况来讨论：  $n$为素数，且$gcd(a, n) = 1$。 $n$为合数，且$gcd(a, n) \neq 1$。 $n = 1$">
+<meta name="keywords" content="BSGS &amp; EXBSGS,数学,模板,离散对数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BSGS及EXBSGS">
+<meta property="og:url" content="http://yoursite.com/2017/06/02/BSGS及EXBSGS/index.html">
+<meta property="og:site_name" content="ZJYelizaveta&#39;s Blog">
+<meta property="og:description" content="离散对数定义在初等代数中，如果$a^{x} = b$，就说$x = log{_{a}}^{b}$，即$x$是以$a$为底$b$的对数。在模运算中也有相似的概念，但比初等对数中的要稍微复杂一些。对于$a^{x}\equiv b(mod \ n)$，我们要分成以下几种情况来讨论：  $n$为素数，且$gcd(a, n) = 1$。 $n$为合数，且$gcd(a, n) \neq 1$。 $n = 1$">
+<meta property="og:image" content="http://oqeu5dc5m.bkt.clouddn.com/CodeCogsEqn%20%281%29.gif">
+<meta property="og:updated_time" content="2017-06-03T16:20:07.024Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BSGS及EXBSGS">
+<meta name="twitter:description" content="离散对数定义在初等代数中，如果$a^{x} = b$，就说$x = log{_{a}}^{b}$，即$x$是以$a$为底$b$的对数。在模运算中也有相似的概念，但比初等对数中的要稍微复杂一些。对于$a^{x}\equiv b(mod \ n)$，我们要分成以下几种情况来讨论：  $n$为素数，且$gcd(a, n) = 1$。 $n$为合数，且$gcd(a, n) \neq 1$。 $n = 1$">
+<meta name="twitter:image" content="http://oqeu5dc5m.bkt.clouddn.com/CodeCogsEqn%20%281%29.gif">
+    
+
+    
+        <link rel="alternate" href="/" title="ZJYelizaveta&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">ZJYelizaveta&#39;s Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/Links">Links</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/Links">Links</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">ZJYelizaveta</h2>
+            <h3 id="title">有幸在那一天，遇到你，最了不起的你。</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Wuhan, China</span>
+            <a id="follow" target="_blank" href="">SEGUIR</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                71
+                <span>Entradas</span>
+            </div>
+            <div class="article-info-block">
+                85
+                <span>Etiquetas</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/ZJYelizaveta" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-BSGS及EXBSGS" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            BSGS及EXBSGS
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/06/02/BSGS及EXBSGS/">
+            <time datetime="2017-06-02T14:28:20.000Z" itemprop="datePublished">2017-06-02</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/BSGS-EXBSGS/">BSGS & EXBSGS</a>, <a class="tag-link" href="/tags/数学/">数学</a>, <a class="tag-link" href="/tags/模板/">模板</a>, <a class="tag-link" href="/tags/离散对数/">离散对数</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="离散对数"><a href="#离散对数" class="headerlink" title="离散对数"></a>离散对数</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>在初等代数中，如果$a^{x} = b$，就说$x = log{_{a}}^{b}$，即$x$是以$a$为底$b$的对数。在模运算中也有相似的概念，但比初等对数中的要稍微复杂一些。<br>对于$a^{x}\equiv b(mod \ n)$，我们要分成以下几种情况来讨论：</p>
+<ol>
+<li>$n$为素数，且$gcd(a, n) = 1$。</li>
+<li>$n$为合数，且$gcd(a, n) \neq 1$。</li>
+<li>$n = 1$。</li>
+</ol>
+<a id="more"></a>
+<h3 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h3><p>对于情况一，用BSGS算法来计算就可以了；对于情况二，用EXBSGS算法。</p>
+<h2 id="BSGS算法"><a href="#BSGS算法" class="headerlink" title="BSGS算法"></a>BSGS算法</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>给定$a,b,n$，求最小的非负整数$x$，满足$a^{x}\equiv b(mod \ n)$，其中$n\in \mathbb{P}$。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>最天真的算法暴力枚举，只要我们在稍微看一下方程的形式$a^{x}\equiv b(mod \ n)$，就可以联想到<strong>费马小定理</strong>$a^{n - 1} \equiv 1 (mod \ n)$。怎样在这里运用费马小定理呢？</p>
+<p>我们有式子<img src="http://oqeu5dc5m.bkt.clouddn.com/CodeCogsEqn%20%281%29.gif" alt="此处输入图片的描述"><br>这里简要的证明一下：<br>$a^{x \ (mod \ (n - 1))} \equiv a^{x} (mod \ n)$<br>$a^{x - k\cdot (n - 1)} \equiv a^{x} (mod \ n)$<br>$\frac{a^{x}}{a^{k\cdot (n - 1)}}\equiv a^{x} (mod \ n)$<br>$\frac{a^{x}}{(a^{n - 1})^{k}}\equiv a^{x} (mod \ n)$</p>
+<p>$\because n\in \mathbb{P}$</p>
+<p>$\therefore a^{n - 1} \equiv 1 (mod \ n)$</p>
+<p>$\therefore \frac{a^{x}}{1^{m}}\equiv a^{x} (mod \ n)$</p>
+<p>$\because  a^{x} \equiv a^{x} (mod \ n)$</p>
+<p>$\therefore a^{x \ (mod \ (n - 1))} \equiv a^{x} (mod \ n)$</p>
+<p>因为这个式子$a^{x \ (mod \ (n - 1))} \equiv a^{x} (mod \ n)$成立，所以我们确定答案$x$一定在$[0, n - 1)$的范围内，所以现在我们可以缩小暴力枚举的范围了。<br>那么除了枚举之外我们还可以做什么？</p>
+<p>令$x = i \cdot m + j$，原式写为：<br>$a^{i \cdot m + j} \equiv b (mod \ n)$<br>$a^{j} \equiv b \cdot a^{-m \cdot i} (mod \ n)$<br>$a^{j} \equiv b \cdot (a^{-m})^{i} (mod \ n)$<br>咦，$a^{-m}$这不是求$a^{m}$在模$n$下的逆元吗，$m$到到底值为什么我们现在还没有定义。我们取$m = n^{\frac{1}{2}}$，后面证明这样取$m$算法实现起来最快。</p>
+<ol>
+<li>现在预处理式子的左边，先求出$a^{j} \ mod \ n$的值，j的循环范围为$[1, m)$避免$x$的值超过$n$。然后用$map$来存$a^{j} \ mod \ n$和与其对应的$j$值，按照$a^{j}\ (mod \ n)\rightarrow j$的关系映射到$map$中。</li>
+<li>处理完式子左边之后，我们来处理式子的右边， 首先先处理处$a^{m}$的逆元，然后$i$循环的范围为$[0, m)$，开始枚举$i$，同时计算$b \cdot (a^{-m})^{i} (mod \ n)$的值，一旦存在一个$i$值，使得$a^{j} \equiv b \cdot (a^{-m})^{i} (mod \ n)$，那么取出对应的$j$值，答案$x = i \cdot m + j$。</li>
+</ol>
+<p>当然如果不想求逆元的可以在开始的时候令$x = i \cdot m - j$，那么式子就变为$(a^{m})^{i} \equiv b \cdot a^{j} \ (mod \ n)$，然后后面的处理都是一样的。</p>
+<p>步骤1时间复杂度为$\Theta (mlogm)$，每一轮都需要$\Theta (logm)$，一共$\Theta (\frac{n}{m})$轮，总时间复杂度为$\Theta ((m + \frac{n}{m})logm)$。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">readIn</span><span class="params">()</span></span>&#123;</div><div class="line">    ll x = <span class="number">0</span>; <span class="keyword">int</span> f = <span class="number">1</span>;</div><div class="line">    <span class="keyword">char</span> ch = getchar();</div><div class="line">    <span class="keyword">while</span>(ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch == <span class="string">'-'</span>) f = <span class="number">-1</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">while</span>(ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>) &#123;x = (x &lt;&lt; <span class="number">1</span>) + (x &lt;&lt; <span class="number">3</span>) + ch - <span class="string">'0'</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">return</span> (ll)x * f;</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="built_in">map</span> &lt;ll, ll&gt; Map;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">quickMod</span><span class="params">(ll a, ll b, ll n)</span></span>&#123; <span class="comment">//a ^ b % n</span></div><div class="line">    ll res = <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span>(b)&#123;</div><div class="line">        <span class="keyword">if</span>(b &amp; <span class="number">1</span>) (res *= a) %= n;</div><div class="line">        (a *= a) %= n;</div><div class="line">        b &gt;&gt;= <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">gcd</span><span class="params">(ll a, ll b)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> b == <span class="number">0</span> ? a : gcd(b, a % b);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">exgcd</span><span class="params">(ll a, ll b, ll &amp;x, ll &amp;y)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (b == <span class="number">0</span>) x = <span class="number">1</span>, y = <span class="number">0</span>;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">        exgcd(b, a % b, y, x);</div><div class="line">        y -= (a / b) * x;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">inv</span><span class="params">(ll v, ll Mod)</span> </span>&#123;</div><div class="line">    ll x = <span class="number">0</span>, y = <span class="number">0</span>;</div><div class="line">    exgcd(v, Mod, x, y);</div><div class="line">    <span class="keyword">return</span> (x % Mod + Mod) % Mod;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">BSGS</span><span class="params">(ll a, ll b, ll n)</span></span>&#123;</div><div class="line">    ll e = <span class="number">1</span>;</div><div class="line">    ll m = (<span class="keyword">int</span>)(<span class="built_in">sqrt</span>(n + <span class="number">0.5</span>));<span class="comment">//ceil(sqrt(n));</span></div><div class="line">    ll v = inv(quickMod(a, m, n), n);</div><div class="line"></div><div class="line">    Map[<span class="number">1</span>] = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m; ++i)&#123;</div><div class="line">        (e *= a) %= n;</div><div class="line">        <span class="keyword">if</span>(!Map.count(e)) Map[e] = i;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ll i;</div><div class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; m; ++i)&#123;</div><div class="line">        <span class="keyword">if</span>(Map.count(b)) <span class="keyword">return</span> i * m + Map[b];</div><div class="line">        (b *= v) %= n;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="EXBSGS算法"><a href="#EXBSGS算法" class="headerlink" title="EXBSGS算法"></a>EXBSGS算法</h2><h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><p>给定$a,b,n$，求最小的非负整数$x$，满足$a^{x}\equiv b(mod \ n)$。</p>
+<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p>此时我们对$a, b, n$都没有任何性质了，但是不幸的是费马小定理在某些情况下好像不成立了，怎么办？</p>
+<p>继续分类讨论，首先对于$n = 1$时，肯定$x = 0$，这是毫无疑问的。<br>那么$n$为合数，且$gcd(a, n) \neq 1$的时候怎么办？<br>我们考虑将其往$n$为质数的情况上靠。<br>$a^{x} \equiv b \ (mod \ n)$<br>$a^{x} = b + k \cdot n$<br>$a^{x} - k \cdot n = b$<br>现在令$d = gcd(a, n)$，如果$b \nmid d$，那么$a^{x}\equiv b(mod \ n)$无解。<br>如果$b \mid d$，则有：<br>$\frac{a^{x}}{d} - \frac{k \cdot n}{d} = \frac{b}{d}$<br>$a^{x - 1}\cdot \frac{a}{d} - \frac{k \cdot n}{d} = \frac{b}{d}$<br>即，$a^{x - 1}\cdot \frac{a}{d} = \frac{b}{d}+ \frac{k \cdot n}{d}$<br>$a^{x - 1}\cdot \frac{a}{d} \equiv \frac{b}{d} (mod \ \frac{k \cdot n}{d})$<br>若此时$gcd(\frac{a}{d}, \frac{n}{d}) = 1$，那么将式子变化为$a^{x - 1} \equiv \frac{b}{d}\cdot (\frac{a}{d})^{-1} \ (mod \ n)$。此时调用BSGS就可以了。<br>若$gcd(\frac{a}{d}, \frac{n}{d}) \neq 1$，那么继续如上的操作，直至$gcd(a, n) = 1$为止。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">EXBSGS</span><span class="params">(ll a, ll b, ll n)</span></span>&#123;</div><div class="line">    ll e = <span class="number">1</span>;</div><div class="line">    a %= n, b %= n;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; ++i)&#123;</div><div class="line">        <span class="keyword">if</span>(e == b)&#123;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, i);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        (e *= a) %= n;</div><div class="line">    &#125;<span class="comment">//force(可要可不要)</span></div><div class="line"></div><div class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span>(gcd(a, n) != <span class="number">1</span>)&#123;</div><div class="line">        ll factor = gcd(a, n);</div><div class="line">        <span class="keyword">if</span>(b % factor)&#123;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"No Solution\n"</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        n /= factor, sum++, b /= factor;</div><div class="line">        (b *= inv(a / factor, n)) %= n;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ll ans = BSGS(a, b, n);</div><div class="line">    <span class="keyword">if</span>(ans == <span class="number">-1</span>) &#123;<span class="built_in">printf</span>(<span class="string">"No Solution\n"</span>); <span class="keyword">return</span>;&#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans + sum);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/06/02/BSGS及EXBSGS/" data-id="cj926573z000084uj0tvucgyh" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/06/02/BSGS及EXBSGS/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/06/02/BSGS及EXBSGS/">Comentarios</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/06/05/BZOJ-2818-Gcd/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más nuevo</strong>
+            <div class="article-nav-title">
+                
+                    BZOJ 2818: Gcd
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/06/02/UVa-11609-Teams/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">UVa 11609 - Teams</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 ZJYelizaveta<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://yoursite.com/2017/06/02/BSGS及EXBSGS/';
+        
+        this.page.identifier = 'BSGS及EXBSGS';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

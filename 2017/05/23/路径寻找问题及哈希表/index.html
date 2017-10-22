@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>路径寻找问题及哈希表 | ZJYelizaveta&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="这一篇Blog着重写的应该是Hash吧，路径寻找问题在应用中会稍微提到一点。 定义 若关键字为k，则其值存放在f(k) 的存储位置上。由此，不需比较便可直接取得所查记录。称这个对应关系 f为散列函数，按这个思想建立的表为散列表。 对不同的关键字可能得到同一散列地址，即k1  ≠ k2 ，而   f(k1) = f(k2)，这种现象称为冲突。具有相同函数值的关键字对该散列函数来说称做同义词。综上所述">
+<meta name="keywords" content="DFS及BFS,搜索,哈希表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="路径寻找问题及哈希表">
+<meta property="og:url" content="http://yoursite.com/2017/05/23/路径寻找问题及哈希表/index.html">
+<meta property="og:site_name" content="ZJYelizaveta&#39;s Blog">
+<meta property="og:description" content="这一篇Blog着重写的应该是Hash吧，路径寻找问题在应用中会稍微提到一点。 定义 若关键字为k，则其值存放在f(k) 的存储位置上。由此，不需比较便可直接取得所查记录。称这个对应关系 f为散列函数，按这个思想建立的表为散列表。 对不同的关键字可能得到同一散列地址，即k1  ≠ k2 ，而   f(k1) = f(k2)，这种现象称为冲突。具有相同函数值的关键字对该散列函数来说称做同义词。综上所述">
+<meta property="og:image" content="http://img.it610.com/image/info5/7d4a09a455a64cd1bd083cb27376e6c7.png">
+<meta property="og:image" content="https://akaedu.github.io/book/images/linkedlist.hashtab.png">
+<meta property="og:updated_time" content="2017-05-23T15:18:46.858Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="路径寻找问题及哈希表">
+<meta name="twitter:description" content="这一篇Blog着重写的应该是Hash吧，路径寻找问题在应用中会稍微提到一点。 定义 若关键字为k，则其值存放在f(k) 的存储位置上。由此，不需比较便可直接取得所查记录。称这个对应关系 f为散列函数，按这个思想建立的表为散列表。 对不同的关键字可能得到同一散列地址，即k1  ≠ k2 ，而   f(k1) = f(k2)，这种现象称为冲突。具有相同函数值的关键字对该散列函数来说称做同义词。综上所述">
+<meta name="twitter:image" content="http://img.it610.com/image/info5/7d4a09a455a64cd1bd083cb27376e6c7.png">
+    
+
+    
+        <link rel="alternate" href="/" title="ZJYelizaveta&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">ZJYelizaveta&#39;s Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/Links">Links</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/Links">Links</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">ZJYelizaveta</h2>
+            <h3 id="title">有幸在那一天，遇到你，最了不起的你。</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Wuhan, China</span>
+            <a id="follow" target="_blank" href="">SEGUIR</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                71
+                <span>Entradas</span>
+            </div>
+            <div class="article-info-block">
+                85
+                <span>Etiquetas</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/ZJYelizaveta" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-路径寻找问题及哈希表" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            路径寻找问题及哈希表
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/23/路径寻找问题及哈希表/">
+            <time datetime="2017-05-23T13:59:51.000Z" itemprop="datePublished">2017-05-23</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/DFS及BFS/">DFS及BFS</a>, <a class="tag-link" href="/tags/哈希表/">哈希表</a>, <a class="tag-link" href="/tags/搜索/">搜索</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>这一篇Blog着重写的应该是Hash吧，路径寻找问题在应用中会稍微提到一点。</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
+<li>若关键字为<strong>k</strong>，则其值存放在<strong>f(k)</strong> 的存储位置上。由此，不需比较便可直接取得所查记录。称这个对应关系 <strong>f</strong>为散列函数，按这个思想建立的表为<strong>散列表</strong>。</li>
+<li>对不同的关键字可能得到同一散列地址，即<strong>k<sub>1</sub>  ≠ k<sub>2</sub></strong> ，而   <strong>f(k<sub>1</sub>) = f(k<sub>2</sub>)</strong>，这种现象称为冲突。具有相同函数值的关键字对该散列函数来说称做同义词。综上所述，根据散列函数 <strong>f(k)</strong>和处理冲突的方法将一组关键字映射到一个有限的连续的地址集（区间）上，并以关键字在地址集中的“像”作为记录在表中的存储位置，这种表便称为<strong>散列表</strong>，这一映射过程称为<strong>散列造表或散列</strong>，所得的存储位置称<strong>散列地址</strong>。</li>
+<li>若对于关键字集合中的任一个关键字，经散列函数映象到地址集合中任何一个地址的概率是相等的，则称此类散列函数为<strong>均匀散列函数</strong>，这就是使关键字经过散列函数得到一个“随机的地址”，从而减少冲突。</li>
+</ul>
+<a id="more"></a>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><h3 id="八数码问题"><a href="#八数码问题" class="headerlink" title="八数码问题"></a>八数码问题</h3><h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><p>编号为1~8的8个正方形滑块被摆成3行3列（有一个格子留空），如图7-14所示。每次可以把与空格相邻的滑块（有公共边才算相邻）移到空格中，而它原来的位置就成为了新的空格。给定初始局面和目标局面（用0表示空格），你的任务是计算出最少的移动步数，如果无法到达目标局面，则输出-1。<br>                                                         图7 - 14<br><img src="http://img.it610.com/image/info5/7d4a09a455a64cd1bd083cb27376e6c7.png" alt="八数码问题"></p>
+<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>看完题目之后，我们不难想到将八数码问题归结为图上的最短路问题，图中的结点就是9个格子里的滑块编号（从上到下，从左到右把它们放在一个包含9个元素的数组中）。而且这副图上的权都为1，所以不难想到用BFS来求解。而且，只要用到BFS一定要进行判重，为避免同一个结点访问很多次，提高空间和时间复杂度（树的BFS不用判重，而图的BFS要进行判重，想一想为什么？）。<br>对于判重而言，就有很多种方式了。</p>
+<ul>
+<li>第一种方法是：把排列变为整数，然后开一个一维数组。也就是设计一套排列的编码和解码函数，然后一一对应起来。</li>
+<li>第二种方法是用STL里的set集合，先把状态转换为9为十进制整数，然后用set<int>进行判重。但这两种办法对于需要判重的数很多的时候，不仅不会降低复杂度反而还会提升。</int></li>
+<li>第三种做法<strong>哈希表</strong>。简而言之就是把结点变为整数，但不一定是要一一对应的，只需要设计一个哈希函数，然后将任意结点映射到某一个指定范围[0，M - 1]内，其中M是由我们自己定的，要根据要开的数组大小来选择（也就是我们说得HashSize）。而HushSize有是有目前的数的个数（结点的个数）来确定的，通常在估算完结点个数后，取比结点个数大<strong>20%~50%的质数</strong>作为HushSize。每次用数模HushSize，然后取其余数，把这个数接到余数所对应的链表后。举一个栗子，如图我们有数7, 12，29，38，57，98。这里我们取HushSize为11，7mod11余7（所以把7放在链表从上往下数0,1,2,3,4,5,6,7，第七个位置后接起来），对于mod之后余数相同的数，我们的做法不同图上所显示的方法，而是要充分的利用链表的特性把大的数放在前面（相同的每次用vector来push_back把大的数放在后面，但是由于每用STL时都要动态的分配空间，同样会使时间复杂度升高），所以这里我们采用刘汝佳的方法，用数组模拟链表来做。<br><img src="https://akaedu.github.io/book/images/linkedlist.hashtab.png" alt="Hash"><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> hashsize = <span class="number">1000003</span>;</div><div class="line"><span class="keyword">int</span> head[hashsize], next[MaxState];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init_lookup_table</span><span class="params">()</span></span>&#123;<span class="built_in">memset</span>(head, <span class="number">0</span>, <span class="keyword">sizeof</span>(head));&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">hash</span><span class="params">(State&amp; s)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> v = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++)</div><div class="line">        v = v * <span class="number">10</span> + s[i];<span class="comment">//把九个数字组合成九位数（对于八数码而言）</span></div><div class="line">    <span class="keyword">return</span> v % hashsize;<span class="comment">//确保Hash函数的值是不超过Huah表的大小的非负整数</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">try_to_insert</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> h = hash(st[s]);<span class="comment">//调用Hush</span></div><div class="line">    <span class="keyword">int</span> u = head[h];<span class="comment">//从表头开始查找链表</span></div><div class="line">    <span class="keyword">while</span>(u)&#123;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">memcmp</span>(st[u], st[s], <span class="keyword">sizeof</span>(st[s])) == <span class="number">0</span>)</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//找到了重复的，所以插入失败</span></div><div class="line">        u = next[u];<span class="comment">//顺着链表继续找</span></div><div class="line">    &#125;</div><div class="line">    next[s] = head[h];<span class="comment">//插入链表中</span></div><div class="line">    head[h] = s;</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>想一想为什么最后才将数插入链表，顺序为什么是这样子的？<br>在看完Hush算法后，我们再回来理一理这道题目的思路。首先，把这道题目归结为路径寻找问题，想到用BFS来求解（套用BFS框架）；因为BFS要判重所以我们引入Hush。最后提一下这道题目中一个重要的技巧，也就是使用Hush的一个前提之一，将3*3的格子中的每行或三列的三个数由字符转为一个三位数。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> State[<span class="number">9</span>];</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxState = <span class="number">1000000</span>;</div><div class="line">State st[MaxState], goal;</div><div class="line"><span class="keyword">int</span> dist[MaxState];</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> dx[] = &#123; <span class="number">-1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>&#125;;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> dy[] = &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">1</span>&#125;;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> hashsize = <span class="number">1000003</span>;</div><div class="line"><span class="keyword">int</span> head[hashsize], next[MaxState];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init_lookup_table</span><span class="params">()</span></span>&#123;<span class="built_in">memset</span>(head, <span class="number">0</span>, <span class="keyword">sizeof</span>(head));&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">hash</span><span class="params">(State&amp; s)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> v = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) v = v * <span class="number">10</span> + s[i];</div><div class="line">    <span class="keyword">return</span> v % hashsize;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">try_to_insert</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> h = hash(st[s]);</div><div class="line">    <span class="keyword">int</span> u = head[h];</div><div class="line">    <span class="keyword">while</span>(u)&#123;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">memcmp</span>(st[u], st[s], <span class="keyword">sizeof</span>(st[s])) == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        u = next[u];</div><div class="line">    &#125;</div><div class="line">    next[s] = head[h];</div><div class="line">    head[h] = s;</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">bfs</span><span class="params">()</span></span>&#123;</div><div class="line">    init_lookup_table();</div><div class="line">    <span class="keyword">int</span> front = <span class="number">1</span>, rear = <span class="number">2</span>;</div><div class="line">    <span class="keyword">while</span>(front &lt; rear)&#123;</div><div class="line">        State&amp; s = st[front];</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">memcmp</span>(goal, s, <span class="keyword">sizeof</span>(s)) == <span class="number">0</span>) <span class="keyword">return</span> front;</div><div class="line">        <span class="keyword">int</span> z;</div><div class="line">        <span class="keyword">for</span>(z = <span class="number">0</span>; z &lt; <span class="number">9</span>; z++) <span class="keyword">if</span>(!s[z]) <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">int</span> x = z / <span class="number">3</span>, y = z % <span class="number">3</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> d = <span class="number">0</span>; d &lt; <span class="number">4</span>; d++)&#123;</div><div class="line">            <span class="keyword">int</span> NewX = x + dx[d];</div><div class="line">            <span class="keyword">int</span> NewY = y + dy[d];</div><div class="line">            <span class="keyword">int</span> NewZ = NewX * <span class="number">3</span> + NewY;</div><div class="line">            <span class="keyword">if</span>(NewX &gt;= <span class="number">0</span> &amp;&amp; NewX &lt; <span class="number">3</span> &amp;&amp; NewY &gt;= <span class="number">0</span> &amp;&amp; NewY &lt; <span class="number">3</span>)&#123;</div><div class="line">                State&amp; t = st[rear];</div><div class="line">                <span class="built_in">memcpy</span>(&amp;t, &amp;s, <span class="keyword">sizeof</span>(s));</div><div class="line">                t[NewZ] = s[z];</div><div class="line">                t[z] = s[NewZ];</div><div class="line">                dist[rear] = dist[front] + <span class="number">1</span>;</div><div class="line">                <span class="keyword">if</span>(try_to_insert(rear)) rear++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        front++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> DEBUG</span></div><div class="line">    <span class="comment">//freopen("test.in","r",stdin);</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;st[<span class="number">1</span>][i]);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;goal[i]);</div><div class="line">    <span class="keyword">int</span> ans = bfs();</div><div class="line">    <span class="keyword">if</span>(ans &gt; <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, dist[ans]);</div><div class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h2><p>很多问题都可以和归结为图的遍历，但这些问题中图不是是事先给出的，从程序读入的，而是有程序动态生成的，称为<strong>隐式图</strong>。回溯法（关于回溯法的总结我就先不写啦，有时间再来填坑吧！^-^）一般是要找一个（或所有）满足约束状态的解（或者是某种意义状态下的最优解），而状态空间搜索一般是要寻找一个从初始状态到终止状态的路径，所以把路径寻找问题归结为隐式图的遍历。隐式图的遍历需要一个结点查找表来判重，一般可以先用STL中的set来写（代码量最小，最简单，但时间效率很低），后面有时间在将其用Hush的方式来写一遍，避免出错，如果你对Hush表很熟练，那么就可以直接写哒！</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/05/23/路径寻找问题及哈希表/" data-id="cj926579t003s84ujpslsidfe" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/05/23/路径寻找问题及哈希表/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/05/23/路径寻找问题及哈希表/">Comentarios</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/05/23/UVa-839-Not-so-Mobile/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más nuevo</strong>
+            <div class="article-nav-title">
+                
+                    UVa 839 - Not so Mobile
+                
+            </div>
+        </a>
+    
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 ZJYelizaveta<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://yoursite.com/2017/05/23/路径寻找问题及哈希表/';
+        
+        this.page.identifier = '路径寻找问题及哈希表';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

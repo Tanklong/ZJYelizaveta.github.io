@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>BZOJ 1001: [BeiJing2006]狼抓兔子 | ZJYelizaveta&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="题目地址 描述现在小朋友们最喜欢的“喜羊羊与灰太狼”，话说灰太狼抓羊不到，但抓兔子还是比较在行的，而且现在的兔子还比较笨，它们只有两个窝，现在你做为狼王，面对下面这样一个网格的地形：左上角点为$(1,1)$，右下角点为$(N,M)$(上图中$N=3,M=4$)，有以下三种类型的道路：  $(x,y) \Leftrightarrow (x+1,y)$ $(x,y) \Leftrightarrow (">
+<meta name="keywords" content="图论,BZOJ,网络流,最大流,对偶图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BZOJ 1001: [BeiJing2006]狼抓兔子">
+<meta property="og:url" content="http://yoursite.com/2017/07/24/BZOJ-1001-BeiJing2006-狼抓兔子/index.html">
+<meta property="og:site_name" content="ZJYelizaveta&#39;s Blog">
+<meta property="og:description" content="题目地址 描述现在小朋友们最喜欢的“喜羊羊与灰太狼”，话说灰太狼抓羊不到，但抓兔子还是比较在行的，而且现在的兔子还比较笨，它们只有两个窝，现在你做为狼王，面对下面这样一个网格的地形：左上角点为$(1,1)$，右下角点为$(N,M)$(上图中$N=3,M=4$)，有以下三种类型的道路：  $(x,y) \Leftrightarrow (x+1,y)$ $(x,y) \Leftrightarrow (">
+<meta property="og:image" content="http://www.lydsy.com/JudgeOnline/images/1001.jpg">
+<meta property="og:image" content="http://oqeu5dc5m.bkt.clouddn.com/5.png">
+<meta property="og:image" content="http://oqeu5dc5m.bkt.clouddn.com/6.png">
+<meta property="og:updated_time" content="2017-07-24T09:09:38.192Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BZOJ 1001: [BeiJing2006]狼抓兔子">
+<meta name="twitter:description" content="题目地址 描述现在小朋友们最喜欢的“喜羊羊与灰太狼”，话说灰太狼抓羊不到，但抓兔子还是比较在行的，而且现在的兔子还比较笨，它们只有两个窝，现在你做为狼王，面对下面这样一个网格的地形：左上角点为$(1,1)$，右下角点为$(N,M)$(上图中$N=3,M=4$)，有以下三种类型的道路：  $(x,y) \Leftrightarrow (x+1,y)$ $(x,y) \Leftrightarrow (">
+<meta name="twitter:image" content="http://www.lydsy.com/JudgeOnline/images/1001.jpg">
+    
+
+    
+        <link rel="alternate" href="/" title="ZJYelizaveta&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">ZJYelizaveta&#39;s Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/Links">Links</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/Links">Links</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">ZJYelizaveta</h2>
+            <h3 id="title">有幸在那一天，遇到你，最了不起的你。</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Wuhan, China</span>
+            <a id="follow" target="_blank" href="">SEGUIR</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                71
+                <span>Entradas</span>
+            </div>
+            <div class="article-info-block">
+                85
+                <span>Etiquetas</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/ZJYelizaveta" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-BZOJ-1001-BeiJing2006-狼抓兔子" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            BZOJ 1001: [BeiJing2006]狼抓兔子
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/07/24/BZOJ-1001-BeiJing2006-狼抓兔子/">
+            <time datetime="2017-07-24T02:15:14.000Z" itemprop="datePublished">2017-07-24</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/BZOJ/">BZOJ</a>, <a class="tag-link" href="/tags/图论/">图论</a>, <a class="tag-link" href="/tags/对偶图/">对偶图</a>, <a class="tag-link" href="/tags/最大流/">最大流</a>, <a class="tag-link" href="/tags/网络流/">网络流</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1001" target="_blank" rel="external">题目地址</a></p>
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>现在小朋友们最喜欢的“喜羊羊与灰太狼”，话说灰太狼抓羊不到，但抓兔子还是比较在行的，而且现在的兔子还比较笨，它们只有两个窝，现在你做为狼王，面对下面这样一个网格的地形：<br><img src="http://www.lydsy.com/JudgeOnline/images/1001.jpg" alt="不想画图了，盗链QAQ"><br>左上角点为$(1,1)$，右下角点为$(N,M)$(上图中$N=3,M=4$)，有以下三种类型的道路：</p>
+<ul>
+<li>$(x,y) \Leftrightarrow (x+1,y)$</li>
+<li>$(x,y) \Leftrightarrow (x,y+1)$</li>
+<li>$(x,y) \Leftrightarrow (x+1,y+1)$</li>
+</ul>
+<a id="more"></a>
+<p>道路上的权值表示这条路上最多能够通过的兔子数，道路是无向的。 左上角和右下角为兔子的两个窝，开始时所有的兔子都聚集在左上角$(1,1)$的窝里，现在它们要跑到右下角$(N,M)$的窝中去，狼王开始伏击<br>这些兔子。当然为了保险起见，如果一条道路上最多通过的兔子数为$K$，狼王需要安排同样数量的$K$只狼，才能完全封锁这条道路，你需要帮助狼王安排一个伏击方案，使得在将兔子一网打尽的前提下，参与的<br>狼的数量要最小。$(1 \leq N, M \leq 1000)$</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><h3 id="算法一：最小割转最大流"><a href="#算法一：最小割转最大流" class="headerlink" title="算法一：最小割转最大流"></a>算法一：最小割转最大流</h3><p>菜啊，现在才做这道题目。<br>首先看这道题目首先可以想到最小割，以前一直以为一定要转化为对偶图然后做最短路，后来发现把最小割转化为最大流写一发Dinic再加一点优化就可以卡过去了QAQ<br>然后时间复杂度为$\Theta(m \cdot n^{2} + 3m \cdot n)$，如果时间复杂度错了，请在评论中指出蟹蟹QAQ<br>然后一定要注意这是一个无向图啊QAQ</p>
+<h3 id="算法二：平面图最小割转对偶图最短路"><a href="#算法二：平面图最小割转对偶图最短路" class="headerlink" title="算法二：平面图最小割转对偶图最短路"></a>算法二：平面图最小割转对偶图最短路</h3><p><a href="https://wenku.baidu.com/view/5a7df375a417866fb84a8e54.html" target="_blank" rel="external">附参考资料地址：浅析最大最小定理在信息学竞赛中的应用</a><br>简单解释一下：</p>
+<ul>
+<li>首先根据定义我们知道这是一个<strong>s-t平面图</strong></li>
+<li><p>而根据平面图的性质：每个平面图$G$都有一个与其对偶的平面图$G’$</p>
+<ul>
+<li>$G’$中的每个点对应$G$中的一个面</li>
+<li>对于$G$中的每条边$e$，$e$属于两个面$f_{1’},f_{2’}$，加入边$(f_{1}, f_{2})$；$e$只属于一个面$f$，加入回边$(f’,f’)$。</li>
+</ul>
+</li>
+<li><p>对于平面图$G$与其对偶图$G’$存在如下的关系：</p>
+<ul>
+<li>$G$的面数等于$G’$的点数，$G’$的点数等于$G$的面数，$G$与$G’$边数相同</li>
+<li>$G’$中的环对应$G$中的割一一对应。</li>
+</ul>
+</li>
+</ul>
+<p>如图，<img src="http://oqeu5dc5m.bkt.clouddn.com/5.png" alt="此处输入图片的描述"></p>
+<ul>
+<li>我们进一步发现，如果我们令每条边的长度等于它的容量，那么最小割的容量就等于最短路的长度，也就是说<strong>求原图s-t图的最小割等于求其对偶图的最短路</strong>，那么我们可以在$\Theta (mn)$内求出答案QAQ，是这个时间复杂度吧（SPFA的复杂度玄学）</li>
+<li>那么样例中的如我们可以表示为这样：<br><img src="http://oqeu5dc5m.bkt.clouddn.com/6.png" alt="此处输入图片的描述"><br>值得注意的是这道题目比较良心在于他已经给出了这道题目的样子所以我们可以直接在原来s-t图上建立出他的对偶图，当然如果有的题目中没有给出图的样子那么就先要找出原图中的所有面并标号，然后建图（还没有见过类似的题目QAQ）</li>
+</ul>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><ul>
+<li><p>算法一<br>这是一个无向图呀QAQ</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//  BZOJ 1001 [BeiJing2006]狼抓兔子</span></div><div class="line"><span class="comment">//  Copyright (c) 2017年 ZJYelizaveta. All rights reserved.</span></div><div class="line"><span class="comment">//  网络流</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">readIn</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> x = <span class="number">0</span>, f = <span class="number">1</span>;</div><div class="line">    <span class="keyword">char</span> ch = getchar();</div><div class="line">    <span class="keyword">while</span> (ch &lt;<span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>) &#123;<span class="keyword">if</span> (ch == <span class="string">'-'</span>) f = <span class="number">-1</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">while</span> (ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>) &#123;x = x * <span class="number">10</span> + ch - <span class="string">'0'</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">return</span> x * f;</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">1000000</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_M = <span class="number">6000000</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">int</span> n, m, s, t;</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> Dinic &#123;</div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></div><div class="line">        <span class="keyword">int</span> to, next, cap;</div><div class="line">    &#125;edge[MAX_M];</div><div class="line">    <span class="keyword">int</span> head[MAX_N], cnt = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> iter[MAX_N], level[MAX_N];</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> from, <span class="keyword">int</span> to, <span class="keyword">int</span> cap)</span> </span>&#123;</div><div class="line">        edge[++cnt].to = to; edge[cnt].cap = cap; edge[cnt].next = head[from]; head[from] = cnt;</div><div class="line">        edge[++cnt].to = from; edge[cnt].cap = cap; edge[cnt].next = head[to]; head[to] = cnt;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">bfs</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="built_in">memset</span>(level, <span class="number">-1</span>, <span class="keyword">sizeof</span> level);</div><div class="line">        <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</div><div class="line">        q.push(s), level[s] = <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (!q.empty()) &#123;</div><div class="line">            <span class="keyword">int</span> u = q.front(); q.pop();</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = head[u]; i; i = edge[i].next) &#123;</div><div class="line">                <span class="keyword">if</span> (edge[i].cap &amp;&amp; level[edge[i].to] == <span class="number">-1</span>) &#123;</div><div class="line">                    level[edge[i].to] = level[u] + <span class="number">1</span>;</div><div class="line">                    q.push(edge[i].to);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> level[t] != <span class="number">-1</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> flow)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (u == t) <span class="keyword">return</span> flow;</div><div class="line">        <span class="keyword">int</span> used = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = head[u]; i &amp;&amp; flow &gt; used; i = edge[i].next) &#123;</div><div class="line"><span class="comment">//            Edge &amp;e = G[u][i];</span></div><div class="line">            <span class="keyword">if</span> (edge[i].cap &amp;&amp; level[edge[i].to] == level[u] + <span class="number">1</span>) &#123;</div><div class="line">                <span class="keyword">int</span> d = dfs(edge[i].to, min(flow - used, edge[i].cap));</div><div class="line"><span class="comment">//                printf("%d\n", d);</span></div><div class="line">                used += d; edge[i].cap -= d; edge[i^<span class="number">1</span>].cap += d;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (!used) level[u] = <span class="number">-1</span>;</div><div class="line">        <span class="keyword">return</span> used;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxFlow</span><span class="params">(<span class="keyword">int</span> _s, <span class="keyword">int</span> <span class="keyword">_t</span>)</span> </span>&#123;</div><div class="line">        s = _s, t = <span class="keyword">_t</span>;</div><div class="line">        <span class="keyword">int</span> flow = <span class="number">0</span>, d = <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (bfs()) &#123;</div><div class="line"><span class="comment">//            memset(iter, 0, sizeof iter);</span></div><div class="line">            <span class="keyword">while</span> (d = dfs(s, INT_MAX), d) flow += d;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> flow;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Dinic;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    n = readIn(), m = readIn();</div><div class="line"></div><div class="line">    s = <span class="number">1</span>, t = n * m;</div><div class="line"><span class="comment">//    printf("%d %d\n", s, t);</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; m; ++j) &#123;</div><div class="line">            <span class="keyword">int</span> w = readIn();</div><div class="line"><span class="comment">//            printf("%d %d %d\n", (i - 1) * m + j, (i - 1) * m + j + 1, w);</span></div><div class="line">            addEdge((i - <span class="number">1</span>) * m + j, (i - <span class="number">1</span>) * m + j + <span class="number">1</span>, w);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; ++j) &#123;</div><div class="line">            <span class="keyword">int</span> w = readIn();</div><div class="line"><span class="comment">//            printf("%d %d %d\n", (i - 1) * m + j, i * m + j, w);</span></div><div class="line">            addEdge((i - <span class="number">1</span>) * m + j, i * m + j, w);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; m; ++j) &#123;</div><div class="line">            <span class="keyword">int</span> w = readIn();</div><div class="line"><span class="comment">//            printf("%d %d %d\n", (i - 1) * m + j, i * m + j + 1, w);</span></div><div class="line">            addEdge((i - <span class="number">1</span>) * m + j, i * m + j + <span class="number">1</span>, w);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, maxFlow(s, t));</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>算法二<br>当$i = 1 || i == m || j == 1 || j == m$的时候特判一下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//  BZOJ 1001 [BeiJing2006]狼抓兔子</span></div><div class="line"><span class="comment">//  Copyright (c) 2017年 ZJYelizaveta. All rights reserved.</span></div><div class="line"><span class="comment">//  对偶图 + 最短路</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">readIn</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> x = <span class="number">0</span>, f = <span class="number">1</span>;</div><div class="line">    <span class="keyword">char</span> ch = getchar();</div><div class="line">    <span class="keyword">while</span> (ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>) &#123;<span class="keyword">if</span> (ch == <span class="string">'-'</span>) f = <span class="number">-1</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">while</span> (ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>) &#123;x = x * <span class="number">10</span> + ch - <span class="string">'0'</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">return</span> x * f;</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">2000000</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_M = <span class="number">8000000</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">int</span> n, m, s, t;</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> SPFA &#123;</div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></div><div class="line">        <span class="keyword">int</span> to, next, w;</div><div class="line">    &#125;edge[MAX_M];</div><div class="line">    <span class="keyword">int</span> head[MAX_N], cnt = <span class="number">0</span>;</div><div class="line">    <span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; P;</div><div class="line">    <span class="keyword">int</span> dis[MAX_N];</div><div class="line">    <span class="keyword">bool</span> inq[MAX_N];</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> from, <span class="keyword">int</span> to, <span class="keyword">int</span> cost)</span> </span>&#123;</div><div class="line">        edge[++cnt].to = to; edge[cnt].w = cost; edge[cnt].next = head[from]; head[from] = cnt;</div><div class="line">        edge[++cnt].to = from; edge[cnt].w = cost; edge[cnt].next = head[to]; head[to] = cnt;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">spfa</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="built_in">memset</span>(dis, INF, <span class="keyword">sizeof</span> dis);</div><div class="line">        <span class="built_in">memset</span>(inq, <span class="number">0</span>, <span class="keyword">sizeof</span> inq);</div><div class="line">        <span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt; q;</div><div class="line">        q.push_front(s), dis[s] = <span class="number">0</span>, inq[s] = <span class="literal">true</span>;</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (!q.empty()) &#123;</div><div class="line">            <span class="keyword">int</span> u = q.front(); q.pop_front();</div><div class="line">            inq[u] = <span class="literal">false</span>;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = head[u]; i != <span class="number">-1</span>; i = edge[i].next) &#123;</div><div class="line">                <span class="keyword">int</span> v = edge[i].to;</div><div class="line">                <span class="keyword">if</span> (dis[v] &gt; dis[u] + edge[i].w) &#123;</div><div class="line">                    dis[v] = dis[u] + edge[i].w;</div><div class="line">                    <span class="keyword">if</span> (!inq[u]) &#123;</div><div class="line">                        inq[v] = <span class="literal">true</span>;</div><div class="line">                        <span class="keyword">if</span> (q.empty() || dis[v]</div><div class="line">                         &gt; dis[q.front()]) q.push_back(v);</div><div class="line">                        <span class="keyword">else</span> q.push_front(v);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> SPFA;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    n = readIn(), m = readIn();</div><div class="line">    s = <span class="number">0</span>, t = (((n - <span class="number">1</span>) * (m - <span class="number">1</span>)) &lt;&lt; <span class="number">1</span>) + <span class="number">1</span>;</div><div class="line"><span class="comment">//    printf("%d %d %d %d\n", n, m, s, t);</span></div><div class="line">    <span class="built_in">memset</span>(head, <span class="number">-1</span>, <span class="keyword">sizeof</span> head);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">1</span>; j &lt; m; ++j) &#123;</div><div class="line">            <span class="keyword">int</span> w = readIn();</div><div class="line">            <span class="keyword">if</span> (i == <span class="number">1</span>) addEdge(j &lt;&lt; <span class="number">1</span>, t, w); <span class="comment">//printf("%d %d %d\n", j &lt;&lt; 1, t, w);</span></div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (i == n) addEdge((((n - <span class="number">2</span>) * (m - <span class="number">1</span>)) &lt;&lt; <span class="number">1</span>) + (j &lt;&lt; <span class="number">1</span>) - <span class="number">1</span>, s, w); <span class="comment">//printf("%d %d %d\n", (((n - 2) * (m - 1)) &lt;&lt; 1) + (j &lt;&lt; 1) - 1, s, w);</span></div><div class="line">            <span class="keyword">else</span> addEdge((((i - <span class="number">2</span>) * (m - <span class="number">1</span>)) &lt;&lt; <span class="number">1</span>) + (j &lt;&lt; <span class="number">1</span>) - <span class="number">1</span>, (((i - <span class="number">1</span>) * (m - <span class="number">1</span>)) &lt;&lt; <span class="number">1</span>) + (j &lt;&lt; <span class="number">1</span>), w);<span class="comment">// printf("%d %d %d\n", (((i - 2) * (m - 1)) &lt;&lt; 1) + (j &lt;&lt; 1) - 1, (((i - 1) * (m - 1)) &lt;&lt; 1) + (j &lt;&lt; 1), w);</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; ++j) &#123;</div><div class="line">            <span class="keyword">int</span> w = readIn();</div><div class="line">            <span class="keyword">if</span> (j == <span class="number">1</span>) addEdge(s, (((i - <span class="number">1</span>) * (m - <span class="number">1</span>)) &lt;&lt; <span class="number">1</span>) + <span class="number">1</span>, w); <span class="comment">//printf("%d %d %d\n", s, (((i - 1) * (m - 1)) &lt;&lt; 1) + 1, w);</span></div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (j == m) addEdge(t, (i * (m - <span class="number">1</span>)) &lt;&lt; <span class="number">1</span>, w); <span class="comment">//printf("%d %d %d\n", t,  (i * (m - 1)) &lt;&lt; 1, w);</span></div><div class="line">            <span class="keyword">else</span> addEdge((((i - <span class="number">1</span>) * (m - <span class="number">1</span>)) &lt;&lt; <span class="number">1</span>) + ((j - <span class="number">1</span>) &lt;&lt; <span class="number">1</span>), (((i - <span class="number">1</span>) * (m - <span class="number">1</span>)) &lt;&lt; <span class="number">1</span>) + ((j - <span class="number">1</span>) &lt;&lt; <span class="number">1</span>) + <span class="number">1</span>, w); <span class="comment">//printf("%d %d %d\n", (((i - 1) * (m - 1)) &lt;&lt; 1) + ((j - 1) &lt;&lt; 1), (((i - 1) * (m - 1)) &lt;&lt; 1) + ((j - 1) &lt;&lt; 1) + 1, w);</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">1</span>; j &lt; m; ++j) &#123;</div><div class="line">            <span class="keyword">int</span> w = readIn();</div><div class="line">            addEdge((((i - <span class="number">1</span>) * (m - <span class="number">1</span>)) &lt;&lt; <span class="number">1</span>) + (j &lt;&lt; <span class="number">1</span>) - <span class="number">1</span>, (((i - <span class="number">1</span>) * (m - <span class="number">1</span>)) &lt;&lt; <span class="number">1</span>) + (j &lt;&lt; <span class="number">1</span>), w);</div><div class="line">            <span class="comment">//printf("%d %d %d\n", (((i - 1) * (m - 1)) &lt;&lt; 1) + (j &lt;&lt; 1) - 1, (((i - 1) * (m - 1)) &lt;&lt; 1) + (j &lt;&lt; 1), w);</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    spfa();</div><div class="line"><span class="comment">//    for (int i = s; i &lt;= t; ++i) printf("%d\n", dist[i]);</span></div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, dis[t]);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/07/24/BZOJ-1001-BeiJing2006-狼抓兔子/" data-id="cj926574i000584uj9pbtwkov" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/07/24/BZOJ-1001-BeiJing2006-狼抓兔子/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/07/24/BZOJ-1001-BeiJing2006-狼抓兔子/">Comentarios</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/07/24/BZOJ-1233-Usaco2009Open-干草堆tower/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más nuevo</strong>
+            <div class="article-nav-title">
+                
+                    BZOJ 1233 [Usaco2009Open]干草堆tower
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/07/05/「雅礼集训-2017-Day2」C/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">「雅礼集训 2017 Day2」C</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 ZJYelizaveta<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://yoursite.com/2017/07/24/BZOJ-1001-BeiJing2006-狼抓兔子/';
+        
+        this.page.identifier = 'BZOJ-1001-BeiJing2006-狼抓兔子';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
