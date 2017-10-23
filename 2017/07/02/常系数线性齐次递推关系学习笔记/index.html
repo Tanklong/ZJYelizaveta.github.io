@@ -6,7 +6,7 @@
     <title>常系数线性齐次递推关系学习笔记 | ZJYelizaveta&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="初中的班主任好像生病了，本来准备和同学一起去看望老师，但是好像去不了QAQ真的很想见一见初中的同学，好想他们呀QAQ 阅读这篇文章你所需要的前置技能大概有：基础的线性代数，以及看懂渣叙述的深厚语文功底QAQ可能有表述不清或者错误的地方，欢迎指正！">
-<meta name="keywords" content="数学,递推,组合数学">
+<meta name="keywords" content="数学,组合数学,递推">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常系数线性齐次递推关系学习笔记">
 <meta property="og:url" content="http://yoursite.com/2017/07/02/常系数线性齐次递推关系学习笔记/index.html">
@@ -302,7 +302,7 @@ q_{1}^{k - 1} & q_{2}^{k - 1} & \cdots & q_{k}^{k - 1}
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/02/常系数线性齐次递推关系学习笔记/" data-id="cj94anmzy004w9oujsxywluc9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/07/02/常系数线性齐次递推关系学习笔记/" data-id="cj94c4lz60035l4ujii1womo8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -370,8 +370,6 @@ q_{1}^{k - 1} & q_{2}^{k - 1} & \cdots & q_{k}^{k - 1}
 
             
     
-        <a href="http://yoursite.com/2017/07/02/常系数线性齐次递推关系学习笔记/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/07/02/常系数线性齐次递推关系学习笔记/">Comments</a>
-    
 
         </footer>
     </div>
@@ -404,9 +402,7 @@ q_{1}^{k - 1} & q_{2}^{k - 1} & \cdots & q_{k}^{k - 1}
     
     
         <section id="comments">
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
+	<div id="commentContainer"></div>
 </section>
     
 
@@ -425,21 +421,20 @@ q_{1}^{k - 1} & q_{2}^{k - 1} & \cdots & q_{k}^{k - 1}
 </footer>
         
     
-    <script>
-    var disqus_config = function () {
-        
-            this.page.url = 'http://yoursite.com/2017/07/02/常系数线性齐次递推关系学习笔记/';
-        
-        this.page.identifier = '常系数线性齐次递推关系学习笔记';
-    };
-    (function() { 
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-
+	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+	<script>
+		var gitment = new Gitment({
+			owner: 'ZJYelizaveta',
+			repo: 'ZJYelizaveta',
+			oauth: {
+				client_id: '265d5e867fb4af943884',
+				client_secret: 'f424c0ee292ddd6be538785c580101683b71da27',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
 
 
 

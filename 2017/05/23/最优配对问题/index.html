@@ -278,7 +278,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/23/最优配对问题/" data-id="cj94ann01004z9oujl47jb35d" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/23/最优配对问题/" data-id="cj94c4lz90036l4uj60cv4xdh" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -346,8 +346,6 @@
 
             
     
-        <a href="http://yoursite.com/2017/05/23/最优配对问题/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/05/23/最优配对问题/">Comments</a>
-    
 
         </footer>
     </div>
@@ -380,9 +378,7 @@
     
     
         <section id="comments">
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
+	<div id="commentContainer"></div>
 </section>
     
 
@@ -401,21 +397,20 @@
 </footer>
         
     
-    <script>
-    var disqus_config = function () {
-        
-            this.page.url = 'http://yoursite.com/2017/05/23/最优配对问题/';
-        
-        this.page.identifier = '最优配对问题';
-    };
-    (function() { 
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-
+	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+	<script>
+		var gitment = new Gitment({
+			owner: 'ZJYelizaveta',
+			repo: 'ZJYelizaveta',
+			oauth: {
+				client_id: '265d5e867fb4af943884',
+				client_secret: 'f424c0ee292ddd6be538785c580101683b71da27',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
 
 
 

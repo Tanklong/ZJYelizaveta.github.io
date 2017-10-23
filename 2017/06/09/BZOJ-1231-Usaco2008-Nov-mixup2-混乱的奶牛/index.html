@@ -272,7 +272,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/06/09/BZOJ-1231-Usaco2008-Nov-mixup2-混乱的奶牛/" data-id="cj94anmsa00059oujnl1dou1q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/06/09/BZOJ-1231-Usaco2008-Nov-mixup2-混乱的奶牛/" data-id="cj94c4luy000al4uj8gv9hv75" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -340,8 +340,6 @@
 
             
     
-        <a href="http://yoursite.com/2017/06/09/BZOJ-1231-Usaco2008-Nov-mixup2-混乱的奶牛/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/06/09/BZOJ-1231-Usaco2008-Nov-mixup2-混乱的奶牛/">Comments</a>
-    
 
         </footer>
     </div>
@@ -374,9 +372,7 @@
     
     
         <section id="comments">
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
+	<div id="commentContainer"></div>
 </section>
     
 
@@ -395,21 +391,20 @@
 </footer>
         
     
-    <script>
-    var disqus_config = function () {
-        
-            this.page.url = 'http://yoursite.com/2017/06/09/BZOJ-1231-Usaco2008-Nov-mixup2-混乱的奶牛/';
-        
-        this.page.identifier = 'BZOJ-1231-Usaco2008-Nov-mixup2-混乱的奶牛';
-    };
-    (function() { 
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-
+	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+	<script>
+		var gitment = new Gitment({
+			owner: 'ZJYelizaveta',
+			repo: 'ZJYelizaveta',
+			oauth: {
+				client_id: '265d5e867fb4af943884',
+				client_secret: 'f424c0ee292ddd6be538785c580101683b71da27',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
 
 
 

@@ -284,7 +284,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/05/「雅礼集训-2017-Day2」C/" data-id="cj94anmzj004f9oujiyaw3gjg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/07/05/「雅礼集训-2017-Day2」C/" data-id="cj94c4lyi002xl4ujcgvo35wx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -352,8 +352,6 @@
 
             
     
-        <a href="http://yoursite.com/2017/07/05/「雅礼集训-2017-Day2」C/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/07/05/「雅礼集训-2017-Day2」C/">Comments</a>
-    
 
         </footer>
     </div>
@@ -386,9 +384,7 @@
     
     
         <section id="comments">
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
+	<div id="commentContainer"></div>
 </section>
     
 
@@ -407,21 +403,20 @@
 </footer>
         
     
-    <script>
-    var disqus_config = function () {
-        
-            this.page.url = 'http://yoursite.com/2017/07/05/「雅礼集训-2017-Day2」C/';
-        
-        this.page.identifier = '「雅礼集训-2017-Day2」C';
-    };
-    (function() { 
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-
+	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+	<script>
+		var gitment = new Gitment({
+			owner: 'ZJYelizaveta',
+			repo: 'ZJYelizaveta',
+			oauth: {
+				client_id: '265d5e867fb4af943884',
+				client_secret: 'f424c0ee292ddd6be538785c580101683b71da27',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
 
 
 

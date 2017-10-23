@@ -6,7 +6,7 @@
     <title>BZOJ 1577: [Usaco2009 Feb]庙会捷运Fair Shuttle | ZJYelizaveta&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="题目地址 描述公交车一共经过$N(1 \leq N \leq 20000)$个站点，从站点$1$一直驶到站点$N$。$K(1\leq K \leq 50000)$群奶牛希望搭乘这辆公交车，第$i$群牛一共$M_{i}(1\leq M_{i} \leq N)$只，他们希望从$S_{i}$到$E_{i}$去。公交车只能坐$C(1\leq C \leq 100)$只奶牛，而且不走重复路线，请计算这辆车最">
-<meta name="keywords" content="BZOJ,贪心,线段树">
+<meta name="keywords" content="BZOJ,线段树,贪心">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BZOJ 1577: [Usaco2009 Feb]庙会捷运Fair Shuttle">
 <meta property="og:url" content="http://yoursite.com/2017/08/01/BZOJ-1577-Usaco2009-Feb-庙会捷运Fair-Shuttle/index.html">
@@ -265,7 +265,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/08/01/BZOJ-1577-Usaco2009-Feb-庙会捷运Fair-Shuttle/" data-id="cj94anmvb001v9oujg1y13edn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/08/01/BZOJ-1577-Usaco2009-Feb-庙会捷运Fair-Shuttle/" data-id="cj94c4lvh000ll4ujxq4wrscg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -333,8 +333,6 @@
 
             
     
-        <a href="http://yoursite.com/2017/08/01/BZOJ-1577-Usaco2009-Feb-庙会捷运Fair-Shuttle/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/08/01/BZOJ-1577-Usaco2009-Feb-庙会捷运Fair-Shuttle/">Comments</a>
-    
 
         </footer>
     </div>
@@ -367,9 +365,7 @@
     
     
         <section id="comments">
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
+	<div id="commentContainer"></div>
 </section>
     
 
@@ -388,21 +384,20 @@
 </footer>
         
     
-    <script>
-    var disqus_config = function () {
-        
-            this.page.url = 'http://yoursite.com/2017/08/01/BZOJ-1577-Usaco2009-Feb-庙会捷运Fair-Shuttle/';
-        
-        this.page.identifier = 'BZOJ-1577-Usaco2009-Feb-庙会捷运Fair-Shuttle';
-    };
-    (function() { 
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-
+	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+	<script>
+		var gitment = new Gitment({
+			owner: 'ZJYelizaveta',
+			repo: 'ZJYelizaveta',
+			oauth: {
+				client_id: '265d5e867fb4af943884',
+				client_secret: 'f424c0ee292ddd6be538785c580101683b71da27',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
 
 
 

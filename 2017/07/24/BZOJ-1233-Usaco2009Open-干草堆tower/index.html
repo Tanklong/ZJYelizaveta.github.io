@@ -274,7 +274,7 @@ g[i] = g[j] + 1</script><p>这样我们运用结论将$\Theta (n^{3})$的DP成�
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/24/BZOJ-1233-Usaco2009Open-干草堆tower/" data-id="cj94anmt6000a9oujcvx0r0td" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/07/24/BZOJ-1233-Usaco2009Open-干草堆tower/" data-id="cj94c4lv6000el4ujvjp072y0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -342,8 +342,6 @@ g[i] = g[j] + 1</script><p>这样我们运用结论将$\Theta (n^{3})$的DP成�
 
             
     
-        <a href="http://yoursite.com/2017/07/24/BZOJ-1233-Usaco2009Open-干草堆tower/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/07/24/BZOJ-1233-Usaco2009Open-干草堆tower/">Comments</a>
-    
 
         </footer>
     </div>
@@ -376,9 +374,7 @@ g[i] = g[j] + 1</script><p>这样我们运用结论将$\Theta (n^{3})$的DP成�
     
     
         <section id="comments">
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
+	<div id="commentContainer"></div>
 </section>
     
 
@@ -397,21 +393,20 @@ g[i] = g[j] + 1</script><p>这样我们运用结论将$\Theta (n^{3})$的DP成�
 </footer>
         
     
-    <script>
-    var disqus_config = function () {
-        
-            this.page.url = 'http://yoursite.com/2017/07/24/BZOJ-1233-Usaco2009Open-干草堆tower/';
-        
-        this.page.identifier = 'BZOJ-1233-Usaco2009Open-干草堆tower';
-    };
-    (function() { 
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-
+	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+	<script>
+		var gitment = new Gitment({
+			owner: 'ZJYelizaveta',
+			repo: 'ZJYelizaveta',
+			oauth: {
+				client_id: '265d5e867fb4af943884',
+				client_secret: 'f424c0ee292ddd6be538785c580101683b71da27',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
 
 
 

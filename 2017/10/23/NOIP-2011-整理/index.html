@@ -5,19 +5,19 @@
     
     <title>NOIP 2011 整理 | ZJYelizaveta&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Day 1铺地毯描述为了准备一个独特的颁奖典礼，组织者在会场的一片矩形区域（可看做是平面直角坐标系的第一象限）铺上一些矩形地毯。一共有 $n$ 张地毯，编号从 $1$ 到 $n$。现在将这些地毯按照编号从小到大的顺序平行于坐标轴先后铺设，后铺的地毯覆盖在前面已经铺好的地毯之上。地毯铺设完成后，组织者想知道覆盖地面某个点的最上面的那张地毯的编号。 注意：在矩形地毯边界和四个顶点上的点也算被地毯覆盖。">
+    <meta name="description" content="Day 1铺地毯描述为了准备一个独特的颁奖典礼，组织者在会场的一片矩形区域（可看做是平面直角坐标系的第一象限）铺上一些矩形地毯。一共有 $n$ 张地毯，编号从 $1$ 到 $n$。现在将这些地毯按照编号从小到大的顺序平行于坐标轴先后铺设，后铺的地毯覆盖在前面已经铺好的地毯之上。地毯铺设完成后，组织者想知道覆盖地面某个点的最上面的那张地毯的编号。">
 <meta name="keywords" content="数学,贪心,搜索,NOIP,模拟,dfs,二分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NOIP 2011 整理">
 <meta property="og:url" content="http://yoursite.com/2017/10/23/NOIP-2011-整理/index.html">
 <meta property="og:site_name" content="ZJYelizaveta&#39;s Blog">
-<meta property="og:description" content="Day 1铺地毯描述为了准备一个独特的颁奖典礼，组织者在会场的一片矩形区域（可看做是平面直角坐标系的第一象限）铺上一些矩形地毯。一共有 $n$ 张地毯，编号从 $1$ 到 $n$。现在将这些地毯按照编号从小到大的顺序平行于坐标轴先后铺设，后铺的地毯覆盖在前面已经铺好的地毯之上。地毯铺设完成后，组织者想知道覆盖地面某个点的最上面的那张地毯的编号。 注意：在矩形地毯边界和四个顶点上的点也算被地毯覆盖。">
+<meta property="og:description" content="Day 1铺地毯描述为了准备一个独特的颁奖典礼，组织者在会场的一片矩形区域（可看做是平面直角坐标系的第一象限）铺上一些矩形地毯。一共有 $n$ 张地毯，编号从 $1$ 到 $n$。现在将这些地毯按照编号从小到大的顺序平行于坐标轴先后铺设，后铺的地毯覆盖在前面已经铺好的地毯之上。地毯铺设完成后，组织者想知道覆盖地面某个点的最上面的那张地毯的编号。">
 <meta property="og:image" content="http://oqeu5dc5m.bkt.clouddn.com/NOIP%202013.png">
 <meta property="og:image" content="http://oqeu5dc5m.bkt.clouddn.com/NOIP%202013%271.png">
-<meta property="og:updated_time" content="2017-10-23T14:46:02.462Z">
+<meta property="og:updated_time" content="2017-10-23T15:29:00.202Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NOIP 2011 整理">
-<meta name="twitter:description" content="Day 1铺地毯描述为了准备一个独特的颁奖典礼，组织者在会场的一片矩形区域（可看做是平面直角坐标系的第一象限）铺上一些矩形地毯。一共有 $n$ 张地毯，编号从 $1$ 到 $n$。现在将这些地毯按照编号从小到大的顺序平行于坐标轴先后铺设，后铺的地毯覆盖在前面已经铺好的地毯之上。地毯铺设完成后，组织者想知道覆盖地面某个点的最上面的那张地毯的编号。 注意：在矩形地毯边界和四个顶点上的点也算被地毯覆盖。">
+<meta name="twitter:description" content="Day 1铺地毯描述为了准备一个独特的颁奖典礼，组织者在会场的一片矩形区域（可看做是平面直角坐标系的第一象限）铺上一些矩形地毯。一共有 $n$ 张地毯，编号从 $1$ 到 $n$。现在将这些地毯按照编号从小到大的顺序平行于坐标轴先后铺设，后铺的地毯覆盖在前面已经铺好的地毯之上。地毯铺设完成后，组织者想知道覆盖地面某个点的最上面的那张地毯的编号。">
 <meta name="twitter:image" content="http://oqeu5dc5m.bkt.clouddn.com/NOIP%202013.png">
     
 
@@ -252,9 +252,9 @@
         
             
             <h1 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h1><h2 id="铺地毯"><a href="#铺地毯" class="headerlink" title="铺地毯"></a>铺地毯</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>为了准备一个独特的颁奖典礼，组织者在会场的一片矩形区域（可看做是平面直角坐标<br>系的第一象限）铺上一些矩形地毯。一共有 $n$ 张地毯，编号从 $1$ 到 $n$。现在将这些地毯按照编号从小到大的顺序平行于坐标轴先后铺设，后铺的地毯覆盖在前面已经铺好的地毯之上。<br>地毯铺设完成后，组织者想知道覆盖地面某个点的最上面的那张地毯的编号。</p>
+<a id="more"></a>
 <p>注意：在矩形地毯边界和四个顶点上的点也算被地毯覆盖。</p>
 <p>$0 \leq n \leq 1000, 0 \leq a, b, g, k \leq 10^{5}$</p>
-<a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>题目较为简单，是 NOIP Day1 T1 的水准。</p>
 <p>$\Theta(n)$ 的扫一遍，如果这个点包含在某一张地毯中则更新答案。</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//  Created by ZJYelizaveta on 2017年09月02日 星期六 09时13分58秒</span></div><div class="line"><span class="comment">//  Copyright (c) 2017年 ZJYelizaveta. All rights reserved.</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">readIn</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> x = <span class="number">0</span>, f = <span class="number">1</span>;</div><div class="line">    <span class="keyword">char</span> ch = getchar();</div><div class="line">    <span class="keyword">while</span> (ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>) &#123;<span class="keyword">if</span> (ch == <span class="string">'-'</span>) f = <span class="number">-1</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">while</span> (ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>) &#123;x = x * <span class="number">10</span> + ch - <span class="string">'0'</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">return</span> x * f;</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">10000</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Carpet</span> &#123;</span></div><div class="line">    <span class="keyword">int</span> a, b, g, k;</div><div class="line">&#125;c[MAX_N];</div><div class="line"><span class="keyword">int</span> fx, fy;</div><div class="line"><span class="keyword">int</span> ans;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    n = readIn();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</div><div class="line">        c[i].a = readIn(), c[i].b = readIn(), c[i].g = readIn(), c[i].k = readIn();</div><div class="line">    &#125;</div><div class="line">    fx = readIn(), fy = readIn();<span class="comment">//final x and final y</span></div><div class="line">    ans = <span class="number">-1</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</div><div class="line">        <span class="keyword">int</span> x = c[i].a + c[i].g;</div><div class="line">        <span class="keyword">int</span> y = c[i].b + c[i].k;</div><div class="line">        <span class="keyword">if</span> (c[i].a &lt;= fx &amp;&amp; fx &lt;= x &amp;&amp; c[i].b &lt;= fy &amp;&amp; fy &lt;= y) ans = i + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -363,7 +363,7 @@ ans = (\sum_{i = 1}^{m}arv[b[i]] - t[i]) - maxDecrease</script><h3 id="代码-5"
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/10/23/NOIP-2011-整理/" data-id="cj94anmwd002l9oujbsolyptu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/10/23/NOIP-2011-整理/" data-id="cj94c4lw90018l4ujzvtfumij" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -431,8 +431,6 @@ ans = (\sum_{i = 1}^{m}arv[b[i]] - t[i]) - maxDecrease</script><h3 id="代码-5"
 
             
     
-        <a href="http://yoursite.com/2017/10/23/NOIP-2011-整理/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/10/23/NOIP-2011-整理/">Comments</a>
-    
 
         </footer>
     </div>
@@ -456,9 +454,7 @@ ans = (\sum_{i = 1}^{m}arv[b[i]] - t[i]) - maxDecrease</script><h3 id="代码-5"
     
     
         <section id="comments">
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
+	<div id="commentContainer"></div>
 </section>
     
 
@@ -477,21 +473,20 @@ ans = (\sum_{i = 1}^{m}arv[b[i]] - t[i]) - maxDecrease</script><h3 id="代码-5"
 </footer>
         
     
-    <script>
-    var disqus_config = function () {
-        
-            this.page.url = 'http://yoursite.com/2017/10/23/NOIP-2011-整理/';
-        
-        this.page.identifier = 'NOIP-2011-整理';
-    };
-    (function() { 
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-
+	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+	<script>
+		var gitment = new Gitment({
+			owner: 'ZJYelizaveta',
+			repo: 'ZJYelizaveta',
+			oauth: {
+				client_id: '265d5e867fb4af943884',
+				client_secret: 'f424c0ee292ddd6be538785c580101683b71da27',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
 
 
 

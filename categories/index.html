@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8">
     
-    <title>categories | ZJYelizaveta&#39;s Blog</title>
+    <title>Categories | ZJYelizaveta&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="有幸在那一天，遇到你，最了不起的你。">
+    <meta name="description" content="过段时间再写吧，太懒了qwq">
 <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
+<meta property="og:title" content="Categories">
 <meta property="og:url" content="http://yoursite.com/categories/index.html">
 <meta property="og:site_name" content="ZJYelizaveta&#39;s Blog">
-<meta property="og:description" content="有幸在那一天，遇到你，最了不起的你。">
-<meta property="og:updated_time" content="2017-10-22T02:27:29.692Z">
+<meta property="og:description" content="过段时间再写吧，太懒了qwq">
+<meta property="og:updated_time" content="2017-10-23T14:49:21.042Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
-<meta name="twitter:description" content="有幸在那一天，遇到你，最了不起的你。">
+<meta name="twitter:title" content="Categories">
+<meta name="twitter:description" content="过段时间再写吧，太懒了qwq">
     
 
     
@@ -217,7 +217,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            categories
+            Categories
         </h1>
     
 
@@ -228,7 +228,8 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            
+            <p>过段时间再写吧，太懒了qwq</p>
+
         
         </div>
         <footer class="article-footer">
@@ -238,7 +239,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/categories/index.html" data-id="cj94anmv9001t9ouj9fwi5slw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/categories/index.html" data-id="cj94c4lun0005l4ujmtww0cnv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -306,8 +307,6 @@
 
             
     
-        <a href="http://yoursite.com/categories/index.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/categories/index.html">Comments</a>
-    
 
         </footer>
     </div>
@@ -321,9 +320,7 @@
     
     
         <section id="comments">
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
+	<div id="commentContainer"></div>
 </section>
     
 
@@ -342,21 +339,20 @@
 </footer>
         
     
-    <script>
-    var disqus_config = function () {
-        
-            this.page.url = 'http://yoursite.com/categories/index.html';
-        
-        this.page.identifier = '';
-    };
-    (function() { 
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-
+	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+	<script>
+		var gitment = new Gitment({
+			owner: 'ZJYelizaveta',
+			repo: 'ZJYelizaveta',
+			oauth: {
+				client_id: '265d5e867fb4af943884',
+				client_secret: 'f424c0ee292ddd6be538785c580101683b71da27',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
 
 
 

@@ -209,136 +209,6 @@
 
             
             <section id="main">
-    <article id="post-NOIP-2011-整理" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/10/23/NOIP-2011-整理/">NOIP 2011 整理</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/10/23/NOIP-2011-整理/">
-            <time datetime="2017-10-23T06:42:29.000Z" itemprop="datePublished">2017-10-23</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/NOIP/">NOIP</a>, <a class="tag-link" href="/tags/dfs/">dfs</a>, <a class="tag-link" href="/tags/二分/">二分</a>, <a class="tag-link" href="/tags/搜索/">搜索</a>, <a class="tag-link" href="/tags/数学/">数学</a>, <a class="tag-link" href="/tags/模拟/">模拟</a>, <a class="tag-link" href="/tags/贪心/">贪心</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><h1 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h1><h2 id="铺地毯"><a href="#铺地毯" class="headerlink" title="铺地毯"></a>铺地毯</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>为了准备一个独特的颁奖典礼，组织者在会场的一片矩形区域（可看做是平面直角坐标<br>系的第一象限）铺上一些矩形地毯。一共有 $n$ 张地毯，编号从 $1$ 到 $n$。现在将这些地毯按照编号从小到大的顺序平行于坐标轴先后铺设，后铺的地毯覆盖在前面已经铺好的地毯之上。<br>地毯铺设完成后，组织者想知道覆盖地面某个点的最上面的那张地毯的编号。</p>
-<p>注意：在矩形地毯边界和四个顶点上的点也算被地毯覆盖。</p>
-<p>$0 \leq n \leq 1000, 0 \leq a, b, g, k \leq 10^{5}$</p></p>
-            <p class="article-more-link">
-                <a href="/2017/10/23/NOIP-2011-整理/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/10/23/NOIP-2011-整理/" data-id="cj94anmwd002l9oujbsolyptu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2017/10/23/NOIP-2011-整理/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/10/23/NOIP-2011-整理/">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -389,7 +259,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/10/22/hello-world/" data-id="cj94anmyw00459ouji4gnq9ku" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/10/22/hello-world/" data-id="cj94c4lxz002hl4uj90ro0mlp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -457,7 +327,131 @@
 
             
     
-        <a href="http://yoursite.com/2017/10/22/hello-world/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/10/22/hello-world/">Comments</a>
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-NOIP-2011-整理" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/10/23/NOIP-2011-整理/">NOIP 2011 整理</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/10/23/NOIP-2011-整理/">
+            <time datetime="2017-10-23T06:42:29.000Z" itemprop="datePublished">2017-10-23</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/NOIP/">NOIP</a>, <a class="tag-link" href="/tags/dfs/">dfs</a>, <a class="tag-link" href="/tags/二分/">二分</a>, <a class="tag-link" href="/tags/搜索/">搜索</a>, <a class="tag-link" href="/tags/数学/">数学</a>, <a class="tag-link" href="/tags/模拟/">模拟</a>, <a class="tag-link" href="/tags/贪心/">贪心</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h1 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h1><h2 id="铺地毯"><a href="#铺地毯" class="headerlink" title="铺地毯"></a>铺地毯</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>为了准备一个独特的颁奖典礼，组织者在会场的一片矩形区域（可看做是平面直角坐标<br>系的第一象限）铺上一些矩形地毯。一共有 $n$ 张地毯，编号从 $1$ 到 $n$。现在将这些地毯按照编号从小到大的顺序平行于坐标轴先后铺设，后铺的地毯覆盖在前面已经铺好的地毯之上。<br>地毯铺设完成后，组织者想知道覆盖地面某个点的最上面的那张地毯的编号。</p></p>
+            <p class="article-more-link">
+                <a href="/2017/10/23/NOIP-2011-整理/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/10/23/NOIP-2011-整理/" data-id="cj94c4lw90018l4ujzvtfumij" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
     
 
         </footer>
@@ -519,7 +513,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/09/28/「BZOJ-2301」「HAOI2011」Problem-b/" data-id="cj94anmzs004p9oujqj7moxj4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/09/28/「BZOJ-2301」「HAOI2011」Problem-b/" data-id="cj94c4ly9002ol4ujhifjhign" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -586,8 +580,6 @@
 </script>
 
             
-    
-        <a href="http://yoursite.com/2017/09/28/「BZOJ-2301」「HAOI2011」Problem-b/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/09/28/「BZOJ-2301」「HAOI2011」Problem-b/">Comments</a>
     
 
         </footer>
@@ -647,7 +639,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-3/" data-id="cj94ann9900cc9oujgo9olg0j" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-3/" data-id="cj94c4m04003rl4ujwl7avtvk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -714,8 +706,6 @@
 </script>
 
             
-    
-        <a href="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-3/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-3/">Comments</a>
     
 
         </footer>
@@ -775,7 +765,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-2/" data-id="cj94ann9700cb9oujn3lipykc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-2/" data-id="cj94c4lzy003nl4ujqkbo80f9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -842,8 +832,6 @@
 </script>
 
             
-    
-        <a href="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-2/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-2/">Comments</a>
     
 
         </footer>
@@ -903,7 +891,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-1/" data-id="cj94ann12005q9oujann9wyd4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-1/" data-id="cj94c4lzv003ml4ujspztxc2n" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -970,8 +958,6 @@
 </script>
 
             
-    
-        <a href="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-1/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-1/">Comments</a>
     
 
         </footer>
@@ -1032,7 +1018,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/09/08/「BZOJ-2038」小Z的袜子/" data-id="cj94ann0400519oujww59xgcu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/09/08/「BZOJ-2038」小Z的袜子/" data-id="cj94c4ly6002ll4uji3ck6svr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1099,8 +1085,6 @@
 </script>
 
             
-    
-        <a href="http://yoursite.com/2017/09/08/「BZOJ-2038」小Z的袜子/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/09/08/「BZOJ-2038」小Z的袜子/">Comments</a>
     
 
         </footer>
@@ -1161,7 +1145,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/09/08/「BZOJ-1878」HH-的项链/" data-id="cj94anmzm004i9oujiiarstwx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/09/08/「BZOJ-1878」HH-的项链/" data-id="cj94c4ly5002jl4uj807q2k55" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1228,8 +1212,6 @@
 </script>
 
             
-    
-        <a href="http://yoursite.com/2017/09/08/「BZOJ-1878」HH-的项链/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/09/08/「BZOJ-1878」HH-的项链/">Comments</a>
     
 
         </footer>
@@ -1290,7 +1272,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/08/28/UVa-11825-Hackers-Crackdown/" data-id="cj94anmxf003j9oujsj0o201w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/08/28/UVa-11825-Hackers-Crackdown/" data-id="cj94c4lx7001zl4ujfhpvxeio" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1357,8 +1339,6 @@
 </script>
 
             
-    
-        <a href="http://yoursite.com/2017/08/28/UVa-11825-Hackers-Crackdown/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/08/28/UVa-11825-Hackers-Crackdown/">Comments</a>
     
 
         </footer>
@@ -1419,7 +1399,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/08/28/UVa-10891-Game-of-Sum/" data-id="cj94anmws00309oujbekloowf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/08/28/UVa-10891-Game-of-Sum/" data-id="cj94c4lwq001il4uj2c3aeo8f" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1487,8 +1467,6 @@
 
             
     
-        <a href="http://yoursite.com/2017/08/28/UVa-10891-Game-of-Sum/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/08/28/UVa-10891-Game-of-Sum/">Comments</a>
-    
 
         </footer>
     </div>
@@ -1515,19 +1493,20 @@
 </footer>
         
     
-    <script>
-    var disqus_config = function () {
-        
-        this.page.identifier = '';
-    };
-    (function() { 
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'zjyelizaveta' + '.disqus.com/count.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-
+	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+	<script>
+		var gitment = new Gitment({
+			owner: 'ZJYelizaveta',
+			repo: 'ZJYelizaveta',
+			oauth: {
+				client_id: '265d5e867fb4af943884',
+				client_secret: 'f424c0ee292ddd6be538785c580101683b71da27',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
 
 
 

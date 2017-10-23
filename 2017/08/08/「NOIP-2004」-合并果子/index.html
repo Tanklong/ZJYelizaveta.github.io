@@ -6,7 +6,7 @@
     <title>「NOIP 2004」 合并果子 | ZJYelizaveta&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="题目地址 描述在一个果园里，多多按果子的不同种类分成了不同的堆。多多决定把所有的果子合成一堆。每一次合并，多多可以把两堆果子合并到一起，消耗的体力等于两堆果子的重量之和。可以看出，所有的果子经过$n-1$次合并之后，就只剩下一堆了，多多在合并果子时总共消耗的体力等于每次合并所耗体力之和。多多在合并果子时要尽可能地节省体力。假定每个果子重量都为$1$，并且已知果子的种类数和每种果子的数目，你的任务是">
-<meta name="keywords" content="贪心,数据结构,NOIP,哈夫曼树">
+<meta name="keywords" content="数据结构,贪心,NOIP,哈夫曼树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「NOIP 2004」 合并果子">
 <meta property="og:url" content="http://yoursite.com/2017/08/08/「NOIP-2004」-合并果子/index.html">
@@ -270,7 +270,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/08/08/「NOIP-2004」-合并果子/" data-id="cj94ann0d00569oujc67o42qs" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/08/08/「NOIP-2004」-合并果子/" data-id="cj94c4lyd002sl4ujxowh1gq8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -338,8 +338,6 @@
 
             
     
-        <a href="http://yoursite.com/2017/08/08/「NOIP-2004」-合并果子/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/08/08/「NOIP-2004」-合并果子/">Comments</a>
-    
 
         </footer>
     </div>
@@ -372,9 +370,7 @@
     
     
         <section id="comments">
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
+	<div id="commentContainer"></div>
 </section>
     
 
@@ -393,21 +389,20 @@
 </footer>
         
     
-    <script>
-    var disqus_config = function () {
-        
-            this.page.url = 'http://yoursite.com/2017/08/08/「NOIP-2004」-合并果子/';
-        
-        this.page.identifier = '「NOIP-2004」-合并果子';
-    };
-    (function() { 
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'zjyelizaveta' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-
+	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+	<script>
+		var gitment = new Gitment({
+			owner: 'ZJYelizaveta',
+			repo: 'ZJYelizaveta',
+			oauth: {
+				client_id: '265d5e867fb4af943884',
+				client_secret: 'f424c0ee292ddd6be538785c580101683b71da27',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
 
 
 
