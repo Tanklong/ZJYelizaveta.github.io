@@ -156,11 +156,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                72
+                73
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                88
+                90
                 <span>tags</span>
             </div>
         </div>
@@ -209,6 +209,133 @@
 
             
             <section id="main">
+    <article id="post-UVa-11300-Spreading-the-Wealth" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/05/24/UVa-11300-Spreading-the-Wealth/">UVa 11300 - Spreading the Wealth</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/24/UVa-11300-Spreading-the-Wealth/">
+            <time datetime="2017-05-23T16:42:17.000Z" itemprop="datePublished">2017-05-24</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/UVa/">UVa</a>, <a class="tag-link" href="/tags/贪心/">贪心</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=24&amp;page=show_problem&amp;problem=2275" target="_blank" rel="external">题目地址</a></p>
+<h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>圆桌旁坐着$n$个人，每人有一定数量的的金币，金币数总能被$n$整除。每个人可以给他左右相邻的人一些金币，最终使得每个人的金币数目相等。你的任务是求出被转手的金币数量的最小值。<br>每组数据第一行为整数$n(n\leq 1000000)$，以下$n$行每行为一个整数，按逆时针顺序给出每个人应有的金币数。输入结束标志为$EOF$。<br>对于每组数据输出被转手金币的数量的最小值。<br></p>
+            <p class="article-more-link">
+                <a href="/2017/05/24/UVa-11300-Spreading-the-Wealth/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/05/24/UVa-11300-Spreading-the-Wealth/" data-id="cj96kjrai003hxcujkweibrb8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-UVa-11729-Commando-War" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -260,7 +387,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/UVa-11729-Commando-War/" data-id="cj94cqlgn001w7gujkaxa14eo" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/UVa-11729-Commando-War/" data-id="cj96kjraz003oxcuj0j6tonrt" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -387,7 +514,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/UVa-1659-Help-Little-Laura-最小费用循环流/" data-id="cj94cqlh7002a7guj2xt851lv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/UVa-1659-Help-Little-Laura-最小费用循环流/" data-id="cj96kjrbj0043xcujge5omyz9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -516,7 +643,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/UVa-10735-Euler-Circuit-混合图的欧拉回路/" data-id="cj94cqlg2001d7guj5kjcqal7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/UVa-10735-Euler-Circuit-混合图的欧拉回路/" data-id="cj96kjr9g002qxcuj2ymvsu94" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -643,7 +770,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/UVa-1639-Candy/" data-id="cj94cqlh400287guje2lc5w86" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/UVa-1639-Candy/" data-id="cj96kjrby004dxcujdl4ewhvj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -769,7 +896,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/模板-最短路问题/" data-id="cj94cqliz003d7gujvcop8ez7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/模板-最短路问题/" data-id="cj96kjrdf005dxcujae9piw2l" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -897,7 +1024,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/23/同余与模运算/" data-id="cj94cqlii00327gujupq1flba" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/23/同余与模运算/" data-id="cj96kjrd70059xcujtcsr8pdc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1024,7 +1151,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/23/埃及分数问题/" data-id="cj94cqlim00347gujz9qeykor" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/23/埃及分数问题/" data-id="cj96kjrd20054xcuj0v8y19iu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1151,7 +1278,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/23/最优配对问题/" data-id="cj94cqlir00367guj61s0gert" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/23/最优配对问题/" data-id="cj96kjrdw005sxcujzh5pazxj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1279,134 +1406,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/23/Uva-816-Abbott-s-Revenge/" data-id="cj94cqlhe002e7gujhe0nyejh" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-UVa-10976-Fractions-Again" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/05/23/UVa-10976-Fractions-Again/">UVa 10976 - Fractions Again?!</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/05/23/UVa-10976-Fractions-Again/">
-            <time datetime="2017-05-23T14:19:51.000Z" itemprop="datePublished">2017-05-23</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/UVa/">UVa</a>, <a class="tag-link" href="/tags/暴力/">暴力</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=841&amp;page=show_problem&amp;problem=1917" target="_blank" rel="external">题目描述</a></p>
-<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>输入正整数K，找出所有得正整数 $x\geq y$，使得$\frac{1}{k}=\frac{1}{x}+\frac{1}{y}$。<br></p>
-            <p class="article-more-link">
-                <a href="/2017/05/23/UVa-10976-Fractions-Again/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/05/23/UVa-10976-Fractions-Again/" data-id="cj94cqlgc001l7gujdc93ntpk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/23/Uva-816-Abbott-s-Revenge/" data-id="cj96kjrc8004ixcujun0z6lta" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
