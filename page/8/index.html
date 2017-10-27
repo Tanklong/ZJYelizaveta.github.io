@@ -156,11 +156,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                75
+                76
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                97
+                98
                 <span>tags</span>
             </div>
         </div>
@@ -209,6 +209,133 @@
 
             
             <section id="main">
+    <article id="post-埃及分数问题" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/05/23/埃及分数问题/">埃及分数问题</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/23/埃及分数问题/">
+            <time datetime="2017-05-23T15:14:46.000Z" itemprop="datePublished">2017-05-23</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/搜索/">搜索</a>, <a class="tag-link" href="/tags/迭代加深搜索/">迭代加深搜索</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>这篇Blog意在通过埃及分数问题学习和理解迭代加深搜索。</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>迭代加深搜索通常是从小到大枚举不超过$Maxd$或是不小于$Mind$的结点，每次执行的时候只考虑在结点深度不超过$Maxd$或是不小于$Mind$的结点。这样只要解的深度有限那么有限时间内就可有搜索完。<br>简而言之，就是对深度优先搜索进行了一定改进，对搜索树的深度进行控制，即有界深度优先搜索。<br></p>
+            <p class="article-more-link">
+                <a href="/2017/05/23/埃及分数问题/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/05/23/埃及分数问题/" data-id="cj9a2trnw002xxoujkr8vj00r" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-最优配对问题" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -260,7 +387,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/23/最优配对问题/" data-id="cj99c3kut006fdoujwlbs04gp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/23/最优配对问题/" data-id="cj9a2tro60037xouj0nbta14y" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -388,7 +515,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/23/Uva-816-Abbott-s-Revenge/" data-id="cj99c3ktl005adoujjg5q7oye" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/23/Uva-816-Abbott-s-Revenge/" data-id="cj9a2trnf002hxoujlvknjvm0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -515,7 +642,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/23/UVa-10976-Fractions-Again/" data-id="cj99c3ksz004tdoujhhitk1vr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/23/UVa-10976-Fractions-Again/" data-id="cj9a2trmg001qxoujr5b2qjei" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -642,7 +769,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/23/UVa-839-Not-so-Mobile/" data-id="cj99c3ktr005fdoujfkn9y15h" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/23/UVa-839-Not-so-Mobile/" data-id="cj9a2trnb002gxouj4yuyegzo" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -773,7 +900,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/23/路径寻找问题及哈希表/" data-id="cj99c3kvr0074doujw7qukmhi" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/23/路径寻找问题及哈希表/" data-id="cj9a2trow003uxoujzscrjf4g" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

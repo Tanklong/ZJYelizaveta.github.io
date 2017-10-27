@@ -156,11 +156,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                75
+                76
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                97
+                98
                 <span>tags</span>
             </div>
         </div>
@@ -209,6 +209,133 @@
 
             
             <section id="main">
+    <article id="post-UVa-12167-Proving-Equivalences" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/05/28/UVa-12167-Proving-Equivalences/">UVa 12167 - Proving Equivalences</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/28/UVa-12167-Proving-Equivalences/">
+            <time datetime="2017-05-28T03:02:19.000Z" itemprop="datePublished">2017-05-28</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/UVa/">UVa</a>, <a class="tag-link" href="/tags/图论/">图论</a>, <a class="tag-link" href="/tags/强连通分量/">强连通分量</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=545&amp;page=show_problem&amp;problem=3319" target="_blank" rel="external">题目地址</a></p>
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>在数学中，我们常常需要完成若干个命题的等价性证明。比如，有4个命题$a, b, c, d$，我们证明$a \leftrightarrow b$，然后$b\leftrightarrow c$，最后$c\leftrightarrow d$。注意每次证明都是双向的，一次一共完成了6次推导。另一种方法是证明$a\rightarrow b$，然后$b\rightarrow c$，接着$c\rightarrow d$，最后$d\rightarrow a$，只需4次。现在你的任务是证明$n(1 \leq n  \leq 20000)$个命题是全部等价的，且你的朋友已经帮你做出了$m(0 \leq m \leq 50000)$次推导（已知每次推导的内容），你至少还需要做几次推导才能完成整个证明，输出最少的推导次数。</p></p>
+            <p class="article-more-link">
+                <a href="/2017/05/28/UVa-12167-Proving-Equivalences/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/05/28/UVa-12167-Proving-Equivalences/" data-id="cj9a2trmr001zxouj53nwf1cc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-UVa-1391-Astronauts" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -265,7 +392,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/28/UVa-1391-Astronauts/" data-id="cj99c3ktb0053doujw1cs54sx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/28/UVa-1391-Astronauts/" data-id="cj9a2trox003wxoujlrv8p16w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -393,7 +520,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/26/UVa-1146-Now-or-later/" data-id="cj99c3kte0055doujr3gkefsr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/26/UVa-1146-Now-or-later/" data-id="cj9a2trmz0025xoujlksflriy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -567,7 +694,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/25/POJ-3678-Katu-Puzzle/" data-id="cj99c3ks1004gdoujupq149rd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/25/POJ-3678-Katu-Puzzle/" data-id="cj9a2trlv001exouj0uxf3jzz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -699,7 +826,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/25/2-SAT问题/" data-id="cj99c3klz0003doujm7vk2g2d" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/25/2-SAT问题/" data-id="cj9a2trji0001xoujcpdd03z9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -826,7 +953,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/BZOJ-1823-JSOI2010-满汉全席/" data-id="cj99c3knd000ldouj86s5f2ye" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/BZOJ-1823-JSOI2010-满汉全席/" data-id="cj9a2trlf000wxoujddyb1mhd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -952,7 +1079,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/WHEZOJ-83-棋子/" data-id="cj99c3ku0005ndoujnfhamo84" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/WHEZOJ-83-棋子/" data-id="cj9a2trn3002axoujtpozg471" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1078,7 +1205,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/模板-高斯消元法/" data-id="cj99c3kvo0071douj7n3n09nn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/模板-高斯消元法/" data-id="cj9a2trok003lxoujxirhp32m" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1205,7 +1332,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/UVa-11997-K-Small-Sums/" data-id="cj99c3kt2004vdoujp82zus8m" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/UVa-11997-K-Small-Sums/" data-id="cj9a2trmn001uxoujqxlnrq7n" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1332,136 +1459,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/UVa-1401-Remember-the-Word-UVa-11732-strcmp-Anyone/" data-id="cj99c3ktu005idoujle4a00y0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-模板-树状数组" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/05/24/模板-树状数组/">[模板]树状数组</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/05/24/模板-树状数组/">
-            <time datetime="2017-05-23T16:47:36.000Z" itemprop="datePublished">2017-05-24</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/树状数组/">树状数组</a>, <a class="tag-link" href="/tags/模板/">模板</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>先学完线段树后再学树状数组比较好理解。<br>树状数组又称为二叉索引树，可以支持以下两种操作：</p>
-<ol>
-<li>$Add(x, d)$操作，让$A_{i}$增加$d$。</li>
-<li>$Query(L, R)$：计算$A_{L} + A_{L + 1} + \cdots + A_{R}$。</p>
-            <p class="article-more-link">
-                <a href="/2017/05/24/模板-树状数组/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/05/24/模板-树状数组/" data-id="cj99c3kuz006kdoujm3kinvzj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/UVa-1401-Remember-the-Word-UVa-11732-strcmp-Anyone/" data-id="cj9a2trn10028xouj5cxx5jej" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
