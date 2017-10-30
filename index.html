@@ -156,11 +156,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                76
+                77
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                98
+                101
                 <span>tags</span>
             </div>
         </div>
@@ -259,7 +259,133 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/10/22/hello-world/" data-id="cj9a2trn8002exoujwf426atd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/10/22/hello-world/" data-id="cj9etcs13002qe4ujdt2dbi08" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-NOIP-2012-整理" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/10/31/NOIP-2012-整理/">NOIP 2012 整理</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/10/31/NOIP-2012-整理/">
+            <time datetime="2017-10-30T23:21:36.000Z" itemprop="datePublished">2017-10-31</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/STL/">STL</a>, <a class="tag-link" href="/tags/gcd及exgcd/">gcd及exgcd</a>, <a class="tag-link" href="/tags/二分/">二分</a>, <a class="tag-link" href="/tags/倍增/">倍增</a>, <a class="tag-link" href="/tags/数学/">数学</a>, <a class="tag-link" href="/tags/模拟/">模拟</a>, <a class="tag-link" href="/tags/贪心/">贪心</a>, <a class="tag-link" href="/tags/高精度/">高精度</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h1 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h1><h2 id="Vigenere-密码"><a href="#Vigenere-密码" class="headerlink" title="Vigenère 密码"></a>Vigenère 密码</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>16 世纪法国外交家 Blaise de Vigenère 设计了一种多表密码加密算法 —— Vigenère 密<br>码。Vigenère 密码的加密解密算法简单易用，且破译难度比较高，曾在美国南北战争中为南军所广泛使用。<br>在密码学中，我们称需要加密的信息为明文，用 $M$ 表示；称加密后的信息为密文，用<br>$C$ 表示；而密钥是一种参数，是将明文转换为密文或将密文转换为明文的算法中输入的数据，记为 $k$。 在 Vigenère</p></p>
+            <p class="article-more-link">
+                <a href="/2017/10/31/NOIP-2012-整理/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/10/31/NOIP-2012-整理/" data-id="cj9etcrz6001je4ujghyx2ug6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -386,7 +512,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/10/27/BZOJ-1588-HNOI2002-营业额统计/" data-id="cj9a2trkt000lxoujacbntjz1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/10/27/BZOJ-1588-HNOI2002-营业额统计/" data-id="cj9etcrxv000le4ujq8m6litp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -512,7 +638,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/10/25/高精度加、减、乘、除模板/" data-id="cj9a2trp40041xoujzctlj14y" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/10/25/高精度加、减、乘、除模板/" data-id="cj9etcs2k0048e4ujxtyrw2ix" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -638,7 +764,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/10/25/NOIP-2013-整理/" data-id="cj9a2trnu002vxouj542ox0zy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/10/25/NOIP-2013-整理/" data-id="cj9etcrzs001xe4uj8w0ti7nw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -764,7 +890,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/10/25/NOIP-2014-整理/" data-id="cj9a2trmp001xxoujnshe6gxz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/10/25/NOIP-2014-整理/" data-id="cj9etcs080024e4ujytvi8u13" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -890,7 +1016,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/10/23/NOIP-2011-整理/" data-id="cj9a2trln0016xouj94303x6y" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/10/23/NOIP-2011-整理/" data-id="cj9etcs080027e4ujxt0l9e86" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1018,7 +1144,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/09/28/「BZOJ-2301」「HAOI2011」Problem-b/" data-id="cj9a2trnm002mxouj1r6ffv6r" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/09/28/「BZOJ-2301」「HAOI2011」Problem-b/" data-id="cj9etcs1i0035e4uj1laja9sc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1144,7 +1270,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-3/" data-id="cj9a2trvd00ezxoujj0xbgcxs" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-3/" data-id="cj9etcs2k004ae4ujtgobjnn8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1270,133 +1396,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-2/" data-id="cj9a2trp1003zxouj7pf5qurm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-线性规划与网络流24题-Part-1" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/09/21/线性规划与网络流24题-Part-1/">线性规划与网络流24题 Part 1</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/09/21/线性规划与网络流24题-Part-1/">
-            <time datetime="2017-09-21T05:31:28.000Z" itemprop="datePublished">2017-09-21</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/二分图匹配/">二分图匹配</a>, <a class="tag-link" href="/tags/二分图多重匹配/">二分图多重匹配</a>, <a class="tag-link" href="/tags/动态规划/">动态规划</a>, <a class="tag-link" href="/tags/最大权闭合图/">最大权闭合图</a>, <a class="tag-link" href="/tags/最小割/">最小割</a>, <a class="tag-link" href="/tags/网络流/">网络流</a>, <a class="tag-link" href="/tags/费用流/">费用流</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>太菜了，现在才做网络流$24$题QAQ</p></p>
-            <p class="article-more-link">
-                <a href="/2017/09/21/线性规划与网络流24题-Part-1/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-1/" data-id="cj9a2tror003pxouj08g91vlp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/09/21/线性规划与网络流24题-Part-2/" data-id="cj9etcs2k0046e4uju7s7ww1q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

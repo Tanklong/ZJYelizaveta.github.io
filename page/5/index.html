@@ -156,11 +156,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                76
+                77
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                98
+                101
                 <span>tags</span>
             </div>
         </div>
@@ -209,6 +209,133 @@
 
             
             <section id="main">
+    <article id="post-BZOJ-1232-Usaco2008Nov-安慰奶牛cheer" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/06/09/BZOJ-1232-Usaco2008Nov-安慰奶牛cheer/">BZOJ 1232: [Usaco2008Nov]安慰奶牛cheer</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/06/09/BZOJ-1232-Usaco2008Nov-安慰奶牛cheer/">
+            <time datetime="2017-06-09T11:33:27.000Z" itemprop="datePublished">2017-06-09</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/BZOJ/">BZOJ</a>, <a class="tag-link" href="/tags/图论/">图论</a>, <a class="tag-link" href="/tags/最小生成树/">最小生成树</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1232" target="_blank" rel="external">题目地址</a></p>
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>Farmer John变得非常懒，他不想再继续维护供奶牛之间供通行的道路。 道路被用来连接$N (5 \leq N \leq 10,000)$个牧场，牧场被连续地编号为$1 \cdots N$，每一个牧场都是一个奶牛的家。FJ计划除去$P(N-1 \leq P \leq 100,000)$条道路中尽可能多的道路，但是还要保持牧场之间的连通性。<br>你首先要决定那些道路是需要保留的$N-1$条道路。 第$j$条双向道路连接了牧场$S_{j}$和$E_{j}$ $(1 \leq S_{j} \leq N; 1 \leq E_{j} \leq N; S_{j} != E_{j})$，而且走完它需要$L_{j} (0 \leq L_{j} \leq 1,000)$的时间， 没有两个牧场是被一条以上的道路所连接。<br>奶牛们非常伤心， 因为她们的交通系统被削减了， 你需要到每一个奶牛的住处去安慰她们。 每次你到达第$i$个牧场的时候(即使你已经到过)，你必须花去$C_{i} (1 \leq C_{i} \leq 1,000)$的时间和奶牛交谈。<br>你每个晚上都会在同一个牧场(这是供你选择的)过夜，直到奶牛们都从悲伤中缓过神来。在早上起来和晚上回去睡觉的时候，你都需要和在你睡觉的牧场的奶牛交谈一次，这样你才能完成你的交谈任务。假设FarmerJohn采纳了你的建议，请计算出使所有奶牛都被安慰的最少时间。 对于你前10次的提交，你的程序会在一部分正式的测试数据上运行， 并且返回运行的结果。</p></p>
+            <p class="article-more-link">
+                <a href="/2017/06/09/BZOJ-1232-Usaco2008Nov-安慰奶牛cheer/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/06/09/BZOJ-1232-Usaco2008Nov-安慰奶牛cheer/" data-id="cj9etcrxf000ee4ujcpa3twnp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-UVa-11174-Stand-in-a-Line" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -260,7 +387,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/06/09/UVa-11174-Stand-in-a-Line/" data-id="cj9a2trma001nxoujaiq1jwro" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/06/09/UVa-11174-Stand-in-a-Line/" data-id="cj9etcrzl001oe4ujcoyxkffx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -387,7 +514,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/06/09/BZOJ-1231-Usaco2008-Nov-mixup2-混乱的奶牛/" data-id="cj9a2trkf000bxouja6nauail" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/06/09/BZOJ-1231-Usaco2008-Nov-mixup2-混乱的奶牛/" data-id="cj9etcrxf000ae4ujbapt0lup" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -514,7 +641,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/06/08/BZOJ-1230-Usaco2008-Nov-lites-开关灯/" data-id="cj9a2trka0008xoujw6xculrg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/06/08/BZOJ-1230-Usaco2008-Nov-lites-开关灯/" data-id="cj9etcrx00007e4uj132yd4af" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -641,7 +768,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/06/05/BZOJ-2480-Spoj-3105-Mod/" data-id="cj9a2trld000uxouj9nl1bwk7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/06/05/BZOJ-2480-Spoj-3105-Mod/" data-id="cj9etcryq0016e4ujq12ycy9f" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -768,7 +895,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/06/05/BZOJ-2818-Gcd/" data-id="cj9a2trlj0011xoujt6k13k0h" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/06/05/BZOJ-2818-Gcd/" data-id="cj9etcryb000te4ujphncfig8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -899,7 +1026,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/06/02/BSGS及EXBSGS/" data-id="cj9a2trjw0003xoujyoilmlgr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/06/02/BSGS及EXBSGS/" data-id="cj9etcrvy0002e4uj5f48w0j0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1026,7 +1153,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/06/02/UVa-11609-Teams/" data-id="cj9a2trmd001pxouje8rezxgo" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/06/02/UVa-11609-Teams/" data-id="cj9etcrzs0020e4ujz5kmx4dp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1153,7 +1280,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/31/欧拉函数/" data-id="cj9a2troh003jxoujcnqj8lgi" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/31/欧拉函数/" data-id="cj9etcs1y003re4uj70npv3ps" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1280,133 +1407,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/31/BZOJ-1008-HNOI2008-越狱/" data-id="cj9a2trk40006xoujysw1n30j" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-关于图的连通性的三个Tarjan算法" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/05/28/关于图的连通性的三个Tarjan算法/">关于图的连通性的三个Tarjan算法</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/05/28/关于图的连通性的三个Tarjan算法/">
-            <time datetime="2017-05-28T04:35:54.000Z" itemprop="datePublished">2017-05-28</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Tarjan/">Tarjan</a>, <a class="tag-link" href="/tags/割点/">割点</a>, <a class="tag-link" href="/tags/图论/">图论</a>, <a class="tag-link" href="/tags/强联通分量/">强联通分量</a>, <a class="tag-link" href="/tags/桥/">桥</a>, <a class="tag-link" href="/tags/模板/">模板</a>, <a class="tag-link" href="/tags/点-双连通分量/">点-双连通分量</a>, <a class="tag-link" href="/tags/边-双连通分量/">边-双连通分量</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><h2 id="无向图的割点和桥"><a href="#无向图的割点和桥" class="headerlink" title="无向图的割点和桥"></a>无向图的割点和桥</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>对于无向图$G$，如果删除某点$u$之后，连通分量数目增加，称$u$为图的割点。<br>对于无向图$G$， 如果删除某一条边$e = (u, v)$，连通分量数目增加，称$e$为图的桥。</p></p>
-            <p class="article-more-link">
-                <a href="/2017/05/28/关于图的连通性的三个Tarjan算法/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/05/28/关于图的连通性的三个Tarjan算法/" data-id="cj9a2trnx002yxoujzmoskz4l" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/31/BZOJ-1008-HNOI2008-越狱/" data-id="cj9etcrwt0005e4uj8a031fzs" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
