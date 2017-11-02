@@ -156,11 +156,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                77
+                78
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                101
+                104
                 <span>tags</span>
             </div>
         </div>
@@ -209,6 +209,141 @@
 
             
             <section id="main">
+    <article id="post-「NOI-2015」-荷马史诗" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/08/「NOI-2015」-荷马史诗/">「NOI 2015」 荷马史诗</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/08/「NOI-2015」-荷马史诗/">
+            <time datetime="2017-08-08T05:19:13.000Z" itemprop="datePublished">2017-08-08</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/NOI/">NOI</a>, <a class="tag-link" href="/tags/哈夫曼树/">哈夫曼树</a>, <a class="tag-link" href="/tags/哈夫曼编码/">哈夫曼编码</a>, <a class="tag-link" href="/tags/数据结构/">数据结构</a>, <a class="tag-link" href="/tags/贪心/">贪心</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p><a href="http://uoj.ac/problem/130" target="_blank" rel="external">题目地址</a></p>
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><blockquote>
+<p>追逐影子的人，自己就是影子。 ——荷马</p>
+</blockquote>
+<p>Allison 最近迷上了文学。她喜欢在一个慵懒的午后，细细地品上一杯卡布奇诺，静静地阅读她爱不释手的《荷马史诗》。《荷马史诗》实在是太长了，Allison 想通过一种编码方式使得它变得短一些。</p>
+<p>一部《荷马史诗》中有 $n$ 种不同的单词，从 $1$ 到 $n$ 进行编号。其中第 $i$ 种单词出现的总次数为 $w_{i}$。Allison 想要用 $k$ 进制串 $s_{i}$ 来替换第 $i$ 种单词，使得其满足如下要求:</p>
+<ul>
+<li>对于任意的 $1 \leq i,j \leq n$，$i \neq j$，都有：$s_{i}$ 不是 $s_{j}$ 的前缀。</li>
+</ul>
+<p>现在 Allison 想要知道，如何选择 $s_{i}$，才能使替换以后得到的新的《荷马史诗》长度最小。在确保总长度最小的情况下，Allison 还想知道最长的 $s_{i}$ 的最短长度是多少？</p></p>
+            <p class="article-more-link">
+                <a href="/2017/08/08/「NOI-2015」-荷马史诗/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/08/08/「NOI-2015」-荷马史诗/" data-id="cj9i6xc7t002s60uj158splq2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-「NOIP-2004」-合并果子" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -260,7 +395,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/08/08/「NOIP-2004」-合并果子/" data-id="cj9etcs1i0038e4uj1g43il53" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/08/08/「NOIP-2004」-合并果子/" data-id="cj9i6xc7y002x60ujj2h38re6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -387,7 +522,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/08/02/BZOJ-1578-Usaco2009-Feb-Stock-Market-股票市场/" data-id="cj9etcryb000qe4ujmbt23hsx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/08/02/BZOJ-1578-Usaco2009-Feb-Stock-Market-股票市场/" data-id="cj9i6xc4w000w60uj0yx546ya" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -514,7 +649,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/08/02/模板-传递闭包/" data-id="cj9etcs2h003we4ujz7v4u2hd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/08/02/模板-传递闭包/" data-id="cj9i6xc8c003960ujehv699op" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -641,7 +776,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/08/01/BZOJ-1577-Usaco2009-Feb-庙会捷运Fair-Shuttle/" data-id="cj9etcrxv000oe4uj97sigcvp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/08/01/BZOJ-1577-Usaco2009-Feb-庙会捷运Fair-Shuttle/" data-id="cj9i6xc4b000l60ujpycccvtv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -774,7 +909,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/30/Codeforces-19D-Points/" data-id="cj9etcryb000ue4uja1lekqaw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/07/30/Codeforces-19D-Points/" data-id="cj9i6xc55001660ujm7ct9lmc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -901,7 +1036,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/30/CTSC-1999-补丁VS错误/" data-id="cj9etcryq0013e4uj5xltj0a4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/07/30/CTSC-1999-补丁VS错误/" data-id="cj9i6xc58001760uj3zsgrf9w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1027,7 +1162,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/30/IOI1999-花店橱窗布置/" data-id="cj9etcryq0017e4ujf0nm5ez1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/07/30/IOI1999-花店橱窗布置/" data-id="cj9i6xc5c001860ujxu3o5c8u" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1154,7 +1289,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/30/IOI-1994-北京2008的挂钟/" data-id="cj9etcryq001ae4ujw2aenbs1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/07/30/IOI-1994-北京2008的挂钟/" data-id="cj9i6xc4y000y60uj7bip2jfp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1281,139 +1416,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/24/BZOJ-1233-Usaco2009Open-干草堆tower/" data-id="cj9etcrx00008e4ujccnkv95o" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-BZOJ-1001-BeiJing2006-狼抓兔子" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/07/24/BZOJ-1001-BeiJing2006-狼抓兔子/">BZOJ 1001: [BeiJing2006]狼抓兔子</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/07/24/BZOJ-1001-BeiJing2006-狼抓兔子/">
-            <time datetime="2017-07-24T02:15:14.000Z" itemprop="datePublished">2017-07-24</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/BZOJ/">BZOJ</a>, <a class="tag-link" href="/tags/图论/">图论</a>, <a class="tag-link" href="/tags/对偶图/">对偶图</a>, <a class="tag-link" href="/tags/最大流/">最大流</a>, <a class="tag-link" href="/tags/网络流/">网络流</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1001" target="_blank" rel="external">题目地址</a></p>
-<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>现在小朋友们最喜欢的“喜羊羊与灰太狼”，话说灰太狼抓羊不到，但抓兔子还是比较在行的，而且现在的兔子还比较笨，它们只有两个窝，现在你做为狼王，面对下面这样一个网格的地形：<br><img src="http://www.lydsy.com/JudgeOnline/images/1001.jpg" alt="不想画图了，盗链QAQ"><br>左上角点为$(1,1)$，右下角点为$(N,M)$(上图中$N=3,M=4$)，有以下三种类型的道路：</p>
-<ul>
-<li>$(x,y) \Leftrightarrow (x+1,y)$</li>
-<li>$(x,y) \Leftrightarrow (x,y+1)$</li>
-<li>$(x,y) \Leftrightarrow (x+1,y+1)$</li>
-</ul></p>
-            <p class="article-more-link">
-                <a href="/2017/07/24/BZOJ-1001-BeiJing2006-狼抓兔子/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/07/24/BZOJ-1001-BeiJing2006-狼抓兔子/" data-id="cj9etcrxf000be4ujysp2f4w7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/07/24/BZOJ-1233-Usaco2009Open-干草堆tower/" data-id="cj9i6xc3q000860ujjedkxq0h" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

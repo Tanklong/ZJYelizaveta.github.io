@@ -6,14 +6,16 @@
     <title>NOIP 2012 整理 | ZJYelizaveta&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="Day 1Vigenère 密码描述16 世纪法国外交家 Blaise de Vigenère 设计了一种多表密码加密算法 —— Vigenère 密码。Vigenère 密码的加密解密算法简单易用，且破译难度比较高，曾在美国南北战争中为南军所广泛使用。在密码学中，我们称需要加密的信息为明文，用 $M$ 表示；称加密后的信息为密文，用$C$ 表示；而密钥是一种参数，是将明文转换为密文或将密文转换为">
-<meta name="keywords" content="数学,贪心,模拟,高精度,倍增,STL,gcd及exgcd,二分">
+<meta name="keywords" content="数学,贪心,模拟,高精度,倍增,STL,gcd及exgcd,二分,差分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NOIP 2012 整理">
 <meta property="og:url" content="http://yoursite.com/2017/10/31/NOIP-2012-整理/index.html">
 <meta property="og:site_name" content="ZJYelizaveta&#39;s Blog">
 <meta property="og:description" content="Day 1Vigenère 密码描述16 世纪法国外交家 Blaise de Vigenère 设计了一种多表密码加密算法 —— Vigenère 密码。Vigenère 密码的加密解密算法简单易用，且破译难度比较高，曾在美国南北战争中为南军所广泛使用。在密码学中，我们称需要加密的信息为明文，用 $M$ 表示；称加密后的信息为密文，用$C$ 表示；而密钥是一种参数，是将明文转换为密文或将密文转换为">
 <meta property="og:image" content="http://oqeu5dc5m.bkt.clouddn.com/NOIP%202012.png">
-<meta property="og:updated_time" content="2017-10-30T23:26:22.909Z">
+<meta property="og:image" content="http://oqeu5dc5m.bkt.clouddn.com/NOIP%202015%E2%80%982.png">
+<meta property="og:image" content="http://oqeu5dc5m.bkt.clouddn.com/NOIP%202015%27s.png">
+<meta property="og:updated_time" content="2017-11-02T08:09:31.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NOIP 2012 整理">
 <meta name="twitter:description" content="Day 1Vigenère 密码描述16 世纪法国外交家 Blaise de Vigenère 设计了一种多表密码加密算法 —— Vigenère 密码。Vigenère 密码的加密解密算法简单易用，且破译难度比较高，曾在美国南北战争中为南军所广泛使用。在密码学中，我们称需要加密的信息为明文，用 $M$ 表示；称加密后的信息为密文，用$C$ 表示；而密钥是一种参数，是将明文转换为密文或将密文转换为">
@@ -160,11 +162,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                77
+                78
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                101
+                104
                 <span>tags</span>
             </div>
         </div>
@@ -239,7 +241,7 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/STL/">STL</a>, <a class="tag-link" href="/tags/gcd及exgcd/">gcd及exgcd</a>, <a class="tag-link" href="/tags/二分/">二分</a>, <a class="tag-link" href="/tags/倍增/">倍增</a>, <a class="tag-link" href="/tags/数学/">数学</a>, <a class="tag-link" href="/tags/模拟/">模拟</a>, <a class="tag-link" href="/tags/贪心/">贪心</a>, <a class="tag-link" href="/tags/高精度/">高精度</a>
+        <a class="tag-link" href="/tags/STL/">STL</a>, <a class="tag-link" href="/tags/gcd及exgcd/">gcd及exgcd</a>, <a class="tag-link" href="/tags/二分/">二分</a>, <a class="tag-link" href="/tags/倍增/">倍增</a>, <a class="tag-link" href="/tags/差分/">差分</a>, <a class="tag-link" href="/tags/数学/">数学</a>, <a class="tag-link" href="/tags/模拟/">模拟</a>, <a class="tag-link" href="/tags/贪心/">贪心</a>, <a class="tag-link" href="/tags/高精度/">高精度</a>
     </div>
 
                     </div>
@@ -324,6 +326,9 @@ c_{i} - k_{i} + 26 & (c_{i} - k_{i} < 0)
 <p>换一个思路吧！“借教室的原则是<strong>先到先得</strong>” 也就是说， $m$ 个人借教室这个序列是有序的，有序的我们就可以二分来解决。</p>
 <p>二分，我们 check 的时间复杂度为 $\Theta(nm)$ ，需要优化。想到前面 NOIP 2011 聪明的质监员，我们可以用前缀和来优化，从而优化掉一个 $n$ ，由 $\Theta(nm) \rightarrow \Theta(m)$ 。</p>
 <p>这里我们不只是简单的前缀和优化，因为我们需要支持区间修改和区间 check ，因此我们需要把前缀和差分一下，使得做完前缀和之后每一位表示的是这一天需要借出的教室总数。</p>
+<p>具体操作如图所示：</p>
+<p><img src="http://oqeu5dc5m.bkt.clouddn.com/NOIP%202015%E2%80%982.png" alt=""></p>
+<p><img src="http://oqeu5dc5m.bkt.clouddn.com/NOIP%202015%27s.png" alt=""></p>
 <p>总时间复杂度 $\Theta((m + 2n)logm)$ 。</p>
 <h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//  Created by ZJYelizaveta on Thursday, October 26, 2017 AM11:17:07 CST</span></div><div class="line"><span class="comment">//  Copyright (c) 2017年 ZJYelizaveta. All rights reserved.</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function">T <span class="title">readIn</span><span class="params">()</span> </span>&#123;</div><div class="line">    T x(0), f(1);</div><div class="line">    <span class="keyword">char</span> ch = getchar();</div><div class="line">    <span class="keyword">while</span> (ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>) &#123;<span class="keyword">if</span> (ch == <span class="string">'-'</span>) f = <span class="number">-1</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">while</span> (ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>) &#123;x = x * <span class="number">10</span> + ch - <span class="string">'0'</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">return</span> x * f;</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">1000000</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">int</span> n, m;</div><div class="line"><span class="keyword">int</span> r[MAX_N];</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Note</span> &#123;</span></div><div class="line">    <span class="keyword">int</span> d, s, t;</div><div class="line">&#125;a[MAX_N];</div><div class="line"><span class="keyword">int</span> sum[MAX_N];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">    <span class="built_in">memset</span>(sum, <span class="number">0</span>, <span class="keyword">sizeof</span> sum);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= x; ++i) &#123;</div><div class="line">        sum[a[i].s] += a[i].d; sum[a[i].t + <span class="number">1</span>] -= a[i].d;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="comment">//  for (int i = 1; i &lt;= n; ++i) printf("%d ", sum[i]); printf("\n");</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) sum[i] += sum[i - <span class="number">1</span>];</div><div class="line"><span class="comment">//  for (int i = 1; i &lt;= n; ++i) printf("%d ", sum[i]); printf("\n");</span></div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="keyword">if</span> (sum[i] &gt; r[i]) <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> l = <span class="number">1</span>, r = m, ans = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> (r - l &gt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</div><div class="line"><span class="comment">//      printf("\n%d %d %d\n\n", l, r, mid);</span></div><div class="line">        <span class="keyword">if</span> (check(mid)) r = mid, ans = mid;</div><div class="line">        <span class="keyword">else</span> l = mid + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (r == m) <span class="built_in">printf</span>(<span class="string">"0\n"</span>);</div><div class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"-1\n%d\n"</span>, ans);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    n = readIn&lt;<span class="keyword">int</span>&gt;(), m = readIn&lt;<span class="keyword">int</span>&gt;();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) r[i] = readIn&lt;<span class="keyword">int</span>&gt;();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) a[i].d = readIn&lt;<span class="keyword">int</span>&gt;(), a[i].s = readIn&lt;<span class="keyword">int</span>&gt;(), a[i].t = readIn&lt;<span class="keyword">int</span>&gt;();</div><div class="line"></div><div class="line">    solve();</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="疫情控制"><a href="#疫情控制" class="headerlink" title="疫情控制"></a>疫情控制</h2><h3 id="描述-5"><a href="#描述-5" class="headerlink" title="描述"></a>描述</h3><p>H 国有 $n$ 个城市，这 $n$ 个城市用 $n-1$ 条双向道路相互连通构成一棵树，$1$ 号城市是首都，也是树中的根节点。<br>H 国的首都爆发了一种危害性极高的传染病。当局为了控制疫情，不让疫情扩散到边境城市（叶子节点所表示的城市），决定动用军队在一些城市建立检查点，使得从首都到边境城市的每一条路径上都至少有一个检查点，边境城市也可以建立检查点。但特别要注意的是，首都是不能建立检查点的。<br>现在，在 H 国的一些城市中已经驻扎有军队，且一个城市可以驻扎多个军队。一支军队可以在有道路连接的城市间移动，并在除首都以外的任意一个城市建立检查点，且只能在一个城市建立检查点。一支军队经过一条道路从一个城市移动到另一个城市所需要的时间等于道路的长度（单位：小时）。<br>请问最少需要多少个小时才能控制疫情。注意：不同的军队可以同时移动。</p>
@@ -355,7 +360,7 @@ c_{i} - k_{i} + 26 & (c_{i} - k_{i} < 0)
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/10/31/NOIP-2012-整理/" data-id="cj9etcrz6001je4ujghyx2ug6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/10/31/NOIP-2012-整理/" data-id="cj9i6xc52001360uj8t2gdvjo" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -429,6 +434,15 @@ c_{i} - k_{i} + 26 & (c_{i} - k_{i} < 0)
     
         
 <nav id="article-nav">
+    
+        <a href="/2017/11/02/NOIP-2015-整理/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    NOIP 2015 整理
+                
+            </div>
+        </a>
     
     
         <a href="/2017/10/27/BZOJ-1588-HNOI2002-营业额统计/" id="article-nav-older" class="article-nav-link-wrap">
