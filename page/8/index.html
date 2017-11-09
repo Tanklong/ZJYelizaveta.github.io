@@ -156,11 +156,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                79
+                81
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                107
+                108
                 <span>tags</span>
             </div>
         </div>
@@ -209,6 +209,263 @@
 
             
             <section id="main">
+    <article id="post-UVa-1659-Help-Little-Laura-最小费用循环流" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/05/24/UVa-1659-Help-Little-Laura-最小费用循环流/">UVa 1659 - Help Little Laura(最小费用循环流)</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/24/UVa-1659-Help-Little-Laura-最小费用循环流/">
+            <time datetime="2017-05-23T16:37:06.000Z" itemprop="datePublished">2017-05-24</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/UVa/">UVa</a>, <a class="tag-link" href="/tags/图论/">图论</a>, <a class="tag-link" href="/tags/最小费用循环流/">最小费用循环流</a>, <a class="tag-link" href="/tags/网络流/">网络流</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=853&amp;page=show_problem&amp;problem=4534" target="_blank" rel="external">题目地址</a></p>
+<h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>平面上有$m$条有向线段连接了$n$个点。你从某一个点出发顺着有向线段行走，给沿途经过的每条线段涂一种不同的颜色，最后回到起点。你可以多次行走，给多个回路涂色。可以重复经过一个点，但是不能重复经过一条有向线段。<br>如图所示是一种涂色方法(虚线表示未涂色)。<br></p>
+            <p class="article-more-link">
+                <a href="/2017/05/24/UVa-1659-Help-Little-Laura-最小费用循环流/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/05/24/UVa-1659-Help-Little-Laura-最小费用循环流/" data-id="cj9s407w6002p3guj9b6a2bl8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-UVa-10735-Euler-Circuit-混合图的欧拉回路" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/05/24/UVa-10735-Euler-Circuit-混合图的欧拉回路/">UVa 10735 - Euler Circuit(混合图的欧拉回路)</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/24/UVa-10735-Euler-Circuit-混合图的欧拉回路/">
+            <time datetime="2017-05-23T16:34:21.000Z" itemprop="datePublished">2017-05-24</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/UVa/">UVa</a>, <a class="tag-link" href="/tags/图论/">图论</a>, <a class="tag-link" href="/tags/欧拉回路/">欧拉回路</a>, <a class="tag-link" href="/tags/网络流/">网络流</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=853&amp;page=show_problem&amp;problem=1676" target="_blank" rel="external">题目地址</a></p>
+<h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>给出$V$个点$E$条边($1\leq V\leq 100$， $1\leq E\leq 500$)的混合图(即有的边是有向边描述为$D$，有的边是无向边描述为$U$)，试求出它的一条欧拉回路，如果没有输出无解信息。</p>
+<blockquote>
+<p>连通的无向图$G$存在欧拉回的充要条件是：$G$中每个顶点的度都是偶数。</p>
+</blockquote></p>
+            <p class="article-more-link">
+                <a href="/2017/05/24/UVa-10735-Euler-Circuit-混合图的欧拉回路/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/05/24/UVa-10735-Euler-Circuit-混合图的欧拉回路/" data-id="cj9s407v5001u3gujvnvxogdy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-UVa-1639-Candy" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -260,7 +517,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/UVa-1639-Candy/" data-id="cj9s32gyw002vukujaeopfo7q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/UVa-1639-Candy/" data-id="cj9s407wa002s3guj7ho38rix" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -386,7 +643,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/模板-最短路问题/" data-id="cj9s32h0c0043ukuj2dcs1su5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/模板-最短路问题/" data-id="cj9s4083x00d23gujxuyy8ckl" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -514,7 +771,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/23/同余与模运算/" data-id="cj9s32gzm003fukuj3rx7e41z" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/23/同余与模运算/" data-id="cj9s4083e00cn3gujdsbjgicj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -641,7 +898,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/23/埃及分数问题/" data-id="cj9s32h06003wukujdeekeh4d" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/23/埃及分数问题/" data-id="cj9s4083l00cq3guj3owd96hm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -768,7 +1025,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/23/最优配对问题/" data-id="cj9s32gzg003aukujaj56krf9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/23/最优配对问题/" data-id="cj9s4083q00cv3gujhdn43j0q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -896,7 +1153,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/23/Uva-816-Abbott-s-Revenge/" data-id="cj9s32gyl002mukuj1870etpd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/23/Uva-816-Abbott-s-Revenge/" data-id="cj9s407wg002w3gujiy7jq2o7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1023,7 +1280,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/23/UVa-10976-Fractions-Again/" data-id="cj9s32gx7001vukujs501ov7r" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/23/UVa-10976-Fractions-Again/" data-id="cj9s407vf00253gujtxvbq134" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1150,138 +1407,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/23/UVa-839-Not-so-Mobile/" data-id="cj9s32gyi002kukujflnnnwda" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-路径寻找问题及哈希表" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/05/23/路径寻找问题及哈希表/">路径寻找问题及哈希表</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/05/23/路径寻找问题及哈希表/">
-            <time datetime="2017-05-23T13:59:51.000Z" itemprop="datePublished">2017-05-23</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/DFS及BFS/">DFS及BFS</a>, <a class="tag-link" href="/tags/哈希表/">哈希表</a>, <a class="tag-link" href="/tags/搜索/">搜索</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>这一篇Blog着重写的应该是Hash吧，路径寻找问题在应用中会稍微提到一点。</p>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
-<li>若关键字为<strong>k</strong>，则其值存放在<strong>f(k)</strong> 的存储位置上。由此，不需比较便可直接取得所查记录。称这个对应关系 <strong>f</strong>为散列函数，按这个思想建立的表为<strong>散列表</strong>。</li>
-<li>对不同的关键字可能得到同一散列地址，即<strong>k<sub>1</sub>  ≠ k<sub>2</sub></strong> ，而   <strong>f(k<sub>1</sub>) = f(k<sub>2</sub>)</strong>，这种现象称为冲突。具有相同函数值的关键字对该散列函数来说称做同义词。综上所述，根据散列函数 <strong>f(k)</strong>和处理冲突的方法将一组关键字映射到一个有限的连续的地址集（区间）上，并以关键字在地址集中的“像”作为记录在表中的存储位置，这种表便称为<strong>散列表</strong>，这一映射过程称为<strong>散列造表或散列</strong>，所得的存储位置称<strong>散列地址</strong>。</li>
-<li>若对于关键字集合中的任一个关键字，经散列函数映象到地址集合中任何一个地址的概率是相等的，则称此类散列函数为<strong>均匀散列函数</strong>，这就是使关键字经过散列函数得到一个“随机的地址”，从而减少冲突。</li>
-</ul></p>
-            <p class="article-more-link">
-                <a href="/2017/05/23/路径寻找问题及哈希表/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/05/23/路径寻找问题及哈希表/" data-id="cj9s32h0e0045ukuj7t7dmbjb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/23/UVa-839-Not-so-Mobile/" data-id="cj9s407wd002u3guj3ku5hmmo" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1358,7 +1484,7 @@
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span>
+        <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
     </nav>
 </section>
             

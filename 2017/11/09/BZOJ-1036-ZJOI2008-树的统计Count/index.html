@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>BZOJ 1036: [ZJOI2008]树的统计Count | ZJYelizaveta&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="描述一棵树上有 $n$个 节点，编号分别为 $1$ 到 $n$ ，每个节点都有一个权值 $w$ 。我们将以下面的形式来要求你对这棵树完成一些操作：">
+<meta name="keywords" content="BZOJ,树链剖分,线段树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BZOJ 1036: [ZJOI2008]树的统计Count">
+<meta property="og:url" content="http://yoursite.com/2017/11/09/BZOJ-1036-ZJOI2008-树的统计Count/index.html">
+<meta property="og:site_name" content="ZJYelizaveta&#39;s Blog">
+<meta property="og:description" content="描述一棵树上有 $n$个 节点，编号分别为 $1$ 到 $n$ ，每个节点都有一个权值 $w$ 。我们将以下面的形式来要求你对这棵树完成一些操作：">
+<meta property="og:updated_time" content="2017-11-09T06:38:14.528Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BZOJ 1036: [ZJOI2008]树的统计Count">
+<meta name="twitter:description" content="描述一棵树上有 $n$个 节点，编号分别为 $1$ 到 $n$ ，每个节点都有一个权值 $w$ 。我们将以下面的形式来要求你对这棵树完成一些操作：">
+    
+
+    
+        <link rel="alternate" href="/" title="ZJYelizaveta&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">ZJYelizaveta&#39;s Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/Links">Links</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/Links">Links</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">ZJYelizaveta</h2>
+            <h3 id="title">有幸在那一天，遇到你，最了不起的你。</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Wuhan, China</span>
+            <a id="follow" target="_blank" href="">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                81
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                108
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/ZJYelizaveta" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-BZOJ-1036-ZJOI2008-树的统计Count" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            BZOJ 1036: [ZJOI2008]树的统计Count
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/11/09/BZOJ-1036-ZJOI2008-树的统计Count/">
+            <time datetime="2017-11-09T06:33:45.000Z" itemprop="datePublished">2017-11-09</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/BZOJ/">BZOJ</a>, <a class="tag-link" href="/tags/树链剖分/">树链剖分</a>, <a class="tag-link" href="/tags/线段树/">线段树</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>一棵树上有 $n$个 节点，编号分别为 $1$ 到 $n$ ，每个节点都有一个权值 $w$ 。我们将以下面的形式来要求你对这棵树完成<br>一些操作：</p>
+<a id="more"></a>
+<ul>
+<li>$\textrm{CHANGE} \ u \ t$  :  把结点 $u$ 的权值改为 $t$</li>
+<li>$\textrm{QMAX} \ u \ v$ ：询问从点 $u$ 到点 $v$ 的路径上的节点的最大权值</li>
+<li>$\textrm{QSUM} \ u \ v$ ：询问从点 $u$ 到点 $v$ 的路径上的节点的权值和 注意：从点 $u$ 到点 $v$ 的路径上的节点包括 $u$ 和 $v$ 本身。</li>
+</ul>
+<p>$1 \leq n \leq 30000, 0 \leq q \leq 200000, -30000 \leq w \leq 30000$</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>马上 NOIP 2017 了，就当顺便复习一下树链剖分和线段树吧 qwq</p>
+<h3 id="树链剖分"><a href="#树链剖分" class="headerlink" title="树链剖分"></a>树链剖分</h3><p>树链剖分用一句话概括就是：把一棵树剖分为若干条链，然后利用数据结构（树状数组，Splay，线段树等等）去维护每一条链，复杂度为 $\Theta(logn)$ 。</p>
+<p>这里所说的树链剖分是轻重链剖分，不是长链剖分，表示蒟蒻不会长链剖分，轻重链剖分由两次 dfs 组成。</p>
+<p>令 $size[u]$ 为以 $u$ 为根的子树的结点数，$depth[u]$ 为结点 $u$ 的深度，$fa[u]$ 为结点 $u$ 的父亲。</p>
+<p>首先无根树转有根树，以 $1$ 为根，记录每个节点的子节点总数（包括自己） $size[u]$ ，每个节点的父亲 $fa[u]$ ，每个节点到父亲的边权 $f[u]$ ，深度 $depth[u]$ 。这是第一次 dfs。</p>
+<p>然后就是第二次 dfs ，一这道题目为栗子，用线段树来维护将树剖分之后的线性结构，线段树每一个结点的值对应结点到其父亲的边权。</p>
+<p>令 $bel[i]$ 为 $i$ 结点所属的链的链头，$id[i]$ 为结点 $i$ 的 dfs 序标号。</p>
+<p>首先维护一个时间戳 $\textrm{timestamp}$ ，然后 <code>dfs2(int u, int num)</code> 表示从结点 $u$ 开市构建链，结点 $u$ 属于的链编号为 $num$ 。每次 dfs 的时候结点 $id[u] = ++\textrm{timestamp}$  ，dfs 序保证了同一条链中结点的 $id[]$ 是连续的，所以只需要维护一棵线段树就可以了。</p>
+<p>然后找结点 $u$ 的儿子中 $size[]$ 最大的结点 $v$ （若不存在，递归到叶子，则返回），然后仍然执行 <code>dfs2(v, num)</code> 使得这一条链尽可能长。其余的儿子节点构成新链，而他们自身则为新链的链头，执行 <code>dfs2(v, v)</code> 。</p>
+<p>然后，构建线段树，因为在一条链上的点的编号是连续的，所以可以在一颗线段树上进行修改或者询问操作。将所有的重链首尾相连放入线段树中，$id[u]$ 为结点 $u$ 在线段树中的编号。</p>
+<p>单点修改，很容易，直接在线段树上修改即可。</p>
+<p>修区间修改，修改点 $u$ 到点 $v$ 之间路径上的权值，分两种情况讨论：</p>
+<ul>
+<li>结点 $u$ 和结点 $v$ 在同一条链上，那么直接在线段树上修改 $id[u]$ 到 $id[v]$ 之间的点的权值。</li>
+<li>若结点 $u$ 与结点 $v$ 不在一条链上，那么以便修改，一边将 $u$ 和 $v$ 向同一条重链上靠，直到变成在一条链上的情况。</li>
+</ul>
+<p>至于查询操作和修改操作的思想是一样的，这里还是详细的写一下：</p>
+<p>单点查询同单点修改。</p>
+<p>区间询问：</p>
+<ul>
+<li>在同一条链上，直接询问</li>
+<li>不在同一条链上，先交换，保证 $u$ 的链头深度大于 $v$ 的链头深度。然后将 $u$ 移动到 $fa[bel[u]]$ 即上一条链，一边移动一边更新询问的答案，直到 $bel[u] = bel[v]$ ，然后同情况一。</li>
+</ul>
+<p>单次操作的时间复杂度为 $\Theta(log^{2}n)$ 。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//  Created by ZJYelizaveta on Tuesday, November 07, 2017 AM09:01:56 CST</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Copyright (c) 2017年 ZJYelizaveta. All rights reserved.</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function">T <span class="title">readIn</span><span class="params">()</span> </span>&#123;</div><div class="line">    T x(0), f(1);</div><div class="line">    <span class="keyword">char</span> ch = getchar();</div><div class="line">    <span class="keyword">while</span> (ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>) &#123;<span class="keyword">if</span> (ch == <span class="string">'-'</span>) f = <span class="number">-1</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">while</span> (ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>) &#123;x = x * <span class="number">10</span> + ch - <span class="string">'0'</span>; ch = getchar();&#125;</div><div class="line">    <span class="keyword">return</span> x * f;</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">30000</span> + <span class="number">3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXNODE = MAX_N * <span class="number">4</span>;</div><div class="line"><span class="keyword">int</span> n, q;</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[MAX_N &lt;&lt; <span class="number">1</span>];</div><div class="line"><span class="keyword">int</span> w[MAX_N];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> from, <span class="keyword">int</span> to)</span> </span>&#123;</div><div class="line">    G[from].push_back(to);</div><div class="line">    G[to].push_back(from);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> segmentTree&#123;</div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> mid (((l) + (r)) &gt;&gt; 1)</span></div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> lc ((o) &lt;&lt; 1)</span></div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> rc (((o) &lt;&lt; 1) + 1)</span></div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></div><div class="line">        <span class="keyword">int</span> l, r, sum, maxVal;</div><div class="line">    &#125;node[MAXNODE];</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> o, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</div><div class="line">        node[o].l = l, node[o].r = r;</div><div class="line">        <span class="keyword">if</span> (r == l) <span class="keyword">return</span>;</div><div class="line">        build(lc, l, mid);</div><div class="line">        build(rc, mid + <span class="number">1</span>, r);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushUp</span><span class="params">(<span class="keyword">int</span> o)</span> </span>&#123;</div><div class="line">        node[o].sum = node[lc].sum + node[rc].sum;</div><div class="line">        node[o].maxVal = max(node[lc].maxVal, node[rc].maxVal);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> o, <span class="keyword">int</span> pos, <span class="keyword">int</span> val)</span> </span>&#123;  <span class="comment">//change the single point on the segemnt tree;</span></div><div class="line">        <span class="keyword">int</span> l = node[o].l, r = node[o].r;</div><div class="line">        <span class="keyword">if</span> (l == r) &#123;</div><div class="line">            node[o].sum = node[o].maxVal = val;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (pos &lt;= mid) modify(lc, pos, val);</div><div class="line">        <span class="keyword">else</span> modify(rc, pos, val);</div><div class="line"></div><div class="line">        pushUp(o);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">querySum</span><span class="params">(<span class="keyword">int</span> o, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> l = node[o].l, r = node[o].r;</div><div class="line">        <span class="keyword">if</span> (l == L &amp;&amp; r == R) <span class="keyword">return</span> node[o].sum;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (R &lt;= mid) <span class="keyword">return</span> querySum(lc, L, R);</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (L &gt; mid) <span class="keyword">return</span> querySum(rc, L, R);</div><div class="line">        <span class="keyword">else</span> <span class="keyword">return</span> querySum(lc, L, mid) + querySum(rc, mid + <span class="number">1</span>, R);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">queryMax</span><span class="params">(<span class="keyword">int</span> o, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> l = node[o].l, r = node[o].r;</div><div class="line">        <span class="keyword">if</span> (l == L &amp;&amp; R == r) <span class="keyword">return</span> node[o].maxVal;<span class="comment">//</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> (R &lt;= mid) <span class="keyword">return</span> queryMax(lc, L, R);</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (L &gt; mid) <span class="keyword">return</span> queryMax(rc, L, R);</div><div class="line">        <span class="keyword">else</span> <span class="keyword">return</span> max(queryMax(lc, L, mid), queryMax(rc, mid + <span class="number">1</span>, R));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> segmentTree;</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> heavyLightDecomposition &#123;</div><div class="line">    <span class="keyword">int</span> size[MAX_N], depth[MAX_N], fa[MAX_N];</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> f)</span> </span>&#123;</div><div class="line">        size[u] = <span class="number">1</span>;</div><div class="line">        depth[u] = f == <span class="number">0</span> ? <span class="number">0</span> : depth[f] + <span class="number">1</span>; fa[u] = f;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (<span class="keyword">int</span>)G[u].size(); ++i) &#123;</div><div class="line">            <span class="keyword">int</span> v = G[u][i];</div><div class="line">            <span class="keyword">if</span> (v == f) <span class="keyword">continue</span>;</div><div class="line"></div><div class="line">            dfs1(v, u);</div><div class="line">            size[u] += size[v];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> bel[MAX_N], id[MAX_N], timeStamp = <span class="number">0</span>;</div><div class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> num)</span> </span>&#123;</div><div class="line">        bel[u] = num, id[u] = ++timeStamp;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> Max = <span class="number">0</span>, idx = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (<span class="keyword">int</span>)G[u].size(); ++i) &#123;</div><div class="line">            <span class="keyword">int</span> v = G[u][i];</div><div class="line">            <span class="keyword">if</span> (v != fa[u] &amp;&amp; size[v] &gt; Max) &#123;</div><div class="line">                Max = size[v]; idx = v;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (Max == <span class="number">0</span>) <span class="keyword">return</span>;</div><div class="line">        dfs2(idx, num);</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (<span class="keyword">int</span>)G[u].size(); ++i) &#123;</div><div class="line">            <span class="keyword">int</span> v = G[u][i];</div><div class="line">            <span class="keyword">if</span> (v != fa[u] &amp;&amp; v != idx) dfs2(v, v);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> heavyLightDecomposition;</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> solve &#123;</div><div class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">solveSum</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (bel[a] != bel[b]) &#123;</div><div class="line">            <span class="keyword">if</span> (depth[bel[a]] &lt; depth[bel[b]]) swap(a, b);</div><div class="line">            sum += querySum(<span class="number">1</span>, id[bel[a]], id[a]);</div><div class="line">            a = fa[bel[a]];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (depth[a] &gt; depth[b]) swap(a, b);</div><div class="line">        sum += querySum(<span class="number">1</span>, id[a], id[b]);</div><div class="line">        <span class="keyword">return</span> sum;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">solveMax</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> maxVal = -INF;</div><div class="line">        <span class="keyword">while</span> (bel[a] != bel[b]) &#123;</div><div class="line">            <span class="keyword">if</span> (depth[bel[a]] &lt; depth[bel[b]]) swap(a, b);</div><div class="line">            maxVal = max(maxVal, queryMax(<span class="number">1</span>, id[bel[a]], id[a]));</div><div class="line">            a = fa[bel[a]];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (depth[a] &gt; depth[b]) swap(a, b);</div><div class="line">        maxVal = max(maxVal, queryMax(<span class="number">1</span>, id[a], id[b]));</div><div class="line">        <span class="keyword">return</span> maxVal;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> solve;</div><div class="line"></div><div class="line"><span class="keyword">char</span> opt[<span class="number">10</span>];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    n = readIn&lt;<span class="keyword">int</span>&gt;();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n - <span class="number">1</span>; ++i) &#123;</div><div class="line">        <span class="keyword">int</span> u = readIn&lt;<span class="keyword">int</span>&gt;(), v = readIn&lt;<span class="keyword">int</span>&gt;();</div><div class="line">        addEdge(u, v);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) w[i] = readIn&lt;<span class="keyword">int</span>&gt;();</div><div class="line"></div><div class="line">    fa[<span class="number">1</span>] = <span class="number">0</span>;</div><div class="line">    dfs1(<span class="number">1</span>, <span class="number">0</span>);</div><div class="line">    dfs2(<span class="number">1</span>, <span class="number">1</span>);</div><div class="line"><span class="comment">//  for (int i = 1; i &lt;= n; ++i) printf("%d %d\n", i, bel[i]);</span></div><div class="line">    build(<span class="number">1</span>, <span class="number">1</span>, n);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) modify(<span class="number">1</span>, id[i], w[i]);</div><div class="line"></div><div class="line"></div><div class="line">    q = readIn&lt;<span class="keyword">int</span>&gt;();  <span class="comment">//  printf("%d\n", q);</span></div><div class="line">    <span class="keyword">while</span> (q--) &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>, opt);</div><div class="line"><span class="comment">//      printf("%s\n", opt);</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> (opt[<span class="number">0</span>] == <span class="string">'C'</span>) &#123;</div><div class="line">            <span class="keyword">int</span> u = readIn&lt;<span class="keyword">int</span>&gt;(), val = readIn&lt;<span class="keyword">int</span>&gt;();</div><div class="line">            w[u] = val;</div><div class="line">            modify(<span class="number">1</span>, id[u], val);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">int</span> u = readIn&lt;<span class="keyword">int</span>&gt;(), v = readIn&lt;<span class="keyword">int</span>&gt;();</div><div class="line">            <span class="keyword">if</span> (opt[<span class="number">1</span>] == <span class="string">'M'</span>) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, solveMax(u, v));</div><div class="line">            <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, solveSum(u, v));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/11/09/BZOJ-1036-ZJOI2008-树的统计Count/" data-id="cj9s407su00083guj3q47lnxd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/11/09/WHEZOJ-Easy-Round-4-简要题解/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    WHEZOJ Easy Round 4 简要题解
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/11/09/NOIP-2016-整理/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">NOIP 2016 整理</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+                
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 ZJYelizaveta<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+	<script>
+		var gitment = new Gitment({
+			owner: 'ZJYelizaveta',
+			repo: 'ZJYelizaveta.github.io',
+			oauth: {
+				client_id: 'c0a1c9fd8a0a898e24d1',
+				client_secret: 'cac4eeb49169f56188b5a93e1824e9e68f396193',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
