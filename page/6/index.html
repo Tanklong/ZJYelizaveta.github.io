@@ -79,7 +79,7 @@
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cari" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -98,10 +98,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
+            POSTS: 'pos',
             PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            CATEGORIES: 'kategori',
+            TAGS: 'tag',
             UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/',
@@ -132,7 +132,7 @@
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cari" />
     </div>
 
                 </td>
@@ -152,16 +152,16 @@
             <h2 id="name">ZJYelizaveta</h2>
             <h3 id="title">有幸在那一天，遇到你，最了不起的你。</h3>
             <span id="location"><i class="fa fa-map-marker"></i>Wuhan, China</span>
-            <a id="follow" target="_blank" href="">FOLLOW</a>
+            <a id="follow" target="_blank" href="">IKUTI</a>
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                78
-                <span>posts</span>
+                79
+                <span>pos</span>
             </div>
             <div class="article-info-block">
-                104
-                <span>tags</span>
+                107
+                <span>tag</span>
             </div>
         </div>
         
@@ -209,6 +209,133 @@
 
             
             <section id="main">
+    <article id="post-欧拉函数" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/05/31/欧拉函数/">欧拉函数</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/31/欧拉函数/">
+            <time datetime="2017-05-31T13:38:03.000Z" itemprop="datePublished">2017-05-31</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/数学/">数学</a>, <a class="tag-link" href="/tags/模板/">模板</a>, <a class="tag-link" href="/tags/欧拉函数/">欧拉函数</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>对于正整数$n$，欧拉函数$\phi (n)$表示小于或等于$n$的正整数中与$n$互素的数的个数。</p>
+<h2 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h2><p>欧拉函数有一下四种性质：<br>$\bigstar \phi(1) = 1$<br>$\bigstar \phi (n) = n \cdot  \prod_{p\mid n}(\frac{p - 1}{p})$<br>$\bigstar \phi (p^{k}) = p^{k} - p^{k - 1}\cdots \cdots (p\in \mathbb{P})$<br>$\bigstar \phi (mn) = \phi (m) \phi (n)\cdots \cdots gcd(m, n) = 1$</p></p>
+            <p class="article-more-link">
+                <a href="/2017/05/31/欧拉函数/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/05/31/欧拉函数/" data-id="cj9s2yxpy0042y4ujfj1ghugu" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-BZOJ-1008-HNOI2008-越狱" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -260,7 +387,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/31/BZOJ-1008-HNOI2008-越狱/" data-id="cj9i6xc3t000a60uj7ceg7w7f" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/31/BZOJ-1008-HNOI2008-越狱/" data-id="cj9s2yxk70008y4ujsuiqq51a" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -386,7 +513,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/28/关于图的连通性的三个Tarjan算法/" data-id="cj9i6xc80002z60ujve3i9yar" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/28/关于图的连通性的三个Tarjan算法/" data-id="cj9s2yxou003ay4uj4cpnd5dy" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -513,7 +640,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/28/UVa-12167-Proving-Equivalences/" data-id="cj9i6xc6o002660ujlqfg7tw9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/28/UVa-12167-Proving-Equivalences/" data-id="cj9s2yxn70027y4uj83y5j8zk" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -645,7 +772,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/28/UVa-1391-Astronauts/" data-id="cj9i6xc6y002e60ujouuijiu5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/28/UVa-1391-Astronauts/" data-id="cj9s2yxnc002by4uj39bdfafn" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -773,7 +900,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/26/UVa-1146-Now-or-later/" data-id="cj9i6xc6w002d60uj4dypfdui" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/26/UVa-1146-Now-or-later/" data-id="cj9s2yxni002dy4ujj5q3yh3w" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -947,7 +1074,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/25/POJ-3678-Katu-Puzzle/" data-id="cj9i6xc5n001i60ujv16lrrqs" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/25/POJ-3678-Katu-Puzzle/" data-id="cj9s2yxm5001hy4ujk1j4zpi4" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1079,7 +1206,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/25/2-SAT问题/" data-id="cj9i6xc2r000160ujzyazwcqx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/25/2-SAT问题/" data-id="cj9s2yxjv0006y4ujqn6upjxe" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1206,7 +1333,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/BZOJ-1823-JSOI2010-满汉全席/" data-id="cj9i6xc4h000o60uj50ai1n5a" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/BZOJ-1823-JSOI2010-满汉全席/" data-id="cj9s2yxl6000vy4ujdyr3i1rm" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1332,133 +1459,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/WHEZOJ-83-棋子/" data-id="cj9i6xc74002i60ujt2m1t357" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-模板-高斯消元法" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/05/24/模板-高斯消元法/">[模板]高斯消元法</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/05/24/模板-高斯消元法/">
-            <time datetime="2017-05-23T16:54:58.000Z" itemprop="datePublished">2017-05-24</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/数学/">数学</a>, <a class="tag-link" href="/tags/高斯消元/">高斯消元</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>高斯消元法 (Gaussian Elimination)，是线性代数中的一个算法，可用来为线性方程组求解。<br></p>
-            <p class="article-more-link">
-                <a href="/2017/05/24/模板-高斯消元法/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/05/24/模板-高斯消元法/" data-id="cj9i6xc96003v60ujxheemyza" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/WHEZOJ-83-棋子/" data-id="cj9s2yxo8002oy4ujbjvuj1th" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1535,7 +1536,7 @@
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
+        <a class="extend prev" rel="prev" href="/page/5/">&laquo; Sebelumnya</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">Berikutnya &raquo;</a>
     </nav>
 </section>
             

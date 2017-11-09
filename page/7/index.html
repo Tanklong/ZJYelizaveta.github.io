@@ -79,7 +79,7 @@
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cari" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -98,10 +98,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
+            POSTS: 'pos',
             PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            CATEGORIES: 'kategori',
+            TAGS: 'tag',
             UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/',
@@ -132,7 +132,7 @@
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cari" />
     </div>
 
                 </td>
@@ -152,16 +152,16 @@
             <h2 id="name">ZJYelizaveta</h2>
             <h3 id="title">有幸在那一天，遇到你，最了不起的你。</h3>
             <span id="location"><i class="fa fa-map-marker"></i>Wuhan, China</span>
-            <a id="follow" target="_blank" href="">FOLLOW</a>
+            <a id="follow" target="_blank" href="">IKUTI</a>
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                78
-                <span>posts</span>
+                79
+                <span>pos</span>
             </div>
             <div class="article-info-block">
-                104
-                <span>tags</span>
+                107
+                <span>tag</span>
             </div>
         </div>
         
@@ -209,6 +209,132 @@
 
             
             <section id="main">
+    <article id="post-模板-高斯消元法" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/05/24/模板-高斯消元法/">[模板]高斯消元法</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/24/模板-高斯消元法/">
+            <time datetime="2017-05-23T16:54:58.000Z" itemprop="datePublished">2017-05-24</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/数学/">数学</a>, <a class="tag-link" href="/tags/高斯消元/">高斯消元</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>高斯消元法 (Gaussian Elimination)，是线性代数中的一个算法，可用来为线性方程组求解。<br></p>
+            <p class="article-more-link">
+                <a href="/2017/05/24/模板-高斯消元法/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/05/24/模板-高斯消元法/" data-id="cj9s2yxpv0040y4ujww95gcle" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-UVa-11997-K-Small-Sums" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -260,7 +386,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/UVa-11997-K-Small-Sums/" data-id="cj9i6xc6m002460uj7kgwvw37" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/UVa-11997-K-Small-Sums/" data-id="cj9s2yxna002ay4uj689j0dtt" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -387,7 +513,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/UVa-1401-Remember-the-Word-UVa-11732-strcmp-Anyone/" data-id="cj9i6xc72002g60ujlc6wfdra" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/UVa-1401-Remember-the-Word-UVa-11732-strcmp-Anyone/" data-id="cj9s2yxnv002fy4uj2w60263l" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -516,7 +642,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/模板-树状数组/" data-id="cj9i6xc9n004860ujofmo76st" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/模板-树状数组/" data-id="cj9s2yxqf004hy4ujdvi3q8sk" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -643,7 +769,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/UVa-10881-Piotr-s-Ants/" data-id="cj9i6xc6i002160ujn3b127hc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/UVa-10881-Piotr-s-Ants/" data-id="cj9s2yxmw001vy4ujs71gh6jv" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -770,7 +896,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/超大背包问题/" data-id="cj9i6xc90003q60uje7wclvnh" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/超大背包问题/" data-id="cj9s2yxq70049y4ujq4jij292" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -897,7 +1023,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/UVa-11300-Spreading-the-Wealth/" data-id="cj9i6xc6r002960uje1podzr6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/UVa-11300-Spreading-the-Wealth/" data-id="cj9s2yxob002ry4uj143voafn" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1024,7 +1150,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/UVa-11729-Commando-War/" data-id="cj9i6xc6c001x60ujchbvxq8g" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/UVa-11729-Commando-War/" data-id="cj9s2yxn20022y4ujb7xwa3s1" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1151,7 +1277,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/UVa-1659-Help-Little-Laura-最小费用循环流/" data-id="cj9i6xc7o002p60ujnfn5ibqx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/UVa-1659-Help-Little-Laura-最小费用循环流/" data-id="cj9s2yxnx002iy4ujdffmho4u" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1281,134 +1407,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/24/UVa-10735-Euler-Circuit-混合图的欧拉回路/" data-id="cj9i6xc5l001g60ujqdkty964" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-UVa-1639-Candy" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/05/24/UVa-1639-Candy/">UVa 1639 - Candy</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/05/24/UVa-1639-Candy/">
-            <time datetime="2017-05-23T16:20:44.000Z" itemprop="datePublished">2017-05-24</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/UVa/">UVa</a>, <a class="tag-link" href="/tags/期望-概率/">期望 & 概率</a>, <a class="tag-link" href="/tags/精度处理/">精度处理</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=850&amp;page=show_problem&amp;problem=4514" target="_blank" rel="external">题目地址</a></p>
-<h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><p>有两个盒子各有$n(n \leq 2 \times 10^{5})$个糖，每天随机选一个盒子并打开它（概率分别为$p$，$1 - p$），如果里面有糖，他会吃掉其中一个；否则他会打开另一个盒子，然后吃一颗糖。他已经每天吃一颗糖吃了几天了，有一天，他打开盒子一看，没糖啦（；´д｀）ゞ！打开另一个盒子之前，他希望你帮他算一下另一个盒子里剩余糖的个数的数学期望。<br>有多组测试数据，对每一组测试数据包含每一个盒子中糖的个数$n(n \leq 2 \times 10^{5})$以及实数$p(0\leq p\leq 1，小数点后6位)$，以$EOF$终止。<br>对于每组测试数据，以$”Case X：Y”$形式输出，其中$X$是测试数据的编号(从$1$开始)，$Y$是另一个盒子里剩余糖的个数的数学期望，任何答案绝对误差必须$\leq 10^{-4}$。<br></p>
-            <p class="article-more-link">
-                <a href="/2017/05/24/UVa-1639-Candy/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/05/24/UVa-1639-Candy/" data-id="cj9i6xc6t002b60ujc9ndj3aj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/05/24/UVa-10735-Euler-Circuit-混合图的欧拉回路/" data-id="cj9s2yxmy001xy4ujoorcpukj" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1485,7 +1484,7 @@
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
+        <a class="extend prev" rel="prev" href="/page/6/">&laquo; Sebelumnya</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/">Berikutnya &raquo;</a>
     </nav>
 </section>
             
